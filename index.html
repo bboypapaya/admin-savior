@@ -24,6 +24,9 @@
         .demo-tooltip:hover .tooltip-content { visibility: visible; opacity: 1; }
         .tooltip-content svg { width: 100%; height: auto; margin-bottom: 5px; }
         #magnifierCanvas { position: fixed; width: 140px; height: 140px; border-radius: 50%; border: 3px solid #007bff; box-shadow: 0 4px 12px rgba(0,0,0,0.35); pointer-events: none; display: none; z-index: 1000; background: #222; }
+        #mobileSaveModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.88); z-index: 2000; flex-direction: column; align-items: center; justify-content: center; padding: 15px; }
+        #mobileSaveModal .modal-bar { width: 100%; max-width: 500px; display: flex; justify-content: space-between; align-items: center; color: #fff; margin-bottom: 12px; font-weight: bold; font-size: 0.95em; }
+        #mobileSaveModal img { max-width: 100%; max-height: 80vh; border: 2px solid #fff; border-radius: 6px; background: #fff; -webkit-touch-callout: default; }
         @media (max-width: 768px) {
             body { padding: 10px; }
             .controls { padding: 10px; }
@@ -162,9 +165,17 @@
     <canvas id="mainCanvas" width="800" height="600"></canvas>
     <canvas id="magnifierCanvas" width="140" height="140"></canvas>
 
+    <div id="mobileSaveModal">
+        <div class="modal-bar">
+            <span id="lblModalHint">📱 請「長按下方圖片」選擇儲存至相簿</span>
+            <button id="btnCloseModal" style="background: #d9534f; color: #fff; border: none; padding: 6px 12px; font-weight: bold; margin: 0;">✖ 關閉</button>
+        </div>
+        <img id="mobileSaveImg" alt="Preview">
+    </div>
+
     <script>
     (function(){
-        document.addEventListener('contextmenu',function(_0xe){if(_0xe.target.tagName!=='INPUT')_0xe.preventDefault();});
+        document.addEventListener('contextmenu',function(_0xe){if(_0xe.target.tagName!=='INPUT'&&_0xe.target.id!=='mobileSaveImg')_0xe.preventDefault();});
         document.addEventListener('keydown',function(_0xe){if(_0xe.key==='F12'||((_0xe.ctrlKey||_0xe.metaKey)&&_0xe.shiftKey&&(_0xe.key==='I'||_0xe.key==='i'||_0xe.key==='J'||_0xe.key==='j'||_0xe.key==='C'||_0xe.key==='c'))||((_0xe.ctrlKey||_0xe.metaKey)&&(_0xe.key==='U'||_0xe.key==='u'))){_0xe.preventDefault();}});
 
         const _0x1a01 = {
@@ -222,6 +233,8 @@
                 footerPrivacy: '🛡️ 本工具純本機離線運作，無任何個資上傳風險',
                 lblDonatePrompt: '如果有提升你的工作效率，歡迎贊助支持我',
                 btnDonateEcpay: '綠界科技',
+                lblModalHint: '📱 請「長按下方圖片」選擇儲存至相簿',
+                btnCloseModal: '✖ 關閉',
                 st_waiting: '等待載入圖片...',
                 st_loaded: '圖片載入成功。您可以對圖片進行處理或轉向、複製、下載。',
                 st_back_loaded: '反面圖片載入成功！校正處理後可點擊「2️⃣ 上下/左右合併」。',
@@ -264,9 +277,9 @@
                 st_copy_done: '圖片已複製到剪貼簿！可直接貼至 Word、Excel 或 LINE。',
                 st_copy_err: '複製失敗（瀏覽器權限限制），請改用下載圖片。',
                 st_dl_no_img: '請先載入圖片再進行下載。',
-                st_dl_done: '圖片已成功準備下載，請檢查您的下載資料夾。',
+                st_dl_done: '圖片已準備完成！若使用手機請於選單點選「儲存影像」存入相簿。',
                 st_pdf_no_img: '請先載入圖片再匯出 PDF。',
-                st_pdf_done: 'PDF 已成功匯出，請檢查您的下載資料夾。'
+                st_pdf_done: 'PDF 已成功匯出！若使用手機可於選單直接轉傳 LINE 或儲存到檔案。'
             },
             'en-US': {
                 docTitle: 'Admin Savior',
@@ -322,6 +335,8 @@
                 footerPrivacy: '🛡️ 100% offline local processing. Zero data upload risk.',
                 lblDonatePrompt: 'If this tool boosts your work efficiency, feel free to support me',
                 btnDonateEcpay: '綠界科技',
+                lblModalHint: '📱 Long-press the image below to save to Photos',
+                btnCloseModal: '✖ Close',
                 st_waiting: 'Waiting for image...',
                 st_loaded: 'Image loaded. Ready for editing, rotation, copying, or export.',
                 st_back_loaded: 'Back image loaded! After editing, click "2️⃣ Merge Vertically/Horizontally".',
@@ -364,9 +379,9 @@
                 st_copy_done: 'Image copied to clipboard!',
                 st_copy_err: 'Copy failed (browser permission limit). Please use Download instead.',
                 st_dl_no_img: 'Please load an image before downloading.',
-                st_dl_done: 'Image download started. Please check your downloads folder.',
+                st_dl_done: 'Image ready! On mobile, select "Save Image" from the share menu.',
                 st_pdf_no_img: 'Please load an image before exporting to PDF.',
-                st_pdf_done: 'PDF exported successfully. Please check your downloads folder.'
+                st_pdf_done: 'PDF exported! On mobile, choose where to share or save the file.'
             },
             'ja': {
                 docTitle: '事務の救世主',
@@ -422,6 +437,8 @@
                 footerPrivacy: '🛡️ 完全ローカル（オフライン）動作。外部へのデータ送信は一切ありません。',
                 lblDonatePrompt: '作業効率が向上しましたら、ぜひご支援をお願いします',
                 btnDonateEcpay: '綠界科技',
+                lblModalHint: '📱 下の画像を長押しして「写真に保存」を選択してください',
+                btnCloseModal: '✖ 閉じる',
                 st_waiting: '画像の読み込みを待っています...',
                 st_loaded: '画像を読み込みました。補正・回転・コピー・保存が可能です。',
                 st_back_loaded: '裏面画像を読み込みました！補正後に「2️⃣ 上下/左右に結合」をクリックしてください。',
@@ -454,8 +471,8 @@
                 st_front_saved: '表面を保存しました！続けて「裏面」を読み込み、結合ボタンをクリックしてください。',
                 st_front_cleared: '一時保存した表面画像をクリアしました。',
                 st_merge_err: '表面が保存されており、裏面が読み込まれていることを確認してください。',
-                st_merge_v_done: '表裏の「上下結合」が完了しました！透かし追加や保存が可能です。',
-                st_merge_h_done: '表裏の「左右結合」が完了しました！透かし追加や保存が可能です。',
+                st_merge_v_done: '表裏の「上下結合」が完了しました！',
+                st_merge_h_done: '表裏の「左右結合」が完了しました！',
                 st_rot_ccw: '左へ90°回転しました。',
                 st_rot_cw: '右へ90°回転しました。',
                 st_flip_h: '左右反転しました。',
@@ -464,9 +481,9 @@
                 st_copy_done: 'クリップボードにコピーしました！',
                 st_copy_err: 'コピーに失敗しました。「画像を保存」をご利用ください。',
                 st_dl_no_img: '保存する前に画像を読み込んでください。',
-                st_dl_done: '画像のダウンロードを開始しました。',
+                st_dl_done: '画像の準備ができました！スマホではメニューから「画像を保存」を選択してください。',
                 st_pdf_no_img: 'PDF出力の前に画像を読み込んでください。',
-                st_pdf_done: 'PDFを出力しました。'
+                st_pdf_done: 'PDFを出力しました！メニューから保存先や共有先を選択してください。'
             },
             'de': {
                 docTitle: 'Büro-Retter',
@@ -522,6 +539,8 @@
                 footerPrivacy: '🛡️ 100% lokale Offline-Verarbeitung. Kein Daten-Upload.',
                 lblDonatePrompt: 'Wenn dieses Tool Ihre Arbeitseffizienz steigert, unterstützen Sie mich gerne',
                 btnDonateEcpay: '綠界科技',
+                lblModalHint: '📱 Bild unten gedrückt halten, um es in Fotos zu speichern',
+                btnCloseModal: '✖ Schließen',
                 st_waiting: 'Warten auf Bild...',
                 st_loaded: 'Bild geladen. Bereit zum Bearbeiten, Drehen, Kopieren oder Herunterladen.',
                 st_back_loaded: 'Rückseite geladen! Nach der Bearbeitung auf „2️⃣ Zusammenfügen“ klicken.',
@@ -564,9 +583,9 @@
                 st_copy_done: 'Bild in die Zwischenablage kopiert!',
                 st_copy_err: 'Kopieren fehlgeschlagen. Bitte „Bild herunterladen“ nutzen.',
                 st_dl_no_img: 'Bitte zuerst ein Bild laden.',
-                st_dl_done: 'Download gestartet.',
+                st_dl_done: 'Bild bereit! Wählen Sie auf dem Handy „Bild sichern“ im Menü.',
                 st_pdf_no_img: 'Bitte zuerst ein Bild laden, bevor Sie ein PDF exportieren.',
-                st_pdf_done: 'PDF erfolgreich exportiert.'
+                st_pdf_done: 'PDF erfolgreich exportiert!'
             },
             'ko': {
                 docTitle: '행정 구원자',
@@ -622,6 +641,8 @@
                 footerPrivacy: '🛡️ 100% 로컬 오프라인 작동. 개인정보 서버 전송 위험 없음.',
                 lblDonatePrompt: '업무 효율을 높이는 데 도움이 되었다면 후원으로 응원해 주세요',
                 btnDonateEcpay: '綠界科技',
+                lblModalHint: '📱 아래 이미지를 길게 눌러 사진 앱에 저장하세요',
+                btnCloseModal: '✖ 닫기',
                 st_waiting: '이미지 불러오기 대기 중...',
                 st_loaded: '이미지를 성공적으로 불러왔습니다. 편집, 회전, 복사, 다운로드가 가능합니다.',
                 st_back_loaded: '뒷면 이미지를 불러왔습니다! 보정 후 "2️⃣ 상하/좌우 병합"을 클릭하세요.',
@@ -664,7 +685,7 @@
                 st_copy_done: '클립보드에 복사되었습니다!',
                 st_copy_err: '복사 실패. 이미지 다운로드를 이용해 주세요.',
                 st_dl_no_img: '다운로드하기 전에 이미지를 먼저 불러오세요.',
-                st_dl_done: '이미지 다운로드가 시작되었습니다.',
+                st_dl_done: '이미지 준비 완료! 모바일에서는 메뉴에서 "이미지 저장"을 선택하세요.',
                 st_pdf_no_img: 'PDF로 내보내기 전에 이미지를 먼저 불러오세요.',
                 st_pdf_done: 'PDF 내보내기가 완료되었습니다.'
             },
@@ -722,6 +743,8 @@
                 footerPrivacy: '🛡️ Fonctionnement 100 % local et hors-ligne. Aucun envoi de données.',
                 lblDonatePrompt: 'Si cet outil améliore votre efficacité au travail, n’hésitez pas à me soutenir',
                 btnDonateEcpay: '綠界科技',
+                lblModalHint: '📱 Appuyez longuement sur l’image pour l’enregistrer dans Photos',
+                btnCloseModal: '✖ Fermer',
                 st_waiting: 'En attente d’une image...',
                 st_loaded: 'Image chargée. Prête à être modifiée, pivotée, copiée ou téléchargée.',
                 st_back_loaded: 'Verso chargé ! Après correction, cliquez sur « 2️⃣ Fusion verticale/horizontale ».',
@@ -764,7 +787,7 @@
                 st_copy_done: 'Image copiée dans le presse-papiers !',
                 st_copy_err: 'Échec de la copie. Veuillez utiliser le bouton Télécharger.',
                 st_dl_no_img: 'Veuillez d’abord charger une image.',
-                st_dl_done: 'Téléchargement lancé.',
+                st_dl_done: 'Image prête ! Sur mobile, choisissez « Enregistrer l’image ».',
                 st_pdf_no_img: 'Veuillez charger une image avant d’exporter en PDF.',
                 st_pdf_done: 'PDF exporté avec succès.'
             },
@@ -822,6 +845,8 @@
                 footerPrivacy: '🛡️ 100% lokale offline verwerking. Geen enkel uploadrisico.',
                 lblDonatePrompt: 'Als deze tool uw werkefficiëntie verhoogt, steun mij dan gerust',
                 btnDonateEcpay: '綠界科技',
+                lblModalHint: '📱 Houd de afbeelding hieronder ingedrukt om op te slaan in Foto’s',
+                btnCloseModal: '✖ Sluiten',
                 st_waiting: 'Wachten op afbeelding...',
                 st_loaded: 'Afbeelding geladen. Klaar om te bewerken, draaien, kopiëren of downloaden.',
                 st_back_loaded: 'Achterkant geladen! Klik na bewerking op "2️⃣ Samenvoegen".',
@@ -864,7 +889,7 @@
                 st_copy_done: 'Afbeelding gekopieerd naar klembord!',
                 st_copy_err: 'Kopiëren mislukt. Gebruik de downloadknop.',
                 st_dl_no_img: 'Laad eerst een afbeelding.',
-                st_dl_done: 'Download gestart.',
+                st_dl_done: 'Afbeelding klaar! Kies op mobiel "Afbeelding bewaren".',
                 st_pdf_no_img: 'Laad eerst een afbeelding voordat u naar PDF exporteert.',
                 st_pdf_done: 'PDF succesvol geëxporteerd.'
             },
@@ -922,6 +947,8 @@
                 footerPrivacy: '🛡️ Procesamiento 100% local sin conexión. Cero riesgo de subida de datos.',
                 lblDonatePrompt: 'Si esta herramienta mejora tu eficiencia en el trabajo, no dudes en apoyarme',
                 btnDonateEcpay: '綠界科技',
+                lblModalHint: '📱 Mantén presionada la imagen de abajo para guardar en Fotos',
+                btnCloseModal: '✖ Cerrar',
                 st_waiting: 'Esperando imagen...',
                 st_loaded: 'Imagen cargada. Lista para editar, girar, copiar o descargar.',
                 st_back_loaded: '¡Reverso cargado! Tras corregir, haz clic en "2️⃣ Unir vertical/horizontalmente".',
@@ -964,7 +991,7 @@
                 st_copy_done: '¡Imagen copiada al portapapeles!',
                 st_copy_err: 'Error al copiar. Por favor, usa Descargar.',
                 st_dl_no_img: 'Carga una imagen antes de descargar.',
-                st_dl_done: 'Descarga iniciada.',
+                st_dl_done: '¡Imagen lista! En móvil, selecciona "Guardar imagen" en el menú.',
                 st_pdf_no_img: 'Carga una imagen antes de exportar a PDF.',
                 st_pdf_done: 'PDF exportado correctamente.'
             },
@@ -1022,6 +1049,8 @@
                 footerPrivacy: '🛡️ 100 % lokal offline-bearbetning. Ingen risk för datauppladdning.',
                 lblDonatePrompt: 'Om detta verktyg ökar din arbetseffektivitet får du gärna stödja mig',
                 btnDonateEcpay: '綠界科技',
+                lblModalHint: '📱 Håll bilden nedan intryckt för att spara i Bilder',
+                btnCloseModal: '✖ Stäng',
                 st_waiting: 'Väntar på bild...',
                 st_loaded: 'Bilden har laddats. Redo för redigering, rotering, kopiering eller nedladdning.',
                 st_back_loaded: 'Baksida laddad! Efter redigering, klicka på "2️⃣ Slå ihop lodrätt/vågrätt".',
@@ -1064,7 +1093,7 @@
                 st_copy_done: 'Bild kopierad till urklipp!',
                 st_copy_err: 'Kopiering misslyckades. Använd nedladdningsknappen istället.',
                 st_dl_no_img: 'Ladda en bild innan du laddar ner.',
-                st_dl_done: 'Nedladdning startad.',
+                st_dl_done: 'Bild klar! På mobil, välj "Spara bild" i menyn.',
                 st_pdf_no_img: 'Ladda en bild innan du exporterar till PDF.',
                 st_pdf_done: 'PDF exporterad.'
             }
@@ -1093,6 +1122,7 @@
         const _0x1a26 = document.getElementById('btnClearFront'), _0x1a27 = document.getElementById('frontSlotStatus');
         const _0x1a28 = document.getElementById('btnRotateCCW'), _0x1a29 = document.getElementById('btnRotateCW');
         const _0x1a2a = document.getElementById('btnFlipH'), _0x1a2b = document.getElementById('btnFlipV');
+        const _0x1a3d = document.getElementById('mobileSaveModal'), _0x1a3e = document.getElementById('mobileSaveImg'), _0x1a3f = document.getElementById('btnCloseModal');
 
         let _0x1a2c = 'zh-TW', _0x1a2d = 'st_waiting', _0x1a2e = '#d9534f';
         let _0x1a2f = new Image(), _0x1a30 = null, _0x1a31 = null, _0x1a32 = null;
@@ -1109,7 +1139,7 @@
         function _0x1f04(_0xl){
             if(!_0x1a01[_0xl])_0xl='zh-TW';
             _0x1a2c=_0xl;_0x1a0a.value=_0xl;document.documentElement.lang=_0xl;document.title=_0x1f01('docTitle');
-            const _0xids=['g1Title','btnSelectFile','btnUndo','btnReset','btnCopy','btnDownload','optPdfFit','optPdfId','btnExportPdf','g2Title','btnRotateCCW','btnRotateCW','btnFlipH','btnFlipV','g3Title','lblBrightness','btnApplyBrightness','btnCancelBrightness','btnDocEnhance','lblKeepStamp','btnCropMode','btnRedBoxMode','btnRedLineMode','btnMosaicMode','btnBlackBoxMode','btnKeystoneMode','optRatioAuto','optRatioIdH','optRatioIdV','optRatioA4V','optRatioA4H','btnApplyKeystone','tooltipTrigger','lblWatermark','optWmGray','optWmRed','optWmBlue','btnApplyWatermark','lblMerge','btnSaveFront','btnMergeV','btnMergeH','btnClearFront','footerPrivacy','lblDonatePrompt','btnDonateEcpay'];
+            const _0xids=['g1Title','btnSelectFile','btnUndo','btnReset','btnCopy','btnDownload','optPdfFit','optPdfId','btnExportPdf','g2Title','btnRotateCCW','btnRotateCW','btnFlipH','btnFlipV','g3Title','lblBrightness','btnApplyBrightness','btnCancelBrightness','btnDocEnhance','lblKeepStamp','btnCropMode','btnRedBoxMode','btnRedLineMode','btnMosaicMode','btnBlackBoxMode','btnKeystoneMode','optRatioAuto','optRatioIdH','optRatioIdV','optRatioA4V','optRatioA4H','btnApplyKeystone','tooltipTrigger','lblWatermark','optWmGray','optWmRed','optWmBlue','btnApplyWatermark','lblMerge','btnSaveFront','btnMergeV','btnMergeH','btnClearFront','footerPrivacy','lblDonatePrompt','btnDonateEcpay','lblModalHint','btnCloseModal'];
             _0xids.forEach(_0xid=>{const _0xel=document.getElementById(_0xid);if(_0xel)_0xel.textContent=_0x1f01(_0xid);});
             document.getElementById('pasteHint').innerHTML=_0x1f01('pasteHint');
             document.getElementById('tooltipDesc').innerHTML=_0x1f01('tooltipDesc');
@@ -1139,6 +1169,8 @@
         });
         _0x1f06();
         _0x1a0d.addEventListener('click',()=>_0x1a0c.click());
+        _0x1a3f.addEventListener('click',()=>{_0x1a3d.style.display='none';});
+        _0x1a3d.addEventListener('click',(_0xe)=>{if(_0xe.target===_0x1a3d)_0x1a3d.style.display='none';});
 
         function _0x1f07(){
             if(!_0x1a30)return;
@@ -1406,268 +1438,4 @@
             const _0xgr=new Uint8Array(_0xw*_0xh),_0xig=new Float64Array((_0xw+1)*(_0xh+1));
             for(let _0xy=0;_0xy<_0xh;_0xy++){
                 let _0xrs=0;
-                for(let _0xx=0;_0xx<_0xw;_0xx++){
-                    const _0xidx=(_0xy*_0xw+_0xx)*4,_0xg=Math.round(0.299*_0xd[_0xidx]+0.587*_0xd[_0xidx+1]+0.114*_0xd[_0xidx+2]);
-                    _0xgr[_0xy*_0xw+_0xx]=_0xg;_0xrs+=_0xg;_0xig[(_0xy+1)*(_0xw+1)+(_0xx+1)]=_0xig[_0xy*(_0xw+1)+(_0xx+1)]+_0xrs;
-                }
-            }
-            const _0xrad=Math.max(15,Math.floor(Math.min(_0xw,_0xh)/25));
-            for(let _0xy=0;_0xy<_0xh;_0xy++){
-                const _0xy1=Math.max(0,_0xy-_0xrad),_0xy2=Math.min(_0xh-1,_0xy+_0xrad);
-                for(let _0xx=0;_0xx<_0xw;_0xx++){
-                    const _0xx1=Math.max(0,_0xx-_0xrad),_0xx2=Math.min(_0xw-1,_0xx+_0xrad),_0xcnt=(_0xx2-_0xx1+1)*(_0xy2-_0xy1+1);
-                    const _0xsum=_0xig[(_0xy2+1)*(_0xw+1)+(_0xx2+1)]-_0xig[_0xy1*(_0xw+1)+(_0xx2+1)]-_0xig[(_0xy2+1)*(_0xw+1)+_0xx1]+_0xig[_0xy1*(_0xw+1)+_0xx1];
-                    const _0xlbg=Math.max(_0xsum/_0xcnt,100),_0xidx=(_0xy*_0xw+_0xx)*4,_0xr=_0xd[_0xidx],_0xg=_0xd[_0xidx+1],_0xb=_0xd[_0xidx+2];
-                    if(_0xks){
-                        const _0xmx=Math.max(_0xr,_0xg,_0xb),_0xmn=Math.min(_0xr,_0xg,_0xb),_0xch=_0xmx-_0xmn;
-                        const _0xirs=(_0xr>_0xg+22&&_0xr>_0xb+22&&_0xr/Math.max(1,(_0xg+_0xb)*0.5)>1.3);
-                        const _0xibs=(_0xb>_0xr+20&&_0xb>_0xg+10&&_0xb/Math.max(1,(_0xr+_0xg)*0.5)>1.25);
-                        if(_0xch>28&&(_0xirs||_0xibs)&&(_0xmn/_0xlbg)<0.88){
-                            const _0xsc=255/_0xlbg,_0xmr=_0xmn/_0xlbg,_0xbf=Math.max(0,Math.min(1,(_0xmr-0.72)/0.16));
-                            const _0xdm=Math.min(255,_0xmx*_0xsc*1.12),_0xfc=_0xch>0?_0xdm/_0xch:1;
-                            const _0xsr=Math.min(255,Math.max(0,(_0xr-_0xmn)*_0xfc)),_0xsg=Math.min(255,Math.max(0,(_0xg-_0xmn)*_0xfc)),_0xsb=Math.min(255,Math.max(0,(_0xb-_0xmn)*_0xfc));
-                            _0xd[_0xidx]=Math.round(_0xsr*(1-_0xbf)+255*_0xbf);
-                            _0xd[_0xidx+1]=Math.round(_0xsg*(1-_0xbf)+255*_0xbf);
-                            _0xd[_0xidx+2]=Math.round(_0xsb*(1-_0xbf)+255*_0xbf);
-                            continue;
-                        }
-                    }
-                    const _0xlm=_0xgr[_0xy*_0xw+_0xx],_0xrt=_0xlm/_0xlbg;
-                    let _0xout;if(_0xrt>0.90)_0xout=255;else if(_0xrt<0.60)_0xout=0;else _0xout=Math.round(((_0xrt-0.60)/0.30)*255);
-                    _0xd[_0xidx]=_0xout;_0xd[_0xidx+1]=_0xout;_0xd[_0xidx+2]=_0xout;
-                }
-            }
-            _0x1a05.putImageData(_0x1a30,0,0);_0x1f09();_0x1f0d('NONE');
-            _0x1f02(_0xks?'st_doc_done_stamp':'st_doc_done_bw','green');
-        }
-        _0x1a22.addEventListener('click',()=>{
-            if(!_0x1a30){_0x1f02('st_wm_no_img','red');return;}
-            const _0xtxt=_0x1a20.value.trim();if(!_0xtxt){_0x1f02('st_wm_no_txt','red');return;}
-            if(parseInt(_0x1a14.value,10)!==0)_0x1a14.value=0;
-            _0x1f07();_0x1a05.putImageData(_0x1a30,0,0);
-            const _0xw=_0x1a04.width,_0xh=_0x1a04.height,_0xfs=Math.max(16,Math.round(Math.min(_0xw,_0xh)*0.045));
-            _0x1a05.save();_0x1a05.font=`bold ${_0xfs}px "Microsoft JhengHei", sans-serif`;
-            _0x1a05.fillStyle=_0x1a21.value;_0x1a05.textAlign='center';_0x1a05.textBaseline='middle';
-            _0x1a05.translate(_0xw/2,_0xh/2);_0x1a05.rotate(-Math.PI/6);
-            const _0xdg=Math.hypot(_0xw,_0xh),_0xtw=_0x1a05.measureText(_0xtxt).width,_0xsx=_0xtw+_0xfs*3.5,_0xsy=_0xfs*4.2;
-            let _0xrw=0;
-            for(let _0xy=-_0xdg;_0xy<_0xdg;_0xy+=_0xsy){
-                const _0xox=(_0xrw%2===0)?0:_0xsx/2;
-                for(let _0xx=-_0xdg;_0xx<_0xdg;_0xx+=_0xsx)_0x1a05.fillText(_0xtxt,_0xx+_0xox,_0xy);
-                _0xrw++;
-            }
-            _0x1a05.restore();_0x1f15();_0x1f0d('NONE');_0x1f02('st_wm_done','green');
-        });
-        _0x1a23.addEventListener('click',()=>{
-            if(!_0x1a30){_0x1f02('st_front_no_img','red');return;}
-            if(parseInt(_0x1a14.value,10)!==0){_0x1a14.value=0;_0x1a05.putImageData(_0x1a30,0,0);}
-            _0x1a31=new ImageData(new Uint8ClampedArray(_0x1a30.data),_0x1a30.width,_0x1a30.height);
-            _0x1a24.disabled=false;_0x1a25.disabled=false;_0x1a26.style.display='inline-block';
-            _0x1f03();_0x1f0d('NONE');_0x1f02('st_front_saved','green');
-        });
-        _0x1a26.addEventListener('click',()=>{
-            _0x1a31=null;_0x1a24.disabled=true;_0x1a25.disabled=true;_0x1a26.style.display='none';
-            _0x1f03();_0x1f02('st_front_cleared','black');
-        });
-        function _0x1f17(_0xdir){
-            if(!_0x1a31||!_0x1a30){_0x1f02('st_merge_err','red');return;}
-            if(parseInt(_0x1a14.value,10)!==0){_0x1a14.value=0;_0x1a05.putImageData(_0x1a30,0,0);}
-            _0x1f07();
-            const _0xc1=document.createElement('canvas');_0xc1.width=_0x1a31.width;_0xc1.height=_0x1a31.height;_0xc1.getContext('2d').putImageData(_0x1a31,0,0);
-            const _0xc2=document.createElement('canvas');_0xc2.width=_0x1a30.width;_0xc2.height=_0x1a30.height;_0xc2.getContext('2d').putImageData(_0x1a30,0,0);
-            if(_0xdir==='V'){
-                const _0xtw=Math.max(_0xc1.width,_0xc2.width),_0xh1=Math.round(_0xc1.height*(_0xtw/_0xc1.width)),_0xh2=Math.round(_0xc2.height*(_0xtw/_0xc2.width));
-                const _0xgp=Math.max(16,Math.round(_0xtw*0.025)),_0xpd=_0xgp;
-                _0x1a04.width=_0xtw+_0xpd*2;_0x1a04.height=_0xh1+_0xh2+_0xgp+_0xpd*2;
-                _0x1a05.fillStyle='#ffffff';_0x1a05.fillRect(0,0,_0x1a04.width,_0x1a04.height);
-                _0x1a05.imageSmoothingEnabled=true;_0x1a05.imageSmoothingQuality='high';
-                _0x1a05.drawImage(_0xc1,_0xpd,_0xpd,_0xtw,_0xh1);_0x1a05.drawImage(_0xc2,_0xpd,_0xpd+_0xh1+_0xgp,_0xtw,_0xh2);
-                _0x1a32={direction:'V',singleCardW:_0xtw,totalW:_0x1a04.width,totalH:_0x1a04.height};
-            }else{
-                const _0xth=Math.max(_0xc1.height,_0xc2.height),_0xw1=Math.round(_0xc1.width*(_0xth/_0xc1.height)),_0xw2=Math.round(_0xc2.width*(_0xth/_0xc2.height));
-                const _0xgp=Math.max(16,Math.round(_0xth*0.025)),_0xpd=_0xgp;
-                _0x1a04.width=_0xw1+_0xw2+_0xgp+_0xpd*2;_0x1a04.height=_0xth+_0xpd*2;
-                _0x1a05.fillStyle='#ffffff';_0x1a05.fillRect(0,0,_0x1a04.width,_0x1a04.height);
-                _0x1a05.imageSmoothingEnabled=true;_0x1a05.imageSmoothingQuality='high';
-                _0x1a05.drawImage(_0xc1,_0xpd,_0xpd,_0xw1,_0xth);_0x1a05.drawImage(_0xc2,_0xpd+_0xw1+_0xgp,_0xpd,_0xw2,_0xth);
-                _0x1a32={direction:'H',singleCardW:_0xw1,totalW:_0x1a04.width,totalH:_0x1a04.height};
-            }
-            _0x1f15();_0x1f0d('NONE');_0x1f02(_0xdir==='V'?'st_merge_v_done':'st_merge_h_done','green');
-        }
-        _0x1a24.addEventListener('click',()=>_0x1f17('V'));
-        _0x1a25.addEventListener('click',()=>_0x1f17('H'));
-        function _0x1f18(_0xx,_0xy,_0xw,_0xh){
-            const _0xbs=15;_0xx=Math.max(0,Math.floor(_0xx));_0xy=Math.max(0,Math.floor(_0xy));_0xw=Math.floor(_0xw);_0xh=Math.floor(_0xh);
-            if(_0xw===0||_0xh===0){_0x1f14();return;}
-            _0x1f07();const _0xd=_0x1a30.data,_0xcw=_0x1a04.width,_0xch=_0x1a04.height;
-            for(let _0xby=_0xy;_0xby<_0xy+_0xh;_0xby+=_0xbs){
-                for(let _0xbx=_0xx;_0xbx<_0xx+_0xw;_0xbx+=_0xbs){
-                    const _0xsx=Math.min(_0xbx+Math.floor(_0xbs/2),_0xcw-1),_0xsy=Math.min(_0xby+Math.floor(_0xbs/2),_0xch-1);
-                    const _0xi=(_0xsy*_0xcw+_0xsx)*4,_0xr=_0xd[_0xi],_0xg=_0xd[_0xi+1],_0xb=_0xd[_0xi+2];
-                    for(let _0xcy=_0xby;_0xcy<_0xby+_0xbs&&_0xcy<_0xy+_0xh&&_0xcy<_0xch;_0xcy++){
-                        for(let _0xcx=_0xbx;_0xcx<_0xbx+_0xbs&&_0xcx<_0xx+_0xw&&_0xcx<_0xcw;_0xcx++){
-                            const _0xidx=(_0xcy*_0xcw+_0xcx)*4;_0xd[_0xidx]=_0xr;_0xd[_0xidx+1]=_0xg;_0xd[_0xidx+2]=_0xb;
-                        }
-                    }
-                }
-            }
-            _0x1a05.putImageData(_0x1a30,0,0);_0x1f09();_0x1f02('st_mosaic_done','green');
-        }
-        function _0x1f19(_0xdeg){
-            if(!_0x1a30)return;
-            if(parseInt(_0x1a14.value,10)!==0){_0x1a14.value=0;_0x1a05.putImageData(_0x1a30,0,0);}
-            _0x1f07();_0x1a32=null;
-            const _0xow=_0x1a04.width,_0xoh=_0x1a04.height,_0xsd=_0x1a30.data;
-            if(_0xdeg===90||_0xdeg===-90){
-                const _0xtc=document.createElement('canvas');_0xtc.width=_0xoh;_0xtc.height=_0xow;
-                const _0xti=_0xtc.getContext('2d').createImageData(_0xoh,_0xow),_0xdd=_0xti.data;
-                for(let _0xy=0;_0xy<_0xoh;_0xy++){
-                    for(let _0xx=0;_0xx<_0xow;_0xx++){
-                        const _0xsi=(_0xy*_0xow+_0xx)*4;
-                        let _0xdx,_0xdy;if(_0xdeg===90){_0xdx=(_0xoh-1)-_0xy;_0xdy=_0xx;}else{_0xdx=_0xy;_0xdy=(_0xow-1)-_0xx;}
-                        const _0xdi=(_0xdy*_0xoh+_0xdx)*4;
-                        _0xdd[_0xdi]=_0xsd[_0xsi];_0xdd[_0xdi+1]=_0xsd[_0xsi+1];_0xdd[_0xdi+2]=_0xsd[_0xsi+2];_0xdd[_0xdi+3]=_0xsd[_0xsi+3];
-                    }
-                }
-                _0x1a04.width=_0xoh;_0x1a04.height=_0xow;_0x1a05.putImageData(_0xti,0,0);
-            }else if(_0xdeg==='flipH'){
-                const _0xti=_0x1a05.createImageData(_0xow,_0xoh),_0xdd=_0xti.data;
-                for(let _0xy=0;_0xy<_0xoh;_0xy++){
-                    for(let _0xx=0;_0xx<_0xow;_0xx++){
-                        const _0xsi=(_0xy*_0xow+_0xx)*4,_0xdi=(_0xy*_0xow+((_0xow-1)-_0xx))*4;
-                        _0xdd[_0xdi]=_0xsd[_0xsi];_0xdd[_0xdi+1]=_0xsd[_0xsi+1];_0xdd[_0xdi+2]=_0xsd[_0xsi+2];_0xdd[_0xdi+3]=_0xsd[_0xsi+3];
-                    }
-                }
-                _0x1a05.putImageData(_0xti,0,0);
-            }else if(_0xdeg==='flipV'){
-                const _0xti=_0x1a05.createImageData(_0xow,_0xoh),_0xdd=_0xti.data;
-                for(let _0xy=0;_0xy<_0xoh;_0xy++){
-                    for(let _0xx=0;_0xx<_0xow;_0xx++){
-                        const _0xsi=(_0xy*_0xow+_0xx)*4,_0xdi=(((_0xoh-1)-_0xy)*_0xow+_0xx)*4;
-                        _0xdd[_0xdi]=_0xsd[_0xsi];_0xdd[_0xdi+1]=_0xsd[_0xsi+1];_0xdd[_0xdi+2]=_0xsd[_0xsi+2];_0xdd[_0xdi+3]=_0xsd[_0xsi+3];
-                    }
-                }
-                _0x1a05.putImageData(_0xti,0,0);
-            }
-            _0x1f15();
-            let _0xsk='st_rot_ccw';if(_0xdeg==='flipH')_0xsk='st_flip_h';else if(_0xdeg==='flipV')_0xsk='st_flip_v';else if(_0xdeg>0)_0xsk='st_rot_cw';
-            _0x1f02(_0xsk,'green');
-            if(_0x1a35==='KEYSTONE'){_0x1a3b=[];_0x1a1f.style.display='none';_0x1a06.style.display='none';}
-        }
-        _0x1a28.addEventListener('click',()=>_0x1f19(-90));
-        _0x1a29.addEventListener('click',()=>_0x1f19(90));
-        _0x1a2a.addEventListener('click',()=>_0x1f19('flipH'));
-        _0x1a2b.addEventListener('click',()=>_0x1f19('flipV'));
-        function _0x1f1a(){
-            if(!_0x1a30||_0x1a3b.length!==4)return;
-            _0x1f07();_0x1a32=null;
-            const _0xw1=Math.hypot(_0x1a3b[1].x-_0x1a3b[0].x,_0x1a3b[1].y-_0x1a3b[0].y),_0xw2=Math.hypot(_0x1a3b[2].x-_0x1a3b[3].x,_0x1a3b[2].y-_0x1a3b[3].y);
-            const _0xh1=Math.hypot(_0x1a3b[3].x-_0x1a3b[0].x,_0x1a3b[3].y-_0x1a3b[0].y),_0xh2=Math.hypot(_0x1a3b[2].x-_0x1a3b[1].x,_0x1a3b[2].y-_0x1a3b[1].y);
-            let _0xtw=Math.max(_0xw1,_0xw2),_0xth=Math.max(_0xh1,_0xh2);
-            const _0xrm=_0x1a1e.value;let _0xlr=null;
-            if(_0xrm==='id_h')_0xlr=85.6/54.0;else if(_0xrm==='id_v')_0xlr=54.0/85.6;else if(_0xrm==='a4_v')_0xlr=210.0/297.0;else if(_0xrm==='a4_h')_0xlr=297.0/210.0;
-            if(_0xlr!==null){if(_0xtw/_0xth>_0xlr)_0xth=_0xtw/_0xlr;else _0xtw=_0xth*_0xlr;}
-            const _0xsrc=[{x:0,y:0},{x:_0xtw,y:0},{x:_0xtw,y:_0xth},{x:0,y:_0xth}],_0xdst=_0x1a3b;
-            let _0xmt=[],_0xB=[];
-            for(let _0xi=0;_0xi<4;_0xi++){
-                _0xmt.push([_0xsrc[_0xi].x,_0xsrc[_0xi].y,1,0,0,0,-_0xsrc[_0xi].x*_0xdst[_0xi].x,-_0xsrc[_0xi].y*_0xdst[_0xi].x]);_0xB.push(_0xdst[_0xi].x);
-                _0xmt.push([0,0,0,_0xsrc[_0xi].x,_0xsrc[_0xi].y,1,-_0xsrc[_0xi].x*_0xdst[_0xi].y,-_0xsrc[_0xi].y*_0xdst[_0xi].y]);_0xB.push(_0xdst[_0xi].y);
-            }
-            const _0xhm=_0x1f1b(_0xmt,_0xB),_0xfw=Math.max(1,Math.floor(_0xtw)),_0xfh=Math.max(1,Math.floor(_0xth));
-            const _0xni=_0x1a05.createImageData(_0xfw,_0xfh),_0xsd=_0x1a30.data,_0xdd=_0xni.data,_0xsw=_0x1a04.width,_0xsh=_0x1a04.height;
-            for(let _0xy=0;_0xy<_0xfh;_0xy++){
-                for(let _0xx=0;_0xx<_0xfw;_0xx++){
-                    const _0xdn=_0xhm[6]*_0xx+_0xhm[7]*_0xy+1,_0xsx=(_0xhm[0]*_0xx+_0xhm[1]*_0xy+_0xhm[2])/_0xdn,_0xsy=(_0xhm[3]*_0xx+_0xhm[4]*_0xy+_0xhm[5])/_0xdn;
-                    if(_0xsx>=0&&_0xsx<_0xsw-1&&_0xsy>=0&&_0xsy<_0xsh-1){
-                        const _0xsx1=Math.floor(_0xsx),_0xsy1=Math.floor(_0xsy),_0xsx2=_0xsx1+1,_0xsy2=_0xsy1+1,_0xdx=_0xsx-_0xsx1,_0xdy=_0xsy-_0xsy1;
-                        const _0xp1=(_0xsy1*_0xsw+_0xsx1)*4,_0xp2=(_0xsy1*_0xsw+_0xsx2)*4,_0xp3=(_0xsy2*_0xsw+_0xsx1)*4,_0xp4=(_0xsy2*_0xsw+_0xsx2)*4,_0xdi=(_0xy*_0xfw+_0xx)*4;
-                        for(let _0xc=0;_0xc<3;_0xc++){
-                            const _0xvt=_0xsd[_0xp1+_0xc]*(1-_0xdx)+_0xsd[_0xp2+_0xc]*_0xdx,_0xvb=_0xsd[_0xp3+_0xc]*(1-_0xdx)+_0xsd[_0xp4+_0xc]*_0xdx;
-                            _0xdd[_0xdi+_0xc]=_0xvt*(1-_0xdy)+_0xvb*_0xdy;
-                        }
-                        _0xdd[_0xdi+3]=255;
-                    }
-                }
-            }
-            _0x1a04.width=_0xfw;_0x1a04.height=_0xfh;_0x1a05.putImageData(_0xni,0,0);_0x1f15();_0x1f0d('NONE');
-            _0x1f02(_0xlr?'st_keystone_done_ratio':'st_keystone_done','green');
-        }
-        function _0x1f1b(_0xA,_0xb){
-            const _0xn=_0xb.length;
-            for(let _0xi=0;_0xi<_0xn;_0xi++){
-                let _0xme=Math.abs(_0xA[_0xi][_0xi]),_0xmr=_0xi;
-                for(let _0xk=_0xi+1;_0xk<_0xn;_0xk++){if(Math.abs(_0xA[_0xk][_0xi])>_0xme){_0xme=Math.abs(_0xA[_0xk][_0xi]);_0xmr=_0xk;}}
-                for(let _0xk=_0xi;_0xk<_0xn;_0xk++){const _0xt=_0xA[_0xmr][_0xk];_0xA[_0xmr][_0xk]=_0xA[_0xi][_0xk];_0xA[_0xi][_0xk]=_0xt;}
-                const _0xtb=_0xb[_0xmr];_0xb[_0xmr]=_0xb[_0xi];_0xb[_0xi]=_0xtb;
-                for(let _0xk=_0xi+1;_0xk<_0xn;_0xk++){
-                    const _0xc=-_0xA[_0xk][_0xi]/_0xA[_0xi][_0xi];
-                    for(let _0xj=_0xi;_0xj<_0xn;_0xj++){if(_0xi===_0xj)_0xA[_0xk][_0xj]=0;else _0xA[_0xk][_0xj]+=_0xc*_0xA[_0xi][_0xj];}
-                    _0xb[_0xk]+=_0xc*_0xb[_0xi];
-                }
-            }
-            const _0xx=new Array(_0xn).fill(0);
-            for(let _0xi=_0xn-1;_0xi>=0;_0xi--){
-                _0xx[_0xi]=_0xb[_0xi]/_0xA[_0xi][_0xi];
-                for(let _0xk=_0xi-1;_0xk>=0;_0xk--)_0xb[_0xk]-=_0xA[_0xk][_0xi]*_0xx[_0xi];
-            }
-            return _0xx;
-        }
-        _0x1a10.addEventListener('click',()=>{
-            if(!_0x1a30){_0x1f02('st_copy_no_img','red');return;}
-            _0x1a05.putImageData(_0x1a30,0,0);
-            _0x1a04.toBlob(async(_0xb)=>{
-                try{await navigator.clipboard.write([new ClipboardItem({'image/png':_0xb})]);if(_0x1a35==='KEYSTONE')_0x1f14();_0x1f02('st_copy_done','green');}
-                catch(_0xe){if(_0x1a35==='KEYSTONE')_0x1f14();_0x1f02('st_copy_err','red');}
-            },'image/png');
-        });
-        _0x1a11.addEventListener('click',()=>{
-            if(!_0x1a2f.src||_0x1a2f.src===''){_0x1f02('st_dl_no_img','red');return;}
-            _0x1a05.putImageData(_0x1a30,0,0);const _0xdu=_0x1a04.toDataURL('image/png');if(_0x1a35==='KEYSTONE')_0x1f14();
-            const _0xlk=document.createElement('a');_0xlk.href=_0xdu;_0xlk.download=`edited_image_${new Date().toISOString().slice(0,19).replace(/:/g,'-')}.png`;
-            document.body.appendChild(_0xlk);_0xlk.click();document.body.removeChild(_0xlk);_0x1f02('st_dl_done','green');
-        });
-        _0x1a13.addEventListener('click',()=>{
-            if(!_0x1a30){_0x1f02('st_pdf_no_img','red');return;}
-            const _0xec=document.createElement('canvas');_0xec.width=_0x1a30.width;_0xec.height=_0x1a30.height;
-            const _0xectx=_0xec.getContext('2d');_0xectx.fillStyle='#ffffff';_0xectx.fillRect(0,0,_0xec.width,_0xec.height);_0xectx.putImageData(_0x1a30,0,0);
-            const _0xjdu=_0xec.toDataURL('image/jpeg',0.95),_0xb64=_0xjdu.split(',')[1],_0xbs=atob(_0xb64),_0xjb=new Uint8Array(_0xbs.length);
-            for(let _0xi=0;_0xi<_0xbs.length;_0xi++)_0xjb[_0xi]=_0xbs.charCodeAt(_0xi);
-            const _0xiw=_0xec.width,_0xih=_0xec.height,_0xm2p=(_0xmm)=>(_0xmm*72)/25.4;
-            let _0xpw=_0xm2p(210),_0xph=_0xm2p(297),_0xdw,_0xdh,_0xpx,_0xpy;
-            if(_0x1a12.value==='a4_fit'){
-                if(_0xiw>_0xih){_0xpw=_0xm2p(297);_0xph=_0xm2p(210);}
-                const _0xmg=_0xm2p(10),_0xaw=_0xpw-_0xmg*2,_0xah=_0xph-_0xmg*2,_0xsc=Math.min(_0xaw/_0xiw,_0xah/_0xih);
-                _0xdw=_0xiw*_0xsc;_0xdh=_0xih*_0xsc;_0xpx=(_0xpw-_0xdw)/2;_0xpy=(_0xph-_0xdh)/2;
-            }else{
-                const _0xidw=_0xm2p(85.6),_0xidh=_0xm2p(54.0);
-                if(_0x1a32&&_0x1a32.totalW===_0xiw&&_0x1a32.totalH===_0xih){
-                    const _0xrsw=_0xiw/_0x1a32.singleCardW;_0xdw=_0xidw*_0xrsw;_0xdh=_0xdw*(_0xih/_0xiw);
-                }else{if(_0xiw>=_0xih){_0xdw=_0xidw;_0xdh=_0xidh;}else{_0xdw=_0xidh;_0xdh=_0xidw;}}
-                _0xpx=(_0xpw-_0xdw)/2;_0xpy=_0xph-_0xdh-_0xm2p(35);if(_0xpy<_0xm2p(15))_0xpy=(_0xph-_0xdh)/2;
-            }
-            const _0xpb=_0x1f1c(_0xjb,_0xiw,_0xih,_0xpw,_0xph,_0xdw,_0xdh,_0xpx,_0xpy),_0xurl=URL.createObjectURL(_0xpb);
-            const _0xlk=document.createElement('a');_0xlk.href=_0xurl;_0xlk.download=`document_${new Date().toISOString().slice(0,19).replace(/:/g,'-')}.pdf`;
-            document.body.appendChild(_0xlk);_0xlk.click();document.body.removeChild(_0xlk);
-            setTimeout(()=>URL.revokeObjectURL(_0xurl),5000);_0x1f02('st_pdf_done','green');
-        });
-        function _0x1f1c(_0xjb,_0xiw,_0xih,_0xpw,_0xph,_0xdw,_0xdh,_0xpx,_0xpy){
-            const _0xenc=new TextEncoder(),_0xcks=[];let _0xoff=0;const _0xoffs=[];
-            function _0xps(_0xs){const _0xb=_0xenc.encode(_0xs);_0xcks.push(_0xb);_0xoff+=_0xb.length;}
-            function _0xpb(_0xb){_0xcks.push(_0xb);_0xoff+=_0xb.length;}
-            _0xps('%PDF-1.4\n%\xFF\xFF\xFF\xFF\n');
-            _0xoffs[1]=_0xoff;_0xps('1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n');
-            _0xoffs[2]=_0xoff;_0xps('2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n');
-            _0xoffs[3]=_0xoff;_0xps(`3 0 obj\n<< /Type /Page /Parent 2 0 R /Resources << /XObject << /Im0 4 0 R >> >> /MediaBox [0 0 ${_0xpw.toFixed(2)} ${_0xph.toFixed(2)}] /Contents 5 0 R >>\nendobj\n`);
-            _0xoffs[4]=_0xoff;_0xps(`4 0 obj\n<< /Type /XObject /Subtype /Image /Width ${_0xiw} /Height ${_0xih} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${_0xjb.length} >>\nstream\n`);
-            _0xpb(_0xjb);_0xps('\nendstream\nendobj\n');
-            const _0xcs=`q\n${_0xdw.toFixed(2)} 0 0 ${_0xdh.toFixed(2)} ${_0xpx.toFixed(2)} ${_0xpy.toFixed(2)} cm\n/Im0 Do\nQ\n`,_0xcb=_0xenc.encode(_0xcs);
-            _0xoffs[5]=_0xoff;_0xps(`5 0 obj\n<< /Length ${_0xcb.length} >>\nstream\n`);_0xpb(_0xcb);_0xps('endstream\nendobj\n');
-            const _0xxo=_0xoff;_0xps('xref\n0 6\n0000000000 65535 f \n');
-            for(let _0xi=1;_0xi<=5;_0xi++)_0xps(`${String(_0xoffs[_0xi]).padStart(10,'0')} 00000 n \n`);
-            _0xps(`trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${_0xxo}\n%%EOF\n`);
-            return new Blob(_0xcks,{type:'application/pdf'});
-        }
-    })();
-    </script>
-</body>
-</html>
+                for(let _0xx=0;_0xx<_
