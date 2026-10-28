@@ -6,7 +6,7 @@
     <title>行政救星</title>
     <style>
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { font-family: sans-serif; padding: 20px; margin: 0; background: #f9f9f9; transition: background 0.2s; }
+        body { font-family: sans-serif; padding: 20px 20px 60px 20px; margin: 0; background: #f9f9f9; transition: background 0.2s; }
         body.drag-over { background: #e8f4ff; }
         .controls { margin-bottom: 15px; padding: 15px; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .control-group { border: 1px solid #eee; padding: 10px; border-radius: 5px; margin-bottom: 10px; background: #fafafa; }
@@ -28,7 +28,7 @@
         #mobileSaveModal .modal-bar { width: 100%; max-width: 500px; display: flex; justify-content: space-between; align-items: center; color: #fff; margin-bottom: 12px; font-weight: bold; font-size: 0.95em; gap: 8px; }
         #mobileSaveModal img { max-width: 100%; max-height: 78vh; border: 2px solid #fff; border-radius: 6px; background: #fff; -webkit-touch-callout: default !important; user-select: auto !important; -webkit-user-select: auto !important; }
         @media (max-width: 768px) {
-            body { padding: 10px; }
+            body { padding: 10px 10px 75px 10px; }
             .controls { padding: 10px; }
             .control-group { padding: 8px; }
             button { padding: 8px 10px; margin: 4px 4px 4px 0; font-size: 0.9em; }
@@ -113,15 +113,15 @@
                 <div class="tooltip-content">
                     <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
                         <polygon points="25,20 105,10 95,90 15,95" fill="#e0e0e0" stroke="#aaa" stroke-width="2"/>
-                        <path d="M 25 20 L 105 10 L 95 90 L 15 95 Z" stroke="#ffcc00" stroke-width="2" stroke-dasharray="4" fill="none"/>
-                        <circle cx="25" cy="20" r="8" fill="red"/>
-                        <text x="25" y="24" fill="white" font-size="12" font-family="Arial" text-anchor="middle" font-weight="bold">1</text>
-                        <circle cx="105" cy="10" r="8" fill="red"/>
-                        <text x="105" y="14" fill="white" font-size="12" font-family="Arial" text-anchor="middle" font-weight="bold">2</text>
-                        <circle cx="95" cy="90" r="8" fill="red"/>
-                        <text x="95" y="94" fill="white" font-size="12" font-family="Arial" text-anchor="middle" font-weight="bold">3</text>
-                        <circle cx="15" cy="95" r="8" fill="red"/>
-                        <text x="15" y="99" fill="white" font-size="12" font-family="Arial" text-anchor="middle" font-weight="bold">4</text>
+                        <path d="M 25 20 L 105 10 L 95 90 L 15 95 Z" stroke="#ffcc00" stroke-width="2.5" stroke-dasharray="4" fill="none"/>
+                        <path d="M 19 20 L 31 20 M 25 14 L 25 26" stroke="#ff0000" stroke-width="3" stroke-linecap="round"/>
+                        <text x="36" y="24" fill="white" font-size="12" font-family="Arial" font-weight="bold">1</text>
+                        <path d="M 99 10 L 111 10 M 105 4 L 105 16" stroke="#ff0000" stroke-width="3" stroke-linecap="round"/>
+                        <text x="90" y="14" fill="white" font-size="12" font-family="Arial" font-weight="bold">2</text>
+                        <path d="M 89 90 L 101 90 M 95 84 L 95 96" stroke="#ff0000" stroke-width="3" stroke-linecap="round"/>
+                        <text x="80" y="94" fill="white" font-size="12" font-family="Arial" font-weight="bold">3</text>
+                        <path d="M 9 95 L 21 95 M 15 89 L 15 101" stroke="#ff0000" stroke-width="3" stroke-linecap="round"/>
+                        <text x="26" y="99" fill="white" font-size="12" font-family="Arial" font-weight="bold">4</text>
                     </svg>
                     <div id="tooltipDesc" style="font-size: 13px; line-height: 1.5; text-align: left;">
                         順序必須為：<br>
@@ -241,7 +241,7 @@
                 st_undo: '已復原至上一步',
                 st_invalid_file: '請拖曳有效的圖片檔案格式。',
                 st_mode_keystone: '請在圖片上依序點擊需要保留區域的 左上、右上、右下、左下 4個頂點',
-                st_keystone_ready: '已選取 4 個頂點。可拖曳紅點微調或選擇標準比例，完成後點擊「✔ 確認校正」',
+                st_keystone_ready: '已選取 4 個頂點。可拖曳紅十字微調或選擇標準比例，完成後點擊「✔ 確認校正」',
                 st_keystone_calc: '正在高品質計算梯形校正...',
                 st_keystone_done: '梯形校正完成（已啟用高品質運算）',
                 st_keystone_done_ratio: '梯形校正完成（已鎖定標準比例與高品質運算）',
@@ -343,7 +343,7 @@
                 st_undo: 'Undone to previous step.',
                 st_invalid_file: 'Please drag and drop a valid image file.',
                 st_mode_keystone: 'Click the 4 corners in order: Top-Left, Top-Right, Bottom-Right, Bottom-Left.',
-                st_keystone_ready: '4 corners selected. Drag red dots to fine-tune or select a ratio, then click "✔ Confirm Correction".',
+                st_keystone_ready: '4 corners selected. Drag red crosshairs to fine-tune or select a ratio, then click "✔ Confirm Correction".',
                 st_keystone_calc: 'Calculating high-quality keystone correction...',
                 st_keystone_done: 'Keystone correction complete (High-quality mode).',
                 st_keystone_done_ratio: 'Keystone correction complete (Standard ratio locked).',
@@ -445,7 +445,7 @@
                 st_undo: '1つ前の状態に戻しました。',
                 st_invalid_file: '有効な画像ファイルをドラッグ＆ドロップしてください。',
                 st_mode_keystone: '残したい領域の「左上・右上・右下・左下」の4点を順にクリックしてください。',
-                st_keystone_ready: '4点を選択しました。赤点をドラッグして微調整し、「✔ 補正を実行」をクリックしてください。',
+                st_keystone_ready: '4点を選択しました。赤い十字をドラッグして微調整し、「✔ 補正を実行」をクリックしてください。',
                 st_keystone_calc: '高画質で台形補正を計算中...',
                 st_keystone_done: '台形補正が完了しました（高画質演算）。',
                 st_keystone_done_ratio: '台形補正が完了しました（標準比率ロック適用）。',
@@ -547,7 +547,7 @@
                 st_undo: 'Letzter Schritt rückgängig gemacht.',
                 st_invalid_file: 'Bitte eine gültige Bilddatei hineinziehen.',
                 st_mode_keystone: 'Klicken Sie nacheinander auf die 4 Ecken: Oben-Links, Oben-Rechts, Unten-Rechts, Unten-Links.',
-                st_keystone_ready: '4 Ecken gewählt. Rote Punkte ziehen zum Anpassen, dann „✔ Korrektur bestätigen“ klicken.',
+                st_keystone_ready: '4 Ecken gewählt. Rote Kreuze ziehen zum Anpassen, dann „✔ Korrektur bestätigen“ klicken.',
                 st_keystone_calc: 'Berechne Trapezkorrektur in hoher Qualität...',
                 st_keystone_done: 'Trapezkorrektur abgeschlossen.',
                 st_keystone_done_ratio: 'Trapezkorrektur abgeschlossen (Standardformat gesperrt).',
@@ -649,7 +649,7 @@
                 st_undo: '이전 단계로 복구되었습니다.',
                 st_invalid_file: '유효한 이미지 파일을 드래그해 주세요.',
                 st_mode_keystone: '남길 영역의 좌상, 우상, 우하, 좌하 꼭짓점 4개를 순서대로 클릭하세요.',
-                st_keystone_ready: '4개의 꼭짓점이 선택되었습니다. 빨간 점을 드래그해 미세 조정 후 "✔ 보정 확인"을 클릭하세요.',
+                st_keystone_ready: '4개의 꼭짓점이 선택되었습니다. 빨간 십자선을 드래그해 미세 조정 후 "✔ 보정 확인"을 클릭하세요.',
                 st_keystone_calc: '고화질 사다리꼴 보정 계산 중...',
                 st_keystone_done: '사다리꼴 보정이 완료되었습니다.',
                 st_keystone_done_ratio: '사다리꼴 보정이 완료되었습니다 (표준 비율 고정 적용).',
@@ -751,7 +751,7 @@
                 st_undo: 'Action précédente annulée.',
                 st_invalid_file: 'Veuillez glisser un fichier image valide.',
                 st_mode_keystone: 'Cliquez dans l’ordre sur les 4 coins : Haut-Gauche, Haut-Droit, Bas-Droit, Bas-Gauche.',
-                st_keystone_ready: '4 coins sélectionnés. Ajustez les points rouges puis cliquez sur « ✔ Valider la correction ».',
+                st_keystone_ready: '4 coins sélectionnés. Ajustez les croix rouges puis cliquez sur « ✔ Valider la correction ».',
                 st_keystone_calc: 'Calcul de la correction trapézoïdale haute qualité...',
                 st_keystone_done: 'Correction trapézoïdale terminée.',
                 st_keystone_done_ratio: 'Correction trapézoïdale terminée (Ratio standard verrouillé).',
@@ -853,7 +853,7 @@
                 st_undo: 'Vorige stap hersteld.',
                 st_invalid_file: 'Sleep een geldig afbeeldingsbestand.',
                 st_mode_keystone: 'Klik achtereenvolgens op de 4 hoeken: Linksboven, Rechtsboven, Rechtsonder, Linksonder.',
-                st_keystone_ready: '4 hoeken geselecteerd. Versleep rode punten om aan te passen en klik op "✔ Correctie bevestigen".',
+                st_keystone_ready: '4 hoeken geselecteerd. Versleep rode kruisjes om aan te passen en klik op "✔ Correctie bevestigen".',
                 st_keystone_calc: 'Hoogwaardige trapeziumcorrectie berekenen...',
                 st_keystone_done: 'Trapeziumcorrectie voltooid.',
                 st_keystone_done_ratio: 'Trapeziumcorrectie voltooid (Standaardverhouding vergrendeld).',
@@ -955,7 +955,7 @@
                 st_undo: 'Deshecho al paso anterior.',
                 st_invalid_file: 'Por favor, arrastra un archivo de imagen válido.',
                 st_mode_keystone: 'Haz clic en las 4 esquinas en orden: Sup-Izquierda, Sup-Derecha, Inf-Derecha, Inf-Izquierda.',
-                st_keystone_ready: '4 esquinas seleccionadas. Arrastra los puntos rojos para ajustar y pulsa "✔ Confirmar corrección".',
+                st_keystone_ready: '4 esquinas seleccionadas. Arrastra las cruces rojas para ajustar y pulsa "✔ Confirmar corrección".',
                 st_keystone_calc: 'Calculando corrección trapezoidal en alta calidad...',
                 st_keystone_done: 'Corrección trapezoidal completada.',
                 st_keystone_done_ratio: 'Corrección trapezoidal completada (Proporción estándar fijada).',
@@ -1057,7 +1057,7 @@
                 st_undo: 'Ångrade till föregående steg.',
                 st_invalid_file: 'Dra och släpp en giltig bildfil.',
                 st_mode_keystone: 'Klicka på de 4 hörnen i ordning: Övre vänstra, Övre högra, Nedre högra, Nedre vänstra.',
-                st_keystone_ready: '4 hörn valda. Dra i de röda punkterna för att finjustera och klicka sedan "✔ Bekräfta korrigering".',
+                st_keystone_ready: '4 hörn valda. Dra i de röda korsen för att finjustera och klicka sedan "✔ Bekräfta korrigering".',
                 st_keystone_calc: 'Beräknar högupplöst keystone-korrigering...',
                 st_keystone_done: 'Keystone-korrigering klar.',
                 st_keystone_done_ratio: 'Keystone-korrigering klar (Standardproportion låst).',
@@ -1127,7 +1127,7 @@
         let _0x1a2c = 'zh-TW', _0x1a2d = 'st_waiting', _0x1a2e = '#d9534f';
         let _0x1a2f = new Image(), _0x1a30 = null, _0x1a31 = null, _0x1a32 = null;
         let _0x1a33 = [], _0x1a35 = 'NONE', _0x1a36 = false, _0x1a37, _0x1a38, _0x1a39, _0x1a3a;
-        let _0x1a3b = [], _0x1a3c = -1;
+        let _0x1a3b = [], _0x1a3c = -1, _0x1a40 = null;
         const _0x1a34 = 15;
 
         function _0x1f01(_0xk){return (_0x1a01[_0x1a2c]&&_0x1a01[_0x1a2c][_0xk])||_0x1a01['zh-TW'][_0xk]||_0xk;}
@@ -1172,6 +1172,10 @@
         _0x1a3f.addEventListener('click',()=>{_0x1a3d.style.display='none';});
         _0x1a3d.addEventListener('click',(_0xe)=>{if(_0xe.target===_0x1a3d)_0x1a3d.style.display='none';});
 
+        function _0x1f24(){
+            const _0xr=_0x1a04.getBoundingClientRect();
+            return (_0xr.width>0)?Math.max(1,_0x1a04.width/_0xr.width):1;
+        }
         function _0x1f07(){
             if(!_0x1a30)return;
             _0x1a33.push({imageData:new ImageData(new Uint8ClampedArray(_0x1a30.data),_0x1a30.width,_0x1a30.height),mergeMeta:_0x1a32?{..._0x1a32}:null});
@@ -1183,7 +1187,7 @@
             const _0xp=_0x1a33.pop();
             _0x1a04.width=_0xp.imageData.width;_0x1a04.height=_0xp.imageData.height;
             _0x1a05.putImageData(_0xp.imageData,0,0);_0x1a30=_0xp.imageData;_0x1a32=_0xp.mergeMeta;
-            _0x1f09();_0x1a14.value=0;_0x1a3b=[];_0x1a3c=-1;_0x1f0d('NONE');
+            _0x1f09();_0x1a14.value=0;_0x1a3b=[];_0x1a3c=-1;_0x1a40=null;_0x1f0d('NONE');
             _0x1a0e.disabled=_0x1a33.length===0;_0x1f02('st_undo','green');
         }
         _0x1a0e.addEventListener('click',_0x1f08);
@@ -1194,12 +1198,14 @@
         function _0x1f09(){if(!_0x1a30)return;_0x1a08.width=_0x1a30.width;_0x1a08.height=_0x1a30.height;_0x1a09.putImageData(_0x1a30,0,0);}
         function _0x1f0a(_0xcx,_0xcy,_0xix,_0xiy,_0xit){
             if(_0x1a35!=='KEYSTONE'||!_0x1a30||(_0x1a3b.length===4&&_0x1a3c===-1)){_0x1a06.style.display='none';return;}
+            const _0xms=_0xit?88:130,_0xzm=2.8,_0xsr=(_0xms/(2*_0xzm))*_0x1f24();
+            if(_0x1a06.width!==_0xms){_0x1a06.width=_0xms;_0x1a06.height=_0xms;_0x1a06.style.width=_0xms+'px';_0x1a06.style.height=_0xms+'px';}
             _0x1a06.style.display='block';
-            const _0xms=140,_0xzm=3,_0xsr=_0xms/(2*_0xzm);
             let _0xl,_0xt;
             if(_0xit){
-                _0xl=Math.max(10,Math.min(window.innerWidth-_0xms-10,_0xcx-_0xms/2));
-                _0xt=_0xcy-_0xms-45;if(_0xt<10)_0xt=_0xcy+45;
+                const _0xr=_0x1a04.getBoundingClientRect();
+                _0xl=(_0xcx<window.innerWidth/2)?Math.min(window.innerWidth-_0xms-10,Math.max(10,_0xr.right-_0xms-8)):Math.max(10,_0xr.left+8);
+                _0xt=Math.max(10,Math.min(window.innerHeight-_0xms-10,_0xr.top+8));
             }else{
                 _0xl=_0xcx+20;_0xt=_0xcy-_0xms-20;
                 if(_0xl+_0xms>window.innerWidth-10)_0xl=_0xcx-_0xms-20;
@@ -1209,19 +1215,26 @@
             _0x1a07.fillStyle='#222';_0x1a07.fillRect(0,0,_0xms,_0xms);
             _0x1a07.save();_0x1a07.imageSmoothingEnabled=false;
             _0x1a07.drawImage(_0x1a08,_0xix-_0xsr,_0xiy-_0xsr,_0xsr*2,_0xsr*2,0,0,_0xms,_0xms);
-            if(_0x1a3b.length>0){
+            const _0xmsc=_0xms/(_0xsr*2);
+            if(_0x1a3b.length>1){
                 _0x1a07.beginPath();
                 _0x1a3b.forEach((_0xp,_0xi)=>{
-                    const _0xmx=(_0xp.x-(_0xix-_0xsr))*_0xzm,_0xmy=(_0xp.y-(_0xiy-_0xsr))*_0xzm;
+                    const _0xmx=(_0xp.x-(_0xix-_0xsr))*_0xmsc,_0xmy=(_0xp.y-(_0xiy-_0xsr))*_0xmsc;
                     if(_0xi===0)_0x1a07.moveTo(_0xmx,_0xmy);else _0x1a07.lineTo(_0xmx,_0xmy);
                 });
                 if(_0x1a3b.length===4)_0x1a07.closePath();
-                _0x1a07.strokeStyle='#ffcc00';_0x1a07.lineWidth=2;_0x1a07.setLineDash([4,4]);_0x1a07.stroke();
+                _0x1a07.strokeStyle='rgba(0,0,0,0.5)';_0x1a07.lineWidth=4.5;_0x1a07.setLineDash([6,4]);_0x1a07.stroke();
+                _0x1a07.strokeStyle='#ffcc00';_0x1a07.lineWidth=3;_0x1a07.setLineDash([6,4]);_0x1a07.stroke();
             }
             _0x1a07.restore();
             const _0xc=_0xms/2;
-            _0x1a07.strokeStyle='rgba(255, 0, 0, 0.85)';_0x1a07.lineWidth=1.5;_0x1a07.beginPath();
-            _0x1a07.moveTo(_0xc-12,_0xc);_0x1a07.lineTo(_0xc+12,_0xc);_0x1a07.moveTo(_0xc,_0xc-12);_0x1a07.lineTo(_0xc,_0xc+12);_0x1a07.stroke();
+            _0x1a07.save();
+            _0x1a07.lineCap='round';
+            _0x1a07.strokeStyle='rgba(255,255,255,0.9)';_0x1a07.lineWidth=4.5;
+            _0x1a07.beginPath();_0x1a07.moveTo(_0xc-11,_0xc);_0x1a07.lineTo(_0xc+11,_0xc);_0x1a07.moveTo(_0xc,_0xc-11);_0x1a07.lineTo(_0xc,_0xc+11);_0x1a07.stroke();
+            _0x1a07.strokeStyle='#ff0000';_0x1a07.lineWidth=2.5;
+            _0x1a07.beginPath();_0x1a07.moveTo(_0xc-11,_0xc);_0x1a07.lineTo(_0xc+11,_0xc);_0x1a07.moveTo(_0xc,_0xc-11);_0x1a07.lineTo(_0xc,_0xc+11);_0x1a07.stroke();
+            _0x1a07.restore();
         }
         window.addEventListener('paste',(_0xe)=>{
             if(document.activeElement===_0x1a20)return;
@@ -1254,7 +1267,7 @@
             if(!_0x1a2f.src||_0x1a2f.src==='')return;
             if(_0xrh&&_0x1a30)_0x1f07();
             _0x1a32=null;_0x1a04.width=_0x1a2f.width;_0x1a04.height=_0x1a2f.height;
-            _0x1a05.drawImage(_0x1a2f,0,0);_0x1f15();_0x1a14.value=0;_0x1a3b=[];_0x1a3c=-1;_0x1f0d('NONE');
+            _0x1a05.drawImage(_0x1a2f,0,0);_0x1f15();_0x1a14.value=0;_0x1a3b=[];_0x1a3c=-1;_0x1a40=null;_0x1f0d('NONE');
         }
         _0x1a0f.addEventListener('click',()=>_0x1f0c(true));
         function _0x1f0d(_0xnm){
@@ -1266,7 +1279,7 @@
             _0x1a1c.classList.toggle('active',_0x1a35==='MOSAIC');
             _0x1a2d_btn.classList.toggle('active',_0x1a35==='BLACK_BOX');
             _0x1a1d.classList.toggle('active',_0x1a35==='KEYSTONE');
-            _0x1a3c=-1;_0x1a06.style.display='none';_0x1a1f.style.display='none';
+            _0x1a3c=-1;_0x1a40=null;_0x1a06.style.display='none';_0x1a1f.style.display='none';
             if(_0x1a35==='KEYSTONE'){_0x1a3b=[];_0x1f09();_0x1f02('st_mode_keystone','blue');}
             else if(_0x1a35==='MOSAIC')_0x1f02('st_mode_mosaic','blue');
             else if(_0x1a35==='BLACK_BOX')_0x1f02('st_mode_blackbox','blue');
@@ -1291,6 +1304,16 @@
             const _0xr=_0x1a04.getBoundingClientRect();
             return {x:(_0xcx-_0xr.left)*(_0x1a04.width/_0xr.width),y:(_0xcy-_0xr.top)*(_0x1a04.height/_0xr.height)};
         }
+        function _0x1f25(_0xcx,_0xcy,_0xit){
+            const _0xr=_0x1a04.getBoundingClientRect();
+            const _0xscX=_0x1a04.width/_0xr.width,_0xscY=_0x1a04.height/_0xr.height;
+            const _0xfx=(_0xcx-_0xr.left)*_0xscX,_0xfy=(_0xcy-_0xr.top)*_0xscY;
+            if(!_0xit)return {fx:_0xfx,fy:_0xfy,tx:Math.max(0,Math.min(_0x1a04.width,_0xfx)),ty:Math.max(0,Math.min(_0x1a04.height,_0xfy))};
+            const _0xratX=Math.max(-1,Math.min(1,((_0xcx-_0xr.left)/_0xr.width)*2-1));
+            const _0xtx=Math.max(0,Math.min(_0x1a04.width,_0xfx+(_0xratX*32)*_0xscX));
+            const _0xty=Math.max(0,Math.min(_0x1a04.height,_0xfy-36*_0xscY));
+            return {fx:_0xfx,fy:_0xfy,tx:_0xtx,ty:_0xty};
+        }
         function _0x1f0f(){return Math.max(3,Math.round(Math.min(_0x1a04.width,_0x1a04.height)*0.005));}
         function _0x1f10(_0xsx,_0xsy,_0xex,_0xey,_0xsk){
             const _0xdx=Math.abs(_0xex-_0xsx),_0xdy=Math.abs(_0xey-_0xsy);
@@ -1300,17 +1323,32 @@
         function _0x1f1e(_0xcx,_0xcy,_0xsk,_0xit){
             if(!_0x1a30)return;
             if(parseInt(_0x1a14.value,10)!==0){_0x1a14.value=0;_0x1a05.putImageData(_0x1a30,0,0);}
-            const _0xpos=_0x1f0e(_0xcx,_0xcy);
             if(_0x1a35==='MOSAIC'||_0x1a35==='BLACK_BOX'||_0x1a35==='CROP'||_0x1a35==='RED_BOX'||_0x1a35==='RED_LINE'){
+                const _0xpos=_0x1f0e(_0xcx,_0xcy);
                 _0x1a36=true;_0x1a37=_0xpos.x;_0x1a38=_0xpos.y;_0x1a39=_0xpos.x;_0x1a3a=_0xpos.y;
             }else if(_0x1a35==='KEYSTONE'){
-                const _0xr=_0x1a04.getBoundingClientRect(),_0xhr=(_0xit?24:15)*(_0x1a04.width/_0xr.width);
-                const _0xhi=_0x1a3b.findIndex(_0xp=>Math.hypot(_0xp.x-_0xpos.x,_0xp.y-_0xpos.y)<=_0xhr);
-                if(_0xhi!==-1){_0x1a3c=_0xhi;_0x1f0a(_0xcx,_0xcy,_0xpos.x,_0xpos.y,_0xit);return;}
+                const _0xkpt=_0x1f25(_0xcx,_0xcy,_0xit);
+                const _0xsc=_0x1f24(),_0xhr=(_0xit?28:16)*_0xsc;
+                let _0xhi=-1,_0xmd=999999;
+                _0x1a3b.forEach((_0xp,_0xi)=>{
+                    const _0xd1=Math.hypot(_0xp.x-_0xkpt.tx,_0xp.y-_0xkpt.ty);
+                    const _0xd2=Math.hypot(_0xp.x-_0xkpt.fx,_0xp.y-_0xkpt.fy);
+                    const _0xd=Math.min(_0xd1,_0xd2);
+                    if(_0xd<=_0xhr&&_0xd<_0xmd){_0xmd=_0xd;_0xhi=_0xi;}
+                });
+                if(_0xhi!==-1){
+                    _0x1a3c=_0xhi;
+                    _0x1a3b[_0x1a3c]={x:_0xkpt.tx,y:_0xkpt.ty};
+                    _0x1a40=_0xit?{x:_0xkpt.fx,y:_0xkpt.fy}:null;
+                    _0x1f14();_0x1f0a(_0xcx,_0xcy,_0xkpt.tx,_0xkpt.ty,_0xit);return;
+                }
                 if(_0x1a3b.length<4){
-                    _0x1a3b.push(_0xpos);_0x1a3c=_0x1a3b.length-1;_0x1f14();
+                    _0x1a3b.push({x:_0xkpt.tx,y:_0xkpt.ty});
+                    _0x1a3c=_0x1a3b.length-1;
+                    _0x1a40=_0xit?{x:_0xkpt.fx,y:_0xkpt.fy}:null;
+                    _0x1f14();
                     if(_0x1a3b.length===4){_0x1a1f.style.display='inline-block';_0x1f02('st_keystone_ready','blue');}
-                    _0x1f0a(_0xcx,_0xcy,_0xpos.x,_0xpos.y,_0xit);
+                    _0x1f0a(_0xcx,_0xcy,_0xkpt.tx,_0xkpt.ty,_0xit);
                 }
             }
         }
@@ -1319,7 +1357,7 @@
                 const _0xpos=_0x1f0e(_0xcx,_0xcy);
                 _0x1a39=Math.max(0,Math.min(_0x1a04.width,_0xpos.x));_0x1a3a=Math.max(0,Math.min(_0x1a04.height,_0xpos.y));
                 _0x1f14();_0x1a05.save();
-                if(_0x1a35==='MOSAIC'){_0x1a05.strokeStyle='red';_0x1a05.lineWidth=2;_0x1a05.strokeRect(_0x1a37,_0x1a38,_0x1a39-_0x1a37,_0x1a3a-_0x1a38);}
+                if(_0x1a35==='MOSAIC'){_0x1a05.strokeStyle='red';_0x1a05.lineWidth=2*_0x1f24();_0x1a05.strokeRect(_0x1a37,_0x1a38,_0x1a39-_0x1a37,_0x1a3a-_0x1a38);}
                 else if(_0x1a35==='BLACK_BOX'){_0x1a05.fillStyle='rgba(0,0,0,0.75)';_0x1a05.fillRect(_0x1a37,_0x1a38,_0x1a39-_0x1a37,_0x1a3a-_0x1a38);}
                 else if(_0x1a35==='CROP'){_0x1a05.strokeStyle='#007bff';_0x1a05.lineWidth=Math.max(2,_0x1f0f()*0.7);_0x1a05.setLineDash([6,4]);_0x1a05.strokeRect(_0x1a37,_0x1a38,_0x1a39-_0x1a37,_0x1a3a-_0x1a38);}
                 else if(_0x1a35==='RED_BOX'){_0x1a05.strokeStyle='#e60000';_0x1a05.lineWidth=_0x1f0f();_0x1a05.strokeRect(_0x1a37,_0x1a38,_0x1a39-_0x1a37,_0x1a3a-_0x1a38);}
@@ -1330,9 +1368,13 @@
                 }
                 _0x1a05.restore();
             }else if(_0x1a35==='KEYSTONE'){
-                const _0xpos=_0x1f0e(_0xcx,_0xcy),_0xpx=Math.max(0,Math.min(_0x1a04.width,_0xpos.x)),_0xpy=Math.max(0,Math.min(_0x1a04.height,_0xpos.y));
-                if(_0x1a3c!==-1){_0x1a3b[_0x1a3c]={x:_0xpx,y:_0xpy};_0x1f14();}
-                _0x1f0a(_0xcx,_0xcy,_0xpx,_0xpy,_0xit);
+                const _0xkpt=_0x1f25(_0xcx,_0xcy,_0xit);
+                if(_0x1a3c!==-1){
+                    _0x1a3b[_0x1a3c]={x:_0xkpt.tx,y:_0xkpt.ty};
+                    _0x1a40=_0xit?{x:_0xkpt.fx,y:_0xkpt.fy}:null;
+                    _0x1f14();
+                }
+                _0x1f0a(_0xcx,_0xcy,_0xkpt.tx,_0xkpt.ty,_0xit);
             }
         }
         function _0x1f20(_0xsk){
@@ -1345,7 +1387,8 @@
                 else if(_0x1a35==='RED_BOX')_0x1f12(_0xrx,_0xry,_0xrw,_0xrh);
                 else if(_0x1a35==='RED_LINE'){const _0xep=_0x1f10(_0x1a37,_0x1a38,_0x1a39,_0x1a3a,_0xsk);_0x1f13(_0x1a37,_0x1a38,_0xep.x,_0xep.y);}
             }else if(_0x1a35==='KEYSTONE'&&_0x1a3c!==-1){
-                _0x1a3c=-1;if(_0x1a3b.length===4)_0x1a06.style.display='none';
+                _0x1a3c=-1;_0x1a40=null;_0x1f14();
+                if(_0x1a3b.length===4)_0x1a06.style.display='none';
             }
         }
         _0x1a04.addEventListener('mousedown',(_0xe)=>_0x1f1e(_0xe.clientX,_0xe.clientY,_0xe.shiftKey,false));
@@ -1364,7 +1407,7 @@
             if(!_0x1a30||_0x1a35==='NONE')return;
             _0xe.preventDefault();_0x1f20(false);_0x1a06.style.display='none';
         },{passive:false});
-        _0x1a04.addEventListener('touchcancel',()=>{_0x1a36=false;_0x1a3c=-1;_0x1a06.style.display='none';});
+        _0x1a04.addEventListener('touchcancel',()=>{_0x1a36=false;_0x1a3c=-1;_0x1a40=null;_0x1f14();_0x1a06.style.display='none';});
 
         function _0x1f11(_0xx,_0xy,_0xw,_0xh){
             _0xx=Math.max(0,Math.floor(_0xx));_0xy=Math.max(0,Math.floor(_0xy));
@@ -1399,17 +1442,48 @@
         function _0x1f14(){
             if(!_0x1a30)return;_0x1a05.putImageData(_0x1a30,0,0);
             if(_0x1a35==='KEYSTONE'){
+                const _0xsc=_0x1f24();
                 if(_0x1a3b.length>1){
                     _0x1a05.save();_0x1a05.beginPath();_0x1a05.moveTo(_0x1a3b[0].x,_0x1a3b[0].y);
                     for(let _0xi=1;_0xi<_0x1a3b.length;_0xi++)_0x1a05.lineTo(_0x1a3b[_0xi].x,_0x1a3b[_0xi].y);
                     if(_0x1a3b.length===4)_0x1a05.closePath();
-                    _0x1a05.strokeStyle='#ffcc00';_0x1a05.lineWidth=2;_0x1a05.setLineDash([6,4]);_0x1a05.stroke();_0x1a05.restore();
+                    _0x1a05.strokeStyle='rgba(0,0,0,0.5)';_0x1a05.lineWidth=5.5*_0xsc;_0x1a05.setLineDash([8*_0xsc,5*_0xsc]);_0x1a05.stroke();
+                    _0x1a05.strokeStyle='#ffcc00';_0x1a05.lineWidth=3.8*_0xsc;_0x1a05.setLineDash([8*_0xsc,5*_0xsc]);_0x1a05.stroke();
+                    _0x1a05.restore();
+                }
+                if(_0x1a40&&_0x1a3c!==-1&&_0x1a3b[_0x1a3c]){
+                    const _0xtp=_0x1a3b[_0x1a3c];
+                    _0x1a05.save();
+                    _0x1a05.beginPath();_0x1a05.moveTo(_0x1a40.x,_0x1a40.y);_0x1a05.lineTo(_0xtp.x,_0xtp.y);
+                    _0x1a05.strokeStyle='#00e5ff';_0x1a05.lineWidth=2.5*_0xsc;_0x1a05.stroke();
+                    _0x1a05.beginPath();_0x1a05.arc(_0x1a40.x,_0x1a40.y,10*_0xsc,0,Math.PI*2);
+                    _0x1a05.fillStyle='rgba(0,229,255,0.28)';_0x1a05.fill();
+                    _0x1a05.strokeStyle='#007bff';_0x1a05.lineWidth=2*_0xsc;_0x1a05.stroke();
+                    _0x1a05.restore();
                 }
                 _0x1a3b.forEach((_0xp,_0xi)=>{
-                    _0x1a05.fillStyle='red';_0x1a05.strokeStyle='white';_0x1a05.lineWidth=2;
-                    _0x1a05.beginPath();_0x1a05.arc(_0xp.x,_0xp.y,6,0,Math.PI*2);_0x1a05.fill();_0x1a05.stroke();
-                    _0x1a05.font='bold 20px Arial';_0x1a05.fillStyle='white';_0x1a05.strokeStyle='black';_0x1a05.lineWidth=4;
-                    _0x1a05.strokeText(_0xi+1,_0xp.x+10,_0xp.y+10);_0x1a05.fillText(_0xi+1,_0xp.x+10,_0xp.y+10);
+                    const _0xarm=11*_0xsc;
+                    _0x1a05.save();
+                    _0x1a05.lineCap='round';
+                    _0x1a05.strokeStyle='#ffffff';_0x1a05.lineWidth=6.5*_0xsc;
+                    _0x1a05.beginPath();
+                    _0x1a05.moveTo(_0xp.x-_0xarm,_0xp.y);_0x1a05.lineTo(_0xp.x+_0xarm,_0xp.y);
+                    _0x1a05.moveTo(_0xp.x,_0xp.y-_0xarm);_0x1a05.lineTo(_0xp.x,_0xp.y+_0xarm);
+                    _0x1a05.stroke();
+
+                    _0x1a05.strokeStyle='#ff0000';_0x1a05.lineWidth=3.8*_0xsc;
+                    _0x1a05.beginPath();
+                    _0x1a05.moveTo(_0xp.x-_0xarm,_0xp.y);_0x1a05.lineTo(_0xp.x+_0xarm,_0xp.y);
+                    _0x1a05.moveTo(_0xp.x,_0xp.y-_0xarm);_0x1a05.lineTo(_0xp.x,_0xp.y+_0xarm);
+                    _0x1a05.stroke();
+
+                    const _0xfs=Math.round(18*_0xsc);
+                    _0x1a05.font=`bold ${_0xfs}px Arial`;
+                    const _0xnx=(_0xp.x>_0x1a04.width-35*_0xsc)?(_0xp.x-22*_0xsc):(_0xp.x+13*_0xsc);
+                    const _0xny=(_0xp.y<30*_0xsc)?(_0xp.y+24*_0xsc):(_0xp.y-10*_0xsc);
+                    _0x1a05.fillStyle='white';_0x1a05.strokeStyle='black';_0x1a05.lineWidth=4*_0xsc;
+                    _0x1a05.strokeText(_0xi+1,_0xnx,_0xny);_0x1a05.fillText(_0xi+1,_0xnx,_0xny);
+                    _0x1a05.restore();
                 });
             }
         }
@@ -1584,7 +1658,7 @@
             _0x1f15();
             let _0xsk='st_rot_ccw';if(_0xdeg==='flipH')_0xsk='st_flip_h';else if(_0xdeg==='flipV')_0xsk='st_flip_v';else if(_0xdeg>0)_0xsk='st_rot_cw';
             _0x1f02(_0xsk,'green');
-            if(_0x1a35==='KEYSTONE'){_0x1a3b=[];_0x1a1f.style.display='none';_0x1a06.style.display='none';}
+            if(_0x1a35==='KEYSTONE'){_0x1a3b=[];_0x1a40=null;_0x1a1f.style.display='none';_0x1a06.style.display='none';}
         }
         _0x1a28.addEventListener('click',()=>_0x1f19(-90));
         _0x1a29.addEventListener('click',()=>_0x1f19(90));
