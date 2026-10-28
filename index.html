@@ -2,33 +2,43 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>行政救星</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; background: #f9f9f9; transition: background 0.2s; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: sans-serif; padding: 20px; margin: 0; background: #f9f9f9; transition: background 0.2s; }
         body.drag-over { background: #e8f4ff; }
         .controls { margin-bottom: 15px; padding: 15px; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .control-group { border: 1px solid #eee; padding: 10px; border-radius: 5px; margin-bottom: 10px; background: #fafafa;}
-        .control-group h3 { margin-top: 0; margin-bottom: 8px; font-size: 1.1em; color: #555;}
-        button { margin-right: 10px; padding: 8px 12px; cursor: pointer; border: 1px solid #ccc; background: #eee; border-radius: 4px; transition: background 0.2s;}
-        button:hover:not(:disabled) { background: #e0e0e0;}
+        .control-group { border: 1px solid #eee; padding: 10px; border-radius: 5px; margin-bottom: 10px; background: #fafafa; }
+        .control-group h3 { margin-top: 0; margin-bottom: 8px; font-size: 1.1em; color: #555; }
+        button { margin: 3px 8px 3px 0; padding: 8px 12px; cursor: pointer; border: 1px solid #ccc; background: #eee; border-radius: 4px; transition: background 0.2s; font-size: 0.95em; }
+        button:hover:not(:disabled) { background: #e0e0e0; }
         button:disabled { opacity: 0.5; cursor: not-allowed; }
         button.active { background: #007bff; color: white; border-color: #0056b3; }
-        button.active:hover { background: #0069d9;}
-        canvas { border: 1px dashed #999; max-width: 100%; cursor: crosshair; background: #fff; margin-top: 10px;}
-        #status { color: #d9534f; font-weight: bold; margin-left: 15px; font-size: 0.9em;}
+        button.active:hover { background: #0069d9; }
+        canvas { border: 1px dashed #999; max-width: 100%; height: auto; cursor: crosshair; background: #fff; margin-top: 10px; display: block; }
+        #status { color: #d9534f; font-weight: bold; margin-left: 8px; font-size: 0.9em; display: inline-block; margin-top: 4px; }
         .demo-tooltip { position: relative; display: inline-block; margin-left: 5px; cursor: help; color: #007bff; font-size: 0.9em; font-weight: bold; text-decoration: underline dotted; }
         .demo-tooltip .tooltip-content { visibility: hidden; width: 190px; background-color: #333; color: #fff; text-align: center; border-radius: 8px; padding: 12px; position: absolute; z-index: 10; bottom: 130%; left: 50%; margin-left: -95px; opacity: 0; transition: opacity 0.3s; box-shadow: 0px 4px 8px rgba(0,0,0,0.3); pointer-events: none; }
         .demo-tooltip .tooltip-content::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: #333 transparent transparent transparent; }
         .demo-tooltip:hover .tooltip-content { visibility: visible; opacity: 1; }
         .tooltip-content svg { width: 100%; height: auto; margin-bottom: 5px; }
         #magnifierCanvas { position: fixed; width: 140px; height: 140px; border-radius: 50%; border: 3px solid #007bff; box-shadow: 0 4px 12px rgba(0,0,0,0.35); pointer-events: none; display: none; z-index: 1000; background: #222; }
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .controls { padding: 10px; }
+            .control-group { padding: 8px; }
+            button { padding: 8px 10px; margin: 4px 4px 4px 0; font-size: 0.9em; }
+            select, input[type="text"] { max-width: 100%; margin-top: 4px; margin-bottom: 4px; }
+            #status { display: block; margin-left: 0; margin-top: 8px; }
+        }
     </style>
 </head>
 <body>
 
     <div class="controls">
         <div class="control-group">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 8px;">
                 <h3 id="g1Title" style="margin: 0;">1. 圖片來源、重置與輸出</h3>
                 <div style="font-size: 0.9em;">
                     <label for="langSelect" id="langLabel" style="color: #555; font-weight: bold;">🌐 Language:</label>
@@ -71,12 +81,12 @@
 
         <div class="control-group">
             <h3 id="g3Title">3. 亮度與像素處理</h3>
-            <label><span id="lblBrightness">亮度調整:</span> <input type="range" id="brightnessSlider" min="-100" max="100" value="0"></label>
+            <label style="display: inline-block; margin-right: 6px;"><span id="lblBrightness">亮度調整:</span> <input type="range" id="brightnessSlider" min="-100" max="100" value="0" style="vertical-align: middle;"></label>
             <button id="btnApplyBrightness">✔ 確定亮度</button>
             <button id="btnCancelBrightness">✖ 取消</button>
             <span style="color:#888;">|</span>
             <button id="btnDocEnhance">📄 公文/證件黑白強化</button>
-            <label style="margin-right: 10px; font-size: 0.9em; cursor: pointer; user-select: none;">
+            <label style="margin-right: 10px; font-size: 0.9em; cursor: pointer; user-select: none; display: inline-block;">
                 <input type="checkbox" id="chkKeepStamp" checked> <span id="lblKeepStamp">保留彩色印章</span>
             </label>
             <span style="color:#888;">|</span>
@@ -222,15 +232,15 @@
                 st_keystone_calc: '正在高品質計算梯形校正...',
                 st_keystone_done: '梯形校正完成（已啟用高品質運算）',
                 st_keystone_done_ratio: '梯形校正完成（已鎖定標準比例與高品質運算）',
-                st_mode_mosaic: '請在圖片上拖曳滑鼠框選欲打馬賽克的區域（可連續框選，再次點擊按鈕取消）',
+                st_mode_mosaic: '請在圖片上拖曳框選欲打馬賽克的區域（可連續框選，再次點擊按鈕取消）',
                 st_mosaic_done: '局部馬賽克已套用（可繼續拖曳框選，或再次點擊按鈕關閉）',
-                st_mode_blackbox: '請在圖片上拖曳滑鼠框選欲遮蔽的區域（可連續框選，再次點擊按鈕取消）',
+                st_mode_blackbox: '請在圖片上拖曳框選欲遮蔽的區域（可連續框選，再次點擊按鈕取消）',
                 st_blackbox_done: '個資黑塊已套用（可繼續拖曳框選，或再次點擊按鈕關閉）',
-                st_mode_crop: '請在圖片上拖曳滑鼠框選欲保留的裁切區域',
+                st_mode_crop: '請在圖片上拖曳框選欲保留的裁切區域',
                 st_crop_done: '矩形裁切已完成',
-                st_mode_redbox: '請在圖片上拖曳滑鼠繪製紅框標註重點（可連續繪製，再次點擊按鈕取消）',
+                st_mode_redbox: '請在圖片上拖曳繪製紅框標註重點（可連續繪製，再次點擊按鈕取消）',
                 st_redbox_done: '紅框重點標註已套用（可繼續拖曳繪製，或再次點擊按鈕關閉）',
-                st_mode_redline: '請在圖片上拖曳滑鼠繪製紅底線（接近水平自動拉直，再次點擊按鈕取消）',
+                st_mode_redline: '請在圖片上拖曳繪製紅底線（接近水平自動拉直，再次點擊按鈕取消）',
                 st_redline_done: '紅底線重點標註已套用（可繼續拖曳繪製，或再次點擊按鈕關閉）',
                 st_bright_saved: '亮度已儲存',
                 st_bright_cancel: '已取消亮度調整',
@@ -251,8 +261,8 @@
                 st_flip_h: '已水平翻轉',
                 st_flip_v: '已上下翻轉',
                 st_copy_no_img: '請先載入圖片再進行複製。',
-                st_copy_done: '圖片已複製到剪貼簿！可直接按 Ctrl+V 貼至 Word、Excel 或 LINE。',
-                st_copy_err: '複製失敗（瀏覽器剪貼簿權限限制），請改用下載圖片。',
+                st_copy_done: '圖片已複製到剪貼簿！可直接貼至 Word、Excel 或 LINE。',
+                st_copy_err: '複製失敗（瀏覽器權限限制），請改用下載圖片。',
                 st_dl_no_img: '請先載入圖片再進行下載。',
                 st_dl_done: '圖片已成功準備下載，請檢查您的下載資料夾。',
                 st_pdf_no_img: '請先載入圖片再匯出 PDF。',
@@ -351,7 +361,7 @@
                 st_flip_h: 'Flipped horizontally.',
                 st_flip_v: 'Flipped vertically.',
                 st_copy_no_img: 'Please load an image before copying.',
-                st_copy_done: 'Image copied to clipboard! Press Ctrl+V to paste into Word, Excel, or chat apps.',
+                st_copy_done: 'Image copied to clipboard!',
                 st_copy_err: 'Copy failed (browser permission limit). Please use Download instead.',
                 st_dl_no_img: 'Please load an image before downloading.',
                 st_dl_done: 'Image download started. Please check your downloads folder.',
@@ -451,12 +461,12 @@
                 st_flip_h: '左右反転しました。',
                 st_flip_v: '上下反転しました。',
                 st_copy_no_img: 'コピーする前に画像を読み込んでください。',
-                st_copy_done: 'クリップボードにコピーしました！WordやExcel、LINE等に Ctrl+V で貼り付けられます。',
-                st_copy_err: 'コピーに失敗しました（ブラウザの権限設定）。「画像を保存」をご利用ください。',
+                st_copy_done: 'クリップボードにコピーしました！',
+                st_copy_err: 'コピーに失敗しました。「画像を保存」をご利用ください。',
                 st_dl_no_img: '保存する前に画像を読み込んでください。',
-                st_dl_done: '画像のダウンロードを開始しました。ダウンロードフォルダをご確認ください。',
+                st_dl_done: '画像のダウンロードを開始しました。',
                 st_pdf_no_img: 'PDF出力の前に画像を読み込んでください。',
-                st_pdf_done: 'PDFを出力しました。ダウンロードフォルダをご確認ください。'
+                st_pdf_done: 'PDFを出力しました。'
             },
             'de': {
                 docTitle: 'Büro-Retter',
@@ -551,12 +561,12 @@
                 st_flip_h: 'Horizontal gespiegelt.',
                 st_flip_v: 'Vertikal gespiegelt.',
                 st_copy_no_img: 'Bitte zuerst ein Bild laden.',
-                st_copy_done: 'Bild in die Zwischenablage kopiert! Mit Strg+V einfügen.',
+                st_copy_done: 'Bild in die Zwischenablage kopiert!',
                 st_copy_err: 'Kopieren fehlgeschlagen. Bitte „Bild herunterladen“ nutzen.',
                 st_dl_no_img: 'Bitte zuerst ein Bild laden.',
-                st_dl_done: 'Download gestartet. Bitte Download-Ordner prüfen.',
+                st_dl_done: 'Download gestartet.',
                 st_pdf_no_img: 'Bitte zuerst ein Bild laden, bevor Sie ein PDF exportieren.',
-                st_pdf_done: 'PDF erfolgreich exportiert. Bitte Download-Ordner prüfen.'
+                st_pdf_done: 'PDF erfolgreich exportiert.'
             },
             'ko': {
                 docTitle: '행정 구원자',
@@ -624,9 +634,9 @@
                 st_keystone_done_ratio: '사다리꼴 보정이 완료되었습니다 (표준 비율 고정 적용).',
                 st_mode_mosaic: '모자이크할 영역을 드래그하세요 (연속 사용 가능, 버튼 재클릭 시 해제).',
                 st_mosaic_done: '부분 모자이크가 적용되었습니다 (계속 드래그하거나 버튼을 다시 눌러 종료).',
-                st_mode_blackbox: '가릴 영역을 마우스로 드래그하세요 (연속 사용 가능, 버튼 재클릭 시 해제).',
+                st_mode_blackbox: '가릴 영역을 드래그하세요 (연속 사용 가능, 버튼 재클릭 시 해제).',
                 st_blackbox_done: '검은 상자 마스킹이 적용되었습니다 (계속 드래그하거나 버튼을 다시 눌러 종료).',
-                st_mode_crop: '자르고 남길 영역을 마우스로 드래그하세요.',
+                st_mode_crop: '자르고 남길 영역을 드래그하세요.',
                 st_crop_done: '사각형 자르기가 완료되었습니다.',
                 st_mode_redbox: '드래그하여 빨간 상자를 그리세요 (연속 사용 가능, 버튼 재클릭 시 해제).',
                 st_redbox_done: '빨간 상자 강조가 적용되었습니다 (계속 드래그하거나 버튼을 다시 눌러 종료).',
@@ -644,19 +654,19 @@
                 st_front_saved: '앞면 이미지가 임시저장되었습니다! 이제 "뒷면" 이미지를 불러와 병합하세요.',
                 st_front_cleared: '임시저장된 앞면 이미지가 삭제되었습니다.',
                 st_merge_err: '앞면 이미지가 임시저장되어 있고 현재 뒷면 이미지가 불러와져 있는지 확인하세요.',
-                st_merge_v_done: '신분증 앞뒷면 "상하 병합" 완료! 워터마크를 추가하거나 저장할 수 있습니다.',
-                st_merge_h_done: '신분증 앞뒷면 "좌우 병합" 완료! 워터마크를 추가하거나 저장할 수 있습니다.',
+                st_merge_v_done: '신분증 앞뒷면 "상하 병합" 완료!',
+                st_merge_h_done: '신분증 앞뒷면 "좌우 병합" 완료!',
                 st_rot_ccw: '왼쪽으로 90° 회전했습니다.',
                 st_rot_cw: '오른쪽으로 90° 회전했습니다.',
                 st_flip_h: '좌우 반전되었습니다.',
                 st_flip_v: '상하 반전되었습니다.',
                 st_copy_no_img: '복사하기 전에 이미지를 먼저 불러오세요.',
-                st_copy_done: '클립보드에 복사되었습니다! Word, Excel, 메신저 등에 Ctrl+V로 붙여넣으세요.',
-                st_copy_err: '복사 실패 (브라우저 권한 제한). 이미지 다운로드를 이용해 주세요.',
+                st_copy_done: '클립보드에 복사되었습니다!',
+                st_copy_err: '복사 실패. 이미지 다운로드를 이용해 주세요.',
                 st_dl_no_img: '다운로드하기 전에 이미지를 먼저 불러오세요.',
-                st_dl_done: '이미지 다운로드가 시작되었습니다. 다운로드 폴더를 확인하세요.',
+                st_dl_done: '이미지 다운로드가 시작되었습니다.',
                 st_pdf_no_img: 'PDF로 내보내기 전에 이미지를 먼저 불러오세요.',
-                st_pdf_done: 'PDF 내보내기가 완료되었습니다. 다운로드 폴더를 확인하세요.'
+                st_pdf_done: 'PDF 내보내기가 완료되었습니다.'
             },
             'fr': {
                 docTitle: 'Sauveur Administratif',
@@ -726,7 +736,7 @@
                 st_mosaic_done: 'Mosaïque locale appliquée (Continuez à glisser ou recliquez pour quitter).',
                 st_mode_blackbox: 'Faites glisser pour masquer en noir (Mode continu ; recliquez pour quitter).',
                 st_blackbox_done: 'Masquage noir appliqué (Continuez à glisser ou recliquez pour quitter).',
-                st_mode_crop: 'Faites glisser la souris pour sélectionner la zone à recadrer.',
+                st_mode_crop: 'Faites glisser pour sélectionner la zone à recadrer.',
                 st_crop_done: 'Recadrage terminé.',
                 st_mode_redbox: 'Faites glisser pour dessiner un cadre rouge (Recliquez pour quitter).',
                 st_redbox_done: 'Cadre rouge appliqué (Continuez à glisser ou recliquez pour quitter).',
@@ -744,19 +754,19 @@
                 st_front_saved: 'Recto mémorisé ! Chargez maintenant le « Verso » puis cliquez sur Fusionner.',
                 st_front_cleared: 'Recto mémorisé effacé.',
                 st_merge_err: 'Assurez-vous d’avoir mémorisé le recto et chargé le verso.',
-                st_merge_v_done: 'Fusion verticale terminée ! Vous pouvez ajouter un filigrane ou exporter.',
-                st_merge_h_done: 'Fusion horizontale terminée ! Vous pouvez ajouter un filigrane ou exporter.',
+                st_merge_v_done: 'Fusion verticale terminée !',
+                st_merge_h_done: 'Fusion horizontale terminée !',
                 st_rot_ccw: 'Pivoté de 90° vers la gauche.',
                 st_rot_cw: 'Pivoté de 90° vers la droite.',
                 st_flip_h: 'Retourné horizontalement.',
                 st_flip_v: 'Retourné verticalement.',
                 st_copy_no_img: 'Veuillez d’abord charger une image.',
-                st_copy_done: 'Image copiée dans le presse-papiers ! Collez-la avec Ctrl+V.',
+                st_copy_done: 'Image copiée dans le presse-papiers !',
                 st_copy_err: 'Échec de la copie. Veuillez utiliser le bouton Télécharger.',
                 st_dl_no_img: 'Veuillez d’abord charger une image.',
-                st_dl_done: 'Téléchargement lancé. Vérifiez votre dossier de téléchargements.',
+                st_dl_done: 'Téléchargement lancé.',
                 st_pdf_no_img: 'Veuillez charger une image avant d’exporter en PDF.',
-                st_pdf_done: 'PDF exporté avec succès. Vérifiez votre dossier de téléchargements.'
+                st_pdf_done: 'PDF exporté avec succès.'
             },
             'nl': {
                 docTitle: 'Administratieve Redder',
@@ -851,12 +861,12 @@
                 st_flip_h: 'Horizontaal gespiegeld.',
                 st_flip_v: 'Verticaal gespiegeld.',
                 st_copy_no_img: 'Laad eerst een afbeelding.',
-                st_copy_done: 'Afbeelding gekopieerd naar klembord! Plak met Ctrl+V.',
+                st_copy_done: 'Afbeelding gekopieerd naar klembord!',
                 st_copy_err: 'Kopiëren mislukt. Gebruik de downloadknop.',
                 st_dl_no_img: 'Laad eerst een afbeelding.',
-                st_dl_done: 'Download gestart. Controleer uw downloadmap.',
+                st_dl_done: 'Download gestart.',
                 st_pdf_no_img: 'Laad eerst een afbeelding voordat u naar PDF exporteert.',
-                st_pdf_done: 'PDF succesvol geëxporteerd. Controleer uw downloadmap.'
+                st_pdf_done: 'PDF succesvol geëxporteerd.'
             },
             'es': {
                 docTitle: 'Salvador Administrativo',
@@ -926,7 +936,7 @@
                 st_mosaic_done: 'Mosaico local aplicado (Sigue arrastrando o haz clic en el botón para salir).',
                 st_mode_blackbox: 'Arrastra para ocultar datos con un cuadro negro (Haz clic de nuevo para salir).',
                 st_blackbox_done: 'Ocultación aplicada (Sigue arrastrando o haz clic en el botón para salir).',
-                st_mode_crop: 'Arrastra el ratón para seleccionar el área a recortar.',
+                st_mode_crop: 'Arrastra para seleccionar el área a recortar.',
                 st_crop_done: 'Recorte completado.',
                 st_mode_redbox: 'Arrastra para dibujar un recuadro rojo (Haz clic de nuevo para salir).',
                 st_redbox_done: 'Recuadro rojo aplicado (Sigue arrastrando o haz clic en el botón para salir).',
@@ -944,19 +954,19 @@
                 st_front_saved: '¡Anverso guardado! Ahora carga el "Reverso" y pulsa Unir.',
                 st_front_cleared: 'Anverso guardado eliminado.',
                 st_merge_err: 'Asegúrate de haber guardado el anverso y cargado el reverso.',
-                st_merge_v_done: '¡Unión vertical completada! Puedes añadir marca de agua o exportar.',
-                st_merge_h_done: '¡Unión horizontal completada! Puedes añadir marca de agua o exportar.',
+                st_merge_v_done: '¡Unión vertical completada!',
+                st_merge_h_done: '¡Unión horizontal completada!',
                 st_rot_ccw: 'Girado 90° a la izquierda.',
                 st_rot_cw: 'Girado 90° a la derecha.',
                 st_flip_h: 'Volteado horizontalmente.',
                 st_flip_v: 'Volteado verticalmente.',
                 st_copy_no_img: 'Carga una imagen antes de copiar.',
-                st_copy_done: '¡Imagen copiada al portapapeles! Pégala con Ctrl+V.',
+                st_copy_done: '¡Imagen copiada al portapapeles!',
                 st_copy_err: 'Error al copiar. Por favor, usa Descargar.',
                 st_dl_no_img: 'Carga una imagen antes de descargar.',
-                st_dl_done: 'Descarga iniciada. Revisa tu carpeta de descargas.',
+                st_dl_done: 'Descarga iniciada.',
                 st_pdf_no_img: 'Carga una imagen antes de exportar a PDF.',
-                st_pdf_done: 'PDF exportado correctamente. Revisa tu carpeta de descargas.'
+                st_pdf_done: 'PDF exportado correctamente.'
             },
             'sv': {
                 docTitle: 'Administrativ Räddare',
@@ -1044,19 +1054,19 @@
                 st_front_saved: 'Framsida sparad! Ladda nu "Baksidan" och klicka på Slå ihop.',
                 st_front_cleared: 'Sparad framsida rensad.',
                 st_merge_err: 'Kontrollera att framsidan är sparad och baksidan är laddad.',
-                st_merge_v_done: 'Lodrät ihopslagning klar! Du kan nu lägga till vattenstämpel eller exportera.',
-                st_merge_h_done: 'Vågrät ihopslagning klar! Du kan nu lägga till vattenstämpel eller exportera.',
+                st_merge_v_done: 'Lodrät ihopslagning klar!',
+                st_merge_h_done: 'Vågrät ihopslagning klar!',
                 st_rot_ccw: 'Roterad 90° åt vänster.',
                 st_rot_cw: 'Roterad 90° åt höger.',
                 st_flip_h: 'Vänd vågrätt.',
                 st_flip_v: 'Vänd lodrätt.',
                 st_copy_no_img: 'Ladda en bild innan du kopierar.',
-                st_copy_done: 'Bild kopierad till urklipp! Klistra in med Ctrl+V.',
+                st_copy_done: 'Bild kopierad till urklipp!',
                 st_copy_err: 'Kopiering misslyckades. Använd nedladdningsknappen istället.',
                 st_dl_no_img: 'Ladda en bild innan du laddar ner.',
-                st_dl_done: 'Nedladdning startad. Kontrollera din nedladdningsmapp.',
+                st_dl_done: 'Nedladdning startad.',
                 st_pdf_no_img: 'Ladda en bild innan du exporterar till PDF.',
-                st_pdf_done: 'PDF exporterad. Kontrollera din nedladdningsmapp.'
+                st_pdf_done: 'PDF exporterad.'
             }
         };
 
@@ -1150,13 +1160,19 @@
             if((_0xe.ctrlKey||_0xe.metaKey)&&_0xe.key.toLowerCase()==='z'){if(!_0x1a0e.disabled){_0xe.preventDefault();_0x1f08();}}
         });
         function _0x1f09(){if(!_0x1a30)return;_0x1a08.width=_0x1a30.width;_0x1a08.height=_0x1a30.height;_0x1a09.putImageData(_0x1a30,0,0);}
-        function _0x1f0a(_0xcx,_0xcy,_0xix,_0xiy){
+        function _0x1f0a(_0xcx,_0xcy,_0xix,_0xiy,_0xit){
             if(_0x1a35!=='KEYSTONE'||!_0x1a30||(_0x1a3b.length===4&&_0x1a3c===-1)){_0x1a06.style.display='none';return;}
             _0x1a06.style.display='block';
             const _0xms=140,_0xzm=3,_0xsr=_0xms/(2*_0xzm);
-            let _0xl=_0xcx+20,_0xt=_0xcy-_0xms-20;
-            if(_0xl+_0xms>window.innerWidth-10)_0xl=_0xcx-_0xms-20;
-            if(_0xt<10)_0xt=_0xcy+20;
+            let _0xl,_0xt;
+            if(_0xit){
+                _0xl=Math.max(10,Math.min(window.innerWidth-_0xms-10,_0xcx-_0xms/2));
+                _0xt=_0xcy-_0xms-45;if(_0xt<10)_0xt=_0xcy+45;
+            }else{
+                _0xl=_0xcx+20;_0xt=_0xcy-_0xms-20;
+                if(_0xl+_0xms>window.innerWidth-10)_0xl=_0xcx-_0xms-20;
+                if(_0xt<10)_0xt=_0xcy+20;
+            }
             _0x1a06.style.left=`${_0xl}px`;_0x1a06.style.top=`${_0xt}px`;
             _0x1a07.fillStyle='#222';_0x1a07.fillRect(0,0,_0xms,_0xms);
             _0x1a07.save();_0x1a07.imageSmoothingEnabled=false;
@@ -1211,6 +1227,7 @@
         _0x1a0f.addEventListener('click',()=>_0x1f0c(true));
         function _0x1f0d(_0xnm){
             _0x1a35=_0xnm;
+            _0x1a04.style.touchAction=(_0x1a35==='NONE')?'auto':'none';
             _0x1a19.classList.toggle('active',_0x1a35==='CROP');
             _0x1a1a.classList.toggle('active',_0x1a35==='RED_BOX');
             _0x1a1b.classList.toggle('active',_0x1a35==='RED_LINE');
@@ -1238,9 +1255,9 @@
                 requestAnimationFrame(()=>{setTimeout(_0x1f1a,10);});
             }
         });
-        function _0x1f0e(_0xev){
+        function _0x1f0e(_0xcx,_0xcy){
             const _0xr=_0x1a04.getBoundingClientRect();
-            return {x:(_0xev.clientX-_0xr.left)*(_0x1a04.width/_0xr.width),y:(_0xev.clientY-_0xr.top)*(_0x1a04.height/_0xr.height)};
+            return {x:(_0xcx-_0xr.left)*(_0x1a04.width/_0xr.width),y:(_0xcy-_0xr.top)*(_0x1a04.height/_0xr.height)};
         }
         function _0x1f0f(){return Math.max(3,Math.round(Math.min(_0x1a04.width,_0x1a04.height)*0.005));}
         function _0x1f10(_0xsx,_0xsy,_0xex,_0xey,_0xsk){
@@ -1248,26 +1265,26 @@
             if(_0xsk||(_0xdx>10&&_0xdy<_0xdx*0.12))return {x:_0xex,y:_0xsy};
             return {x:_0xex,y:_0xey};
         }
-        _0x1a04.addEventListener('mousedown',(_0xe)=>{
+        function _0x1f1e(_0xcx,_0xcy,_0xsk,_0xit){
             if(!_0x1a30)return;
             if(parseInt(_0x1a14.value,10)!==0){_0x1a14.value=0;_0x1a05.putImageData(_0x1a30,0,0);}
-            const _0xpos=_0x1f0e(_0xe);
+            const _0xpos=_0x1f0e(_0xcx,_0xcy);
             if(_0x1a35==='MOSAIC'||_0x1a35==='BLACK_BOX'||_0x1a35==='CROP'||_0x1a35==='RED_BOX'||_0x1a35==='RED_LINE'){
                 _0x1a36=true;_0x1a37=_0xpos.x;_0x1a38=_0xpos.y;_0x1a39=_0xpos.x;_0x1a3a=_0xpos.y;
             }else if(_0x1a35==='KEYSTONE'){
-                const _0xr=_0x1a04.getBoundingClientRect(),_0xhr=15*(_0x1a04.width/_0xr.width);
+                const _0xr=_0x1a04.getBoundingClientRect(),_0xhr=(_0xit?24:15)*(_0x1a04.width/_0xr.width);
                 const _0xhi=_0x1a3b.findIndex(_0xp=>Math.hypot(_0xp.x-_0xpos.x,_0xp.y-_0xpos.y)<=_0xhr);
-                if(_0xhi!==-1){_0x1a3c=_0xhi;_0x1f0a(_0xe.clientX,_0xe.clientY,_0xpos.x,_0xpos.y);return;}
+                if(_0xhi!==-1){_0x1a3c=_0xhi;_0x1f0a(_0xcx,_0xcy,_0xpos.x,_0xpos.y,_0xit);return;}
                 if(_0x1a3b.length<4){
-                    _0x1a3b.push(_0xpos);_0x1f14();
-                    if(_0x1a3b.length===4){_0x1a06.style.display='none';_0x1a1f.style.display='inline-block';_0x1f02('st_keystone_ready','blue');}
-                    else{_0x1f0a(_0xe.clientX,_0xe.clientY,_0xpos.x,_0xpos.y);}
+                    _0x1a3b.push(_0xpos);_0x1a3c=_0x1a3b.length-1;_0x1f14();
+                    if(_0x1a3b.length===4){_0x1a1f.style.display='inline-block';_0x1f02('st_keystone_ready','blue');}
+                    _0x1f0a(_0xcx,_0xcy,_0xpos.x,_0xpos.y,_0xit);
                 }
             }
-        });
-        _0x1a04.addEventListener('mousemove',(_0xe)=>{
+        }
+        function _0x1f1f(_0xcx,_0xcy,_0xsk,_0xit){
             if((_0x1a35==='MOSAIC'||_0x1a35==='BLACK_BOX'||_0x1a35==='CROP'||_0x1a35==='RED_BOX'||_0x1a35==='RED_LINE')&&_0x1a36){
-                const _0xpos=_0x1f0e(_0xe);
+                const _0xpos=_0x1f0e(_0xcx,_0xcy);
                 _0x1a39=Math.max(0,Math.min(_0x1a04.width,_0xpos.x));_0x1a3a=Math.max(0,Math.min(_0x1a04.height,_0xpos.y));
                 _0x1f14();_0x1a05.save();
                 if(_0x1a35==='MOSAIC'){_0x1a05.strokeStyle='red';_0x1a05.lineWidth=2;_0x1a05.strokeRect(_0x1a37,_0x1a38,_0x1a39-_0x1a37,_0x1a3a-_0x1a38);}
@@ -1275,18 +1292,18 @@
                 else if(_0x1a35==='CROP'){_0x1a05.strokeStyle='#007bff';_0x1a05.lineWidth=Math.max(2,_0x1f0f()*0.7);_0x1a05.setLineDash([6,4]);_0x1a05.strokeRect(_0x1a37,_0x1a38,_0x1a39-_0x1a37,_0x1a3a-_0x1a38);}
                 else if(_0x1a35==='RED_BOX'){_0x1a05.strokeStyle='#e60000';_0x1a05.lineWidth=_0x1f0f();_0x1a05.strokeRect(_0x1a37,_0x1a38,_0x1a39-_0x1a37,_0x1a3a-_0x1a38);}
                 else if(_0x1a35==='RED_LINE'){
-                    const _0xep=_0x1f10(_0x1a37,_0x1a38,_0x1a39,_0x1a3a,_0xe.shiftKey);
+                    const _0xep=_0x1f10(_0x1a37,_0x1a38,_0x1a39,_0x1a3a,_0xsk);
                     _0x1a05.strokeStyle='#e60000';_0x1a05.lineWidth=_0x1f0f();_0x1a05.lineCap='round';
                     _0x1a05.beginPath();_0x1a05.moveTo(_0x1a37,_0x1a38);_0x1a05.lineTo(_0xep.x,_0xep.y);_0x1a05.stroke();
                 }
                 _0x1a05.restore();
             }else if(_0x1a35==='KEYSTONE'){
-                const _0xpos=_0x1f0e(_0xe),_0xcx=Math.max(0,Math.min(_0x1a04.width,_0xpos.x)),_0xcy=Math.max(0,Math.min(_0x1a04.height,_0xpos.y));
-                if(_0x1a3c!==-1){_0x1a3b[_0x1a3c]={x:_0xcx,y:_0xcy};_0x1f14();}
-                _0x1f0a(_0xe.clientX,_0xe.clientY,_0xcx,_0xcy);
+                const _0xpos=_0x1f0e(_0xcx,_0xcy),_0xpx=Math.max(0,Math.min(_0x1a04.width,_0xpos.x)),_0xpy=Math.max(0,Math.min(_0x1a04.height,_0xpos.y));
+                if(_0x1a3c!==-1){_0x1a3b[_0x1a3c]={x:_0xpx,y:_0xpy};_0x1f14();}
+                _0x1f0a(_0xcx,_0xcy,_0xpx,_0xpy,_0xit);
             }
-        });
-        _0x1a04.addEventListener('mouseup',(_0xe)=>{
+        }
+        function _0x1f20(_0xsk){
             if(_0x1a36){
                 _0x1a36=false;
                 const _0xrx=Math.min(_0x1a37,_0x1a39),_0xry=Math.min(_0x1a38,_0x1a3a),_0xrw=Math.abs(_0x1a39-_0x1a37),_0xrh=Math.abs(_0x1a3a-_0x1a38);
@@ -1294,12 +1311,29 @@
                 else if(_0x1a35==='BLACK_BOX')_0x1f1d(_0xrx,_0xry,_0xrw,_0xrh);
                 else if(_0x1a35==='CROP')_0x1f11(_0xrx,_0xry,_0xrw,_0xrh);
                 else if(_0x1a35==='RED_BOX')_0x1f12(_0xrx,_0xry,_0xrw,_0xrh);
-                else if(_0x1a35==='RED_LINE'){const _0xep=_0x1f10(_0x1a37,_0x1a38,_0x1a39,_0x1a3a,_0xe.shiftKey);_0x1f13(_0x1a37,_0x1a38,_0xep.x,_0xep.y);}
+                else if(_0x1a35==='RED_LINE'){const _0xep=_0x1f10(_0x1a37,_0x1a38,_0x1a39,_0x1a3a,_0xsk);_0x1f13(_0x1a37,_0x1a38,_0xep.x,_0xep.y);}
             }else if(_0x1a35==='KEYSTONE'&&_0x1a3c!==-1){
                 _0x1a3c=-1;if(_0x1a3b.length===4)_0x1a06.style.display='none';
             }
-        });
+        }
+        _0x1a04.addEventListener('mousedown',(_0xe)=>_0x1f1e(_0xe.clientX,_0xe.clientY,_0xe.shiftKey,false));
+        _0x1a04.addEventListener('mousemove',(_0xe)=>_0x1f1f(_0xe.clientX,_0xe.clientY,_0xe.shiftKey,false));
+        _0x1a04.addEventListener('mouseup',(_0xe)=>_0x1f20(_0xe.shiftKey));
         _0x1a04.addEventListener('mouseleave',()=>{_0x1a06.style.display='none';});
+        _0x1a04.addEventListener('touchstart',(_0xe)=>{
+            if(!_0x1a30||_0x1a35==='NONE'||_0xe.touches.length>1)return;
+            _0xe.preventDefault();const _0xt=_0xe.touches[0];_0x1f1e(_0xt.clientX,_0xt.clientY,false,true);
+        },{passive:false});
+        _0x1a04.addEventListener('touchmove',(_0xe)=>{
+            if(!_0x1a30||_0x1a35==='NONE'||_0xe.touches.length>1)return;
+            _0xe.preventDefault();const _0xt=_0xe.touches[0];_0x1f1f(_0xt.clientX,_0xt.clientY,false,true);
+        },{passive:false});
+        _0x1a04.addEventListener('touchend',(_0xe)=>{
+            if(!_0x1a30||_0x1a35==='NONE')return;
+            _0xe.preventDefault();_0x1f20(false);_0x1a06.style.display='none';
+        },{passive:false});
+        _0x1a04.addEventListener('touchcancel',()=>{_0x1a36=false;_0x1a3c=-1;_0x1a06.style.display='none';});
+
         function _0x1f11(_0xx,_0xy,_0xw,_0xh){
             _0xx=Math.max(0,Math.floor(_0xx));_0xy=Math.max(0,Math.floor(_0xy));
             _0xw=Math.min(_0x1a04.width-_0xx,Math.floor(_0xw));_0xh=Math.min(_0x1a04.height-_0xy,Math.floor(_0xh));
