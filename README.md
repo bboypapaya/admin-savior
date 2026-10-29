@@ -80,6 +80,7 @@
 
 Processing sensitive images—such as ID cards, health insurance cards, bankbooks, or official documents—on standard online tools carries severe privacy risks due to server uploads. **Admin Savior** processes all pixels locally within your browser's memory using HTML5 Canvas. **Zero data is uploaded to any server**, and the tool functions completely offline.
 ![行政救星操作示範 Demo](./demo.gif)
+
 🔗 **Live Web App**: [https://bboypapaya.github.io/admin-savior/](https://bboypapaya.github.io/admin-savior/)
 
 ---
