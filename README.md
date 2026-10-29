@@ -1,3 +1,4 @@
+![Visitor Count](https://komarev.com/ghpvc/?username=bboypapaya&color=blue&style=flat-square)
 # 🛡️ 行政救星 (Admin Savior)
 **純本機離線公文與雙證件影像處理工具 | 100% Offline Document & ID Image Processing Tool**
 
