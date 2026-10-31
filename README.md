@@ -36,12 +36,13 @@
 | **🖍️ 無紙化重點標註** | **紅框標註 & 紅底線標註** | 支援常駐連續繪製紅框與紅底線（紅底線於接近水平時或按住 `Shift` 鍵會**自動拉直**），免去傳統「列印 ➔ 手工畫線 ➔ 重新掃描」的繁瑣流程。 |
 | **✂️ 基礎編修轉向** | **矩形裁切、轉向與亮度** | 支援自由拖曳矩形裁切、左右 90° 旋轉、水平/上下翻轉、亮度滑桿調整，以及最多 **15 步復原 (`Ctrl+Z`)**。 |
 | **📤 多元輸入與輸出** | **剪貼簿連動 & 離線 PDF** | 電腦支援 **`Ctrl+V` 直接貼上截圖**或拖曳圖片，手機支援**直接拍照或從相簿選圖**；完成後可**一鍵複製圖片**（直接貼回 Word / Excel / LINE）、手機長按存入相簿，或由本機直接生成 **A4 滿版 PDF** 與 **證件 1:1 實際尺寸 PDF**（列印出來即為真實證件大小）。 |
+| **📲 桌面捷徑與書籤** | **一鍵建立手機桌面捷徑** | 內嵌動態生成之高解析度專屬盾牌 App 圖示，支援 **iOS / Android 手機桌面建立捷徑**（具備 LINE 內建瀏覽器環境偵測引導與防重複建立機制）及電腦版快速書籤引導，隨點隨開免找連結。 |
 
 ---
 
 ## 🌐 支援語系 (9 國語言國際化)
 
-系統會自動偵測瀏覽器語系並記憶使用者偏好，支援即時切換以下 9 種語言（連同預設防盜浮水印文字亦會自動對應轉換）：
+系統會自動偵測瀏覽器語系並記憶使用者偏好，支援即時切換以下 9 種語言（連同預設防盜浮水印文字與捷徑引導皆會自動對應轉換）：
 - `zh-TW` 繁體中文
 - `en-US` English (US)
 - `ja` 日本語
@@ -56,7 +57,7 @@
 
 ## 🚀 快速使用方式
 
-1. **線上開啟（電腦 / 手機皆可）**：直接點擊 [https://bboypapaya.github.io/admin-savior/](https://bboypapaya.github.io/admin-savior/) 即可使用。
+1. **線上開啟（電腦 / 手機皆可）**：直接點擊 [https://bboypapaya.github.io/admin-savior/](https://bboypapaya.github.io/admin-savior/) 即可使用，亦可點擊網頁底部的「**📲 在手機桌面建立捷徑**」將工具釘選至手機主畫面。
 2. **純離線單檔保存**：您也可以前往 [Releases](https://github.com/bboypapaya/admin-savior/releases) 下載本專案中的 `index.html` 至電腦桌面，未來在無網路環境下直接以瀏覽器（Chrome / Edge / Safari / Firefox）雙擊開啟即可運作。
 
 ---
@@ -98,6 +99,7 @@ Processing sensitive images—such as ID cards, health insurance cards, bankbook
 - **🖍️ Paperless Highlighting**: Draw **Red Boxes** and **Red Underlines** (auto-straightens when near horizontal or holding `Shift`) in continuous mode—eliminating the need to print, highlight by hand, and re-scan.
 - **✂️ Crop, Orientation & History**: Free rectangular cropping, 90° rotations, horizontal/vertical flips, brightness adjustment, and up to **15 steps of Undo (`Ctrl+Z`)**.
 - **📤 Seamless Input & Local PDF Export**: Paste images directly from your clipboard (`Ctrl+V`), drag & drop files, or capture photos on mobile; copy processed images straight back to your clipboard (for Word/Excel/LINE), save directly to mobile Photos, or generate **A4 Full-Page PDFs** and **1:1 Actual-Size ID Card PDFs** entirely offline.
+- **📲 Home Screen Shortcut & Bookmark Guide**: Built-in high-resolution shield app icon generator and smart environment detection (iOS Safari, Android Chrome, and In-App Browsers) with duplicate-prevention logic for one-tap access from your phone's home screen.
 
 ---
 
