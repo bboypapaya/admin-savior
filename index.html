@@ -11,7 +11,17 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://bboypapaya.github.io/admin-savior/">
 
-    <!-- Open Graph 社群轉發預覽標籤 (LINE / Threads / FB / Discord) -->
+    <!-- 手機桌面捷徑專用設定 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" id="metaAppTitle" content="行政救星">
+    <meta name="application-name" id="metaAppName" content="行政救星">
+    <meta name="theme-color" content="#0f253e">
+    <link id="appleTouchIcon" rel="apple-touch-icon" sizes="180x180" href="">
+    <link id="favIcon" rel="icon" type="image/png" sizes="180x180" href="">
+
+    <!-- Open Graph 社群轉發預覽標籤 -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="行政救星 Admin Savior">
     <meta property="og:title" content="行政救星 Admin Savior｜100%離線・個資不外洩的公文證件處理神器">
@@ -36,11 +46,7 @@
       "description": "100%純本機離線運作的公文與雙證件影像處理工具，支援梯形校正、證件正反面合併、防盜用浮水印、公文去陰影強化與PDF匯出。",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "TWD"
-      }
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TWD" }
     }
     </script>
 
@@ -67,6 +73,26 @@
         #mobileSaveModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; flex-direction: column; align-items: center; justify-content: center; padding: 15px; }
         #mobileSaveModal .modal-bar { width: 100%; max-width: 500px; display: flex; justify-content: space-between; align-items: center; color: #fff; margin-bottom: 12px; font-weight: bold; font-size: 0.95em; gap: 8px; }
         #mobileSaveModal img { max-width: 100%; max-height: 78vh; border: 2px solid #fff; border-radius: 6px; background: #fff; -webkit-touch-callout: default !important; user-select: auto !important; -webkit-user-select: auto !important; }
+        .action-pill-btn { text-decoration: none; padding: 5px 10px; color: white; border-radius: 4px; font-weight: bold; font-size: 1em; border: none; margin: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; line-height: 1.3; transition: opacity 0.2s; }
+        .action-pill-btn:hover { opacity: 0.9; }
+        .footer-right-col { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+        .footer-row { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+        #shortcutModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.65); z-index: 2500; align-items: center; justify-content: center; padding: 15px; }
+        .sc-card { background: #fff; width: 100%; max-width: 430px; border-radius: 10px; padding: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.3); color: #333; position: relative; animation: scFadeIn 0.2s ease-out; }
+        @keyframes scFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .sc-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+        .sc-header img { width: 48px; height: 48px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); flex-shrink: 0; }
+        .sc-header h4 { margin: 0; font-size: 1.1em; color: #111; line-height: 1.35; }
+        .sc-body { font-size: 0.95em; line-height: 1.65; color: #444; margin-bottom: 16px; }
+        .sc-body ol { margin: 8px 0 0 0; padding-left: 20px; }
+        .sc-body li { margin-bottom: 6px; }
+        .sc-kbd { display: inline-block; padding: 2px 7px; font-family: monospace; font-size: 0.95em; font-weight: bold; color: #222; background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .sc-footer { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 8px; }
+        .sc-btn-primary { background: #28a745; color: #fff; border: none; padding: 8px 14px; border-radius: 5px; font-weight: bold; cursor: pointer; margin: 0; }
+        .sc-btn-primary:hover { background: #218838 !important; }
+        .sc-btn-secondary { background: #6c757d; color: #fff; border: none; padding: 8px 14px; border-radius: 5px; font-weight: bold; cursor: pointer; margin: 0; }
+        .sc-btn-secondary:hover { background: #5a6268 !important; }
+        .sc-btn-link { background: transparent; color: #007bff; border: none; padding: 6px 8px; font-size: 0.85em; text-decoration: underline; cursor: pointer; margin: 0; margin-right: auto; }
         @media (max-width: 768px) {
             body { padding: 10px 10px 75px 10px; }
             .controls { padding: 10px; }
@@ -74,6 +100,8 @@
             button { padding: 8px 10px; margin: 4px 4px 4px 0; font-size: 0.9em; }
             select, input[type="text"] { max-width: 100%; margin-top: 4px; margin-bottom: 4px; }
             #status { display: block; margin-left: 0; margin-top: 8px; }
+            .footer-right-col { align-items: flex-start; width: 100%; }
+            .footer-row { justify-content: flex-start; }
         }
     </style>
 </head>
@@ -195,10 +223,17 @@
 
     <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #eee; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 0.9em; color: #666;">
         <span id="footerPrivacy">🛡️ 本工具純本機離線運作，無任何個資上傳風險</span>
-        <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 6px;">
-            <span id="lblDonatePrompt" style="color: #555; font-weight: bold; margin-right: 4px;">如果有提升你的工作效率，歡迎贊助支持我</span>
-            <a href="https://p.ecpay.com.tw/04052B1" id="btnDonateEcpay" target="_blank" rel="noopener" style="text-decoration: none; padding: 5px 10px; background: #28a745; color: white; border-radius: 4px; font-weight: bold;">綠界科技</a>
-            <a href="https://ko-fi.com/bboypapaya" target="_blank" rel="noopener" style="text-decoration: none; padding: 5px 10px; background: #ff5e5b; color: white; border-radius: 4px; font-weight: bold;">Ko-fi</a>
+        <div class="footer-right-col">
+            <div class="footer-row">
+                <span id="lblShortcutPrompt" style="color: #555; font-weight: bold; margin-right: 4px;">加入書籤或建立捷徑，節省更多喝咖啡的時間！</span>
+                <button type="button" id="btnAddBookmark" class="action-pill-btn" style="background: #007bff;">⭐ 加入瀏覽器書籤</button>
+                <button type="button" id="btnAddShortcut" class="action-pill-btn" style="background: #6f42c1;">📲 在手機桌面建立捷徑</button>
+            </div>
+            <div class="footer-row">
+                <span id="lblDonatePrompt" style="color: #555; font-weight: bold; margin-right: 4px;">如果有提升你的工作效率，歡迎贊助支持我</span>
+                <a href="https://p.ecpay.com.tw/04052B1" id="btnDonateEcpay" target="_blank" rel="noopener" class="action-pill-btn" style="background: #28a745;">綠界科技</a>
+                <a href="https://ko-fi.com/bboypapaya" target="_blank" rel="noopener" class="action-pill-btn" style="background: #ff5e5b;">Ko-fi</a>
+            </div>
         </div>
     </div>
 
@@ -213,934 +248,41 @@
         <img id="mobileSaveImg" alt="Preview">
     </div>
 
+    <div id="shortcutModal">
+        <div class="sc-card">
+            <div class="sc-header">
+                <img id="scModalIcon" alt="App Icon">
+                <h4 id="scModalTitle">在手機桌面建立捷徑</h4>
+            </div>
+            <div id="scModalBody" class="sc-body"></div>
+            <div class="sc-footer">
+                <button type="button" id="btnScReopenGuide" class="sc-btn-link" style="display: none;">重新查看建立步驟</button>
+                <button type="button" id="btnScMarkDone" class="sc-btn-primary" style="display: none;">✔ 我已建立捷徑</button>
+                <button type="button" id="btnScClose" class="sc-btn-secondary">關閉</button>
+            </div>
+        </div>
+    </div>
+
     <script>
     (function(){
         document.addEventListener('contextmenu',function(_0xe){if(_0xe.target.tagName!=='INPUT'&&_0xe.target.id!=='mobileSaveImg')_0xe.preventDefault();});
         document.addEventListener('keydown',function(_0xe){if(_0xe.key==='F12'||((_0xe.ctrlKey||_0xe.metaKey)&&_0xe.shiftKey&&(_0xe.key==='I'||_0xe.key==='i'||_0xe.key==='J'||_0xe.key==='j'||_0xe.key==='C'||_0xe.key==='c'))||((_0xe.ctrlKey||_0xe.metaKey)&&(_0xe.key==='U'||_0xe.key==='u'))){_0xe.preventDefault();}});
 
         const _0x1a01 = {
-            'zh-TW': {
-                docTitle: '行政救星 Admin Savior｜100%離線身分證浮水印、證件正反面合併、公文梯形校正工具',
-                g1Title: '1. 圖片來源、重置與輸出',
-                pasteHint: '直接按下 <b>Ctrl+V</b> 貼上、<b>拖曳圖片至此</b>，或選擇檔案：',
-                btnSelectFile: '📁 選擇檔案',
-                btnUndo: '↩ 上一步 (Ctrl+Z)',
-                btnReset: '全部重置',
-                btnCopy: '📋 複製圖片',
-                btnDownload: '下載圖片',
-                optPdfFit: 'PDF：A4 滿版適應',
-                optPdfId: 'PDF：證件 1:1 實際尺寸 (A4)',
-                btnExportPdf: '📄 匯出 PDF',
-                g2Title: '2. 圖片轉向',
-                btnRotateCCW: '↺ 向左轉 90°',
-                btnRotateCW: '↻ 向右轉 90°',
-                btnFlipH: '↔ 水平翻轉',
-                btnFlipV: '↕ 上下翻轉',
-                g3Title: '3. 亮度與像素處理',
-                lblBrightness: '亮度調整:',
-                btnApplyBrightness: '✔ 確定亮度',
-                btnCancelBrightness: '✖ 取消',
-                btnDocEnhance: '📄 公文/證件黑白強化',
-                lblKeepStamp: '保留彩色印章',
-                btnCropMode: '✂️ 矩形裁切',
-                btnRedBoxMode: '🟥 紅框標註',
-                btnRedLineMode: '🖍️ 紅底線標註',
-                btnMosaicMode: '局部馬賽克 (拖曳框選)',
-                btnBlackBoxMode: '⬛ 個資黑塊',
-                btnKeystoneMode: '梯形校正 (依序點擊左上、右上、右下、左下4個頂點)',
-                optRatioAuto: '比例：自動推算',
-                optRatioIdH: '比例：身分證/健保卡 (85.6×54mm)',
-                optRatioIdV: '比例：直式證件 (54×85.6mm)',
-                optRatioA4V: '比例：A4 直式公文 (210×297mm)',
-                optRatioA4H: '比例：A4 橫式文件 (297×210mm)',
-                btnApplyKeystone: '✔ 確認校正',
-                tooltipTrigger: 'ⓘ 點擊順序示範',
-                tooltipDesc: '順序必須為：<br><b>1.左上 ➔ 2.右上 ➔ 3.右下 ➔ 4.左下</b>',
-                lblWatermark: '防盜用浮水印:',
-                watermarkDefault: '僅供業務申辦使用 他用無效',
-                watermarkPlaceholder: '請輸入浮水印文字...',
-                optWmGray: '半透明深灰',
-                optWmRed: '半透明印泥紅',
-                optWmBlue: '半透明公文藍',
-                btnApplyWatermark: '🔏 壓印滿版浮水印',
-                lblMerge: '🪪 證件正反面合併:',
-                btnSaveFront: '1️⃣ 暫存目前畫面為「正面」',
-                btnMergeV: '2️⃣ ↕ 上下合併 (正+反)',
-                btnMergeH: '2️⃣ ↔ 左右合併 (正+反)',
-                btnClearFront: '✖ 清除暫存',
-                frontEmpty: '（尚未暫存正面圖片）',
-                frontSaved: '（✔ 已暫存正面 {w}×{h}px，請載入反面圖片後點擊合併）',
-                footerPrivacy: '🛡️ 本工具純本機離線運作，無任何個資上傳風險',
-                lblDonatePrompt: '如果有提升你的工作效率，歡迎贊助支持我',
-                btnDonateEcpay: '綠界科技',
-                lblModalHint: '📱 請直接「長按下方圖片」➔「加入照片」存入相簿',
-                btnCloseModal: '✖ 關閉',
-                st_waiting: '等待載入圖片...',
-                st_loaded: '圖片載入成功。您可以對圖片進行處理或轉向、複製、下載。',
-                st_back_loaded: '反面圖片載入成功！校正處理後可點擊「2️⃣ 上下/左右合併」。',
-                st_undo: '已復原至上一步',
-                st_invalid_file: '請拖曳有效的圖片檔案格式。',
-                st_mode_keystone: '請在圖片上依序點擊需要保留區域的 左上、右上、右下、左下 4個頂點',
-                st_keystone_ready: '已選取 4 個頂點。可拖曳紅十字微調或選擇標準比例，完成後點擊「✔ 確認校正」',
-                st_keystone_calc: '正在高品質計算梯形校正...',
-                st_keystone_done: '梯形校正完成（已啟用高品質運算）',
-                st_keystone_done_ratio: '梯形校正完成（已鎖定標準比例與高品質運算）',
-                st_mode_mosaic: '請在圖片上拖曳框選欲打馬賽克的區域（可連續框選，再次點擊按鈕取消）',
-                st_mosaic_done: '局部馬賽克已套用（可繼續拖曳框選，或再次點擊按鈕關閉）',
-                st_mode_blackbox: '請在圖片上拖曳框選欲遮蔽的區域（可連續框選，再次點擊按鈕取消）',
-                st_blackbox_done: '個資黑塊已套用（可繼續拖曳框選，或再次點擊按鈕關閉）',
-                st_mode_crop: '請在圖片上拖曳框選欲保留的裁切區域',
-                st_crop_done: '矩形裁切已完成',
-                st_mode_redbox: '請在圖片上拖曳繪製紅框標註重點（可連續繪製，再次點擊按鈕取消）',
-                st_redbox_done: '紅框重點標註已套用（可繼續拖曳繪製，或再次點擊按鈕關閉）',
-                st_mode_redline: '請在圖片上拖曳繪製紅底線（接近水平自動拉直，再次點擊按鈕取消）',
-                st_redline_done: '紅底線重點標註已套用（可繼續拖曳繪製，或再次點擊按鈕關閉）',
-                st_bright_saved: '亮度已儲存',
-                st_bright_cancel: '已取消亮度調整',
-                st_doc_calc: '正在執行公文/證件去陰影強化...',
-                st_doc_done_stamp: '公文強化完成（已保留彩色印章）',
-                st_doc_done_bw: '公文/證件黑白強化已套用',
-                st_wm_no_img: '請先載入圖片再壓印浮水印。',
-                st_wm_no_txt: '請輸入浮水印文字。',
-                st_wm_done: '已壓印滿版防盜用浮水印',
-                st_front_no_img: '請先載入並處理好正面圖片，再點擊暫存。',
-                st_front_saved: '正面圖片已暫存！現在請貼上或載入「反面」圖片，處理後即可點擊合併。',
-                st_front_cleared: '已清除暫存的正面圖片。',
-                st_merge_err: '請確認已暫存正面圖片且目前已載入反面圖片。',
-                st_merge_v_done: '證件正反面「上下合併」完成！可繼續壓印浮水印或下載。',
-                st_merge_h_done: '證件正反面「左右合併」完成！可繼續壓印浮水印或下載。',
-                st_rot_ccw: '已向左轉',
-                st_rot_cw: '已向右轉',
-                st_flip_h: '已水平翻轉',
-                st_flip_v: '已上下翻轉',
-                st_copy_no_img: '請先載入圖片再進行複製。',
-                st_copy_done: '圖片已複製到剪貼簿！可直接貼至 Word、Excel 或 LINE。',
-                st_copy_err: '複製失敗（瀏覽器權限限制），請改用下載圖片。',
-                st_dl_no_img: '請先載入圖片再進行下載。',
-                st_dl_done: '圖片已準備完成！手機用戶請「長按彈出視窗中的圖片」或點選「儲存影像」存入相簿。',
-                st_pdf_no_img: '請先載入圖片再匯出 PDF。',
-                st_pdf_done: 'PDF 已匯出！iPhone 用戶請於選單點選「儲存到檔案」或直接轉傳 LINE（相簿不支援顯示 PDF）。'
-            },
-            'en-US': {
-                docTitle: 'Admin Savior | 100% Offline ID Card Watermark, Merger & Perspective Correction Tool',
-                g1Title: '1. Image Source, Reset & Export',
-                pasteHint: 'Press <b>Ctrl+V</b> to paste, <b>drag & drop</b> here, or select a file:',
-                btnSelectFile: '📁 Choose File',
-                btnUndo: '↩ Undo (Ctrl+Z)',
-                btnReset: 'Reset All',
-                btnCopy: '📋 Copy Image',
-                btnDownload: 'Download PNG',
-                optPdfFit: 'PDF: A4 Full-Page Fit',
-                optPdfId: 'PDF: ID Card 1:1 Actual Size (A4)',
-                btnExportPdf: '📄 Export PDF',
-                g2Title: '2. Image Orientation',
-                btnRotateCCW: '↺ Rotate Left 90°',
-                btnRotateCW: '↻ Rotate Right 90°',
-                btnFlipH: '↔ Flip Horizontal',
-                btnFlipV: '↕ Flip Vertical',
-                g3Title: '3. Brightness & Pixel Processing',
-                lblBrightness: 'Brightness:',
-                btnApplyBrightness: '✔ Apply',
-                btnCancelBrightness: '✖ Cancel',
-                btnDocEnhance: '📄 Document B&W Enhance',
-                lblKeepStamp: 'Keep Colored Stamps',
-                btnCropMode: '✂️ Free Crop',
-                btnRedBoxMode: '🟥 Red Box',
-                btnRedLineMode: '🖍️ Red Underline',
-                btnMosaicMode: 'Local Mosaic (Drag)',
-                btnBlackBoxMode: '⬛ Blackout Redact',
-                btnKeystoneMode: 'Keystone Correction (Click Top-L, Top-R, Bot-R, Bot-L)',
-                optRatioAuto: 'Ratio: Auto Detect',
-                optRatioIdH: 'Ratio: ID Card Landscape (85.6×54mm)',
-                optRatioIdV: 'Ratio: ID Card Portrait (54×85.6mm)',
-                optRatioA4V: 'Ratio: A4 Portrait (210×297mm)',
-                optRatioA4H: 'Ratio: A4 Landscape (297×210mm)',
-                btnApplyKeystone: '✔ Confirm Correction',
-                tooltipTrigger: 'ⓘ Click Order Demo',
-                tooltipDesc: 'Order must be:<br><b>1.Top-L ➔ 2.Top-R ➔ 3.Bot-R ➔ 4.Bot-L</b>',
-                lblWatermark: 'Security Watermark:',
-                watermarkDefault: 'FOR OFFICIAL VERIFICATION USE ONLY',
-                watermarkPlaceholder: 'Enter watermark text...',
-                optWmGray: 'Translucent Dark Gray',
-                optWmRed: 'Translucent Stamp Red',
-                optWmBlue: 'Translucent Official Blue',
-                btnApplyWatermark: '🔏 Apply Tiled Watermark',
-                lblMerge: '🪪 Merge ID Front & Back:',
-                btnSaveFront: '1️⃣ Save Current as "Front"',
-                btnMergeV: '2️⃣ ↕ Merge Vertically',
-                btnMergeH: '2️⃣ ↔ Merge Horizontally',
-                btnClearFront: '✖ Clear Saved',
-                frontEmpty: '(No front image saved yet)',
-                frontSaved: '(✔ Front saved {w}×{h}px. Load back image then click Merge)',
-                footerPrivacy: '🛡️ 100% offline local processing. Zero data upload risk.',
-                lblDonatePrompt: 'If this tool boosts your work efficiency, feel free to support me',
-                btnDonateEcpay: '綠界科技',
-                lblModalHint: '📱 Long-press the image below to save to Photos',
-                btnCloseModal: '✖ Close',
-                st_waiting: 'Waiting for image...',
-                st_loaded: 'Image loaded. Ready for editing, rotation, copying, or export.',
-                st_back_loaded: 'Back image loaded! After editing, click "2️⃣ Merge Vertically/Horizontally".',
-                st_undo: 'Undone to previous step.',
-                st_invalid_file: 'Please drag and drop a valid image file.',
-                st_mode_keystone: 'Click the 4 corners in order: Top-Left, Top-Right, Bottom-Right, Bottom-Left.',
-                st_keystone_ready: '4 corners selected. Drag red crosshairs to fine-tune or select a ratio, then click "✔ Confirm Correction".',
-                st_keystone_calc: 'Calculating high-quality keystone correction...',
-                st_keystone_done: 'Keystone correction complete (High-quality mode).',
-                st_keystone_done_ratio: 'Keystone correction complete (Standard ratio locked).',
-                st_mode_mosaic: 'Drag to apply mosaic (Continuous mode; click button again to exit).',
-                st_mosaic_done: 'Local mosaic applied (Continue dragging or click button again to exit).',
-                st_mode_blackbox: 'Drag to black out sensitive info (Continuous mode; click button again to exit).',
-                st_blackbox_done: 'Blackout applied (Continue dragging or click button again to exit).',
-                st_mode_crop: 'Drag on the image to select the area to crop.',
-                st_crop_done: 'Rectangular crop completed.',
-                st_mode_redbox: 'Drag to draw red boxes (Continuous mode; click button again to exit).',
-                st_redbox_done: 'Red box applied (Continue dragging or click button again to exit).',
-                st_mode_redline: 'Drag to draw red underlines (Auto-straightens; click button again to exit).',
-                st_redline_done: 'Red underline applied (Continue dragging or click button again to exit).',
-                st_bright_saved: 'Brightness saved.',
-                st_bright_cancel: 'Brightness adjustment canceled.',
-                st_doc_calc: 'Enhancing document & removing shadows...',
-                st_doc_done_stamp: 'Document enhanced (Colored stamps preserved).',
-                st_doc_done_bw: 'Document B&W enhancement applied.',
-                st_wm_no_img: 'Please load an image before applying a watermark.',
-                st_wm_no_txt: 'Please enter watermark text.',
-                st_wm_done: 'Tiled security watermark applied.',
-                st_front_no_img: 'Please load and process the front image before saving.',
-                st_front_saved: 'Front image saved! Now load the "Back" image and click Merge.',
-                st_front_cleared: 'Saved front image cleared.',
-                st_merge_err: 'Please ensure the front image is saved and the back image is loaded.',
-                st_merge_v_done: 'Vertical merge complete! You can now add a watermark or export.',
-                st_merge_h_done: 'Horizontal merge complete! You can now add a watermark or export.',
-                st_rot_ccw: 'Rotated 90° counter-clockwise.',
-                st_rot_cw: 'Rotated 90° clockwise.',
-                st_flip_h: 'Flipped horizontally.',
-                st_flip_v: 'Flipped vertically.',
-                st_copy_no_img: 'Please load an image before copying.',
-                st_copy_done: 'Image copied to clipboard!',
-                st_copy_err: 'Copy failed (browser permission limit). Please use Download instead.',
-                st_dl_no_img: 'Please load an image before downloading.',
-                st_dl_done: 'Image ready! Long-press the preview image or select "Save Image" to save to Photos.',
-                st_pdf_no_img: 'Please load an image before exporting to PDF.',
-                st_pdf_done: 'PDF exported! Select "Save to Files" or share to chat apps.'
-            },
-            'ja': {
-                docTitle: '事務の救世主 | 完全オフライン身分証透かし・表裏結合・台形補正ツール',
-                g1Title: '1. 画像の読み込み・リセット・出力',
-                pasteHint: '<b>Ctrl+V</b> で貼り付け、<b>ここへドラッグ＆ドロップ</b>、またはファイルを選択：',
-                btnSelectFile: '📁 ファイルを選択',
-                btnUndo: '↩ 元に戻す (Ctrl+Z)',
-                btnReset: 'すべてリセット',
-                btnCopy: '📋 画像をコピー',
-                btnDownload: '画像を保存',
-                optPdfFit: 'PDF：A4 ページに合わせて配置',
-                optPdfId: 'PDF：身分証 1:1 実寸サイズ (A4)',
-                btnExportPdf: '📄 PDF出力',
-                g2Title: '2. 画像の回転・反転',
-                btnRotateCCW: '↺ 左へ 90° 回転',
-                btnRotateCW: '↻ 右へ 90° 回転',
-                btnFlipH: '↔ 左右反転',
-                btnFlipV: '↕ 上下反転',
-                g3Title: '3. 明るさ調整・ピクセル処理',
-                lblBrightness: '明るさ調整:',
-                btnApplyBrightness: '✔ 確定',
-                btnCancelBrightness: '✖ キャンセル',
-                btnDocEnhance: '📄 書類/身分証の白黒くっきり補正',
-                lblKeepStamp: 'カラー印鑑を保持',
-                btnCropMode: '✂️ 矩形トリミング',
-                btnRedBoxMode: '🟥 赤枠で強調',
-                btnRedLineMode: '🖍️ 赤下線で強調',
-                btnMosaicMode: '部分モザイク (ドラッグ選択)',
-                btnBlackBoxMode: '⬛ 黒塗りマスク',
-                btnKeystoneMode: '台形補正 (左上・右上・右下・左下の順に4点をクリック)',
-                optRatioAuto: '比率：自動計算',
-                optRatioIdH: '比率：身分証/カード横 (85.6×54mm)',
-                optRatioIdV: '比率：身分証/カード縦 (54×85.6mm)',
-                optRatioA4V: '比率：A4 縦長書類 (210×297mm)',
-                optRatioA4H: '比率：A4 横長書類 (297×210mm)',
-                btnApplyKeystone: '✔ 補正を実行',
-                tooltipTrigger: 'ⓘ クリック順の案内',
-                tooltipDesc: 'クリック順序：<br><b>1.左上 ➔ 2.右上 ➔ 3.右下 ➔ 4.左下</b>',
-                lblWatermark: '不正利用防止透かし:',
-                watermarkDefault: '提出・確認用のみ 他用無効',
-                watermarkPlaceholder: '透かし文字を入力...',
-                optWmGray: '半透明ダークグレー',
-                optWmRed: '半透明朱肉レッド',
-                optWmBlue: '半透明ブルー',
-                btnApplyWatermark: '🔏 全面に透かしを入れる',
-                lblMerge: '🪪 身分証の表裏結合:',
-                btnSaveFront: '1️⃣ 現在の画像を「表面」として一時保存',
-                btnMergeV: '2️⃣ ↕ 上下に結合 (表+裏)',
-                btnMergeH: '2️⃣ ↔ 左右に結合 (表+裏)',
-                btnClearFront: '✖ 保存をクリア',
-                frontEmpty: '（表面の画像は未保存です）',
-                frontSaved: '（✔ 表面を保存済 {w}×{h}px。裏面を読み込んで結合をクリック）',
-                footerPrivacy: '🛡️ 完全ローカル（オフライン）動作。外部へのデータ送信は一切ありません。',
-                lblDonatePrompt: '作業効率が向上しましたら、ぜひご支援をお願いします',
-                btnDonateEcpay: '綠界科技',
-                lblModalHint: '📱 下の画像を長押しして「写真に保存」を選択してください',
-                btnCloseModal: '✖ 閉じる',
-                st_waiting: '画像の読み込みを待っています...',
-                st_loaded: '画像を読み込みました。補正・回転・コピー・保存が可能です。',
-                st_back_loaded: '裏面画像を読み込みました！補正後に「2️⃣ 上下/左右に結合」をクリックしてください。',
-                st_undo: '1つ前の状態に戻しました。',
-                st_invalid_file: '有効な画像ファイルをドラッグ＆ドロップしてください。',
-                st_mode_keystone: '残したい領域の「左上・右上・右下・左下」の4点を順にクリックしてください。',
-                st_keystone_ready: '4点を選択しました。赤い十字をドラッグして微調整し、「✔ 補正を実行」をクリックしてください。',
-                st_keystone_calc: '高画質で台形補正を計算中...',
-                st_keystone_done: '台形補正が完了しました（高画質演算）。',
-                st_keystone_done_ratio: '台形補正が完了しました（標準比率ロック適用）。',
-                st_mode_mosaic: 'モザイクをかけたい領域をドラッグしてください（連続選択可、ボタン再クリックで解除）。',
-                st_mosaic_done: '部分モザイクを適用しました（続けて選択するか、ボタン再クリックで終了）。',
-                st_mode_blackbox: '黒塗りしたい領域をドラッグしてください（連続選択可、ボタン再クリックで解除）。',
-                st_blackbox_done: '黒塗りマスクを適用しました（続けて選択するか、ボタン再クリックで終了）。',
-                st_mode_crop: '残したい領域をドラッグして選択してください。',
-                st_crop_done: 'トリミングが完了しました。',
-                st_mode_redbox: 'ドラッグして赤枠を描画してください（連続描画可、ボタン再クリックで解除）。',
-                st_redbox_done: '赤枠の強調を適用しました（続けて描画するか、ボタン再クリックで終了）。',
-                st_mode_redline: 'ドラッグして赤下線を描画してください（水平自動補正、ボタン再クリックで解除）。',
-                st_redline_done: '赤下線の強調を適用しました（続けて描画するか、ボタン再クリックで終了）。',
-                st_bright_saved: '明るさを保存しました。',
-                st_bright_cancel: '明るさ調整をキャンセルしました。',
-                st_doc_calc: '書類の影除去・くっきり補正を実行中...',
-                st_doc_done_stamp: '書類補正が完了しました（カラー印鑑を保持）。',
-                st_doc_done_bw: '書類の白黒くっきり補正を適用しました。',
-                st_wm_no_img: '透かしを入れる前に画像を読み込んでください。',
-                st_wm_no_txt: '透かし文字を入力してください。',
-                st_wm_done: '全面に不正利用防止透かしを適用しました。',
-                st_front_no_img: '先に表面の画像を読み込んで処理してから一時保存してください。',
-                st_front_saved: '表面を保存しました！続けて「裏面」を読み込み、結合ボタンをクリックしてください。',
-                st_front_cleared: '一時保存した表面画像をクリアしました。',
-                st_merge_err: '表面が保存されており、裏面が読み込まれていることを確認してください。',
-                st_merge_v_done: '表裏の「上下結合」が完了しました！',
-                st_merge_h_done: '表裏の「左右結合」が完了しました！',
-                st_rot_ccw: '左へ90°回転しました。',
-                st_rot_cw: '右へ90°回転しました。',
-                st_flip_h: '左右反転しました。',
-                st_flip_v: '上下反転しました。',
-                st_copy_no_img: 'コピーする前に画像を読み込んでください。',
-                st_copy_done: 'クリップボードにコピーしました！',
-                st_copy_err: 'コピーに失敗しました。「画像を保存」をご利用ください。',
-                st_dl_no_img: '保存する前に画像を読み込んでください。',
-                st_dl_done: '画像の準備ができました！画像を長押しするかメニューから「画像を保存」を選択してください。',
-                st_pdf_no_img: 'PDF出力の前に画像を読み込んでください。',
-                st_pdf_done: 'PDFを出力しました！メニューから「ファイルに保存」または共有先を選択してください。'
-            },
-            'de': {
-                docTitle: 'Büro-Retter | 100% Offline Ausweis-Wasserzeichen & Trapezkorrektur',
-                g1Title: '1. Bildquelle, Zurücksetzen & Export',
-                pasteHint: '<b>Strg+V</b> zum Einfügen, <b>Bild hierher ziehen</b> oder Datei wählen:',
-                btnSelectFile: '📁 Datei auswählen',
-                btnUndo: '↩ Rückgängig (Strg+Z)',
-                btnReset: 'Alles zurücksetzen',
-                btnCopy: '📋 Bild kopieren',
-                btnDownload: 'Bild herunterladen',
-                optPdfFit: 'PDF: A4-Seite anpassen',
-                optPdfId: 'PDF: Ausweis 1:1 Originalgröße (A4)',
-                btnExportPdf: '📄 PDF exportieren',
-                g2Title: '2. Bildausrichtung',
-                btnRotateCCW: '↺ 90° nach links',
-                btnRotateCW: '↻ 90° nach rechts',
-                btnFlipH: '↔ Horizontal spiegeln',
-                btnFlipV: '↕ Vertikal spiegeln',
-                g3Title: '3. Helligkeit & Bildbearbeitung',
-                lblBrightness: 'Helligkeit:',
-                btnApplyBrightness: '✔ Übernehmen',
-                btnCancelBrightness: '✖ Abbrechen',
-                btnDocEnhance: '📄 Dokument S/W-Optimierung',
-                lblKeepStamp: 'Farbige Stempel behalten',
-                btnCropMode: '✂️ Zuschneiden',
-                btnRedBoxMode: '🟥 Roter Rahmen',
-                btnRedLineMode: '🖍️ Rote Unterstreichung',
-                btnMosaicMode: 'Mosaik (Ziehen)',
-                btnBlackBoxMode: '⬛ Schwärzen',
-                btnKeystoneMode: 'Trapezkorrektur (Oben-L, Oben-R, Unten-R, Unten-L klicken)',
-                optRatioAuto: 'Format: Automatisch',
-                optRatioIdH: 'Format: Ausweis Quer (85,6×54mm)',
-                optRatioIdV: 'Format: Ausweis Hoch (54×85,6mm)',
-                optRatioA4V: 'Format: A4 Hochformat (210×297mm)',
-                optRatioA4H: 'Format: A4 Querformat (297×210mm)',
-                btnApplyKeystone: '✔ Korrektur bestätigen',
-                tooltipTrigger: 'ⓘ Klick-Reihenfolge',
-                tooltipDesc: 'Reihenfolge:<br><b>1.Oben-L ➔ 2.Oben-R ➔ 3.Unten-R ➔ 4.Unten-L</b>',
-                lblWatermark: 'Wasserzeichen:',
-                watermarkDefault: 'NUR ZUR VERIFIZIERUNG GÜLTIG',
-                watermarkPlaceholder: 'Wasserzeichentext eingeben...',
-                optWmGray: 'Halbtransparent Dunkelgrau',
-                optWmRed: 'Halbtransparent Stempelrot',
-                optWmBlue: 'Halbtransparent Dokumentblau',
-                btnApplyWatermark: '🔏 Wasserzeichen anwenden',
-                lblMerge: '🪪 Ausweis Vorder- & Rückseite:',
-                btnSaveFront: '1️⃣ Aktuelles Bild als „Vorderseite“ merken',
-                btnMergeV: '2️⃣ ↕ Vertikal zusammenfügen',
-                btnMergeH: '2️⃣ ↔ Horizontal zusammenfügen',
-                btnClearFront: '✖ Gespeichertes löschen',
-                frontEmpty: '(Noch keine Vorderseite gespeichert)',
-                frontSaved: '(✔ Vorderseite {w}×{h}px gespeichert. Rückseite laden & zusammenfügen)',
-                footerPrivacy: '🛡️ 100% lokale Offline-Verarbeitung. Kein Daten-Upload.',
-                lblDonatePrompt: 'Wenn dieses Tool Ihre Arbeitseffizienz steigert, unterstützen Sie mich gerne',
-                btnDonateEcpay: '綠界科技',
-                lblModalHint: '📱 Bild unten gedrückt halten, um es in Fotos zu speichern',
-                btnCloseModal: '✖ Schließen',
-                st_waiting: 'Warten auf Bild...',
-                st_loaded: 'Bild geladen. Bereit zum Bearbeiten, Drehen, Kopieren oder Herunterladen.',
-                st_back_loaded: 'Rückseite geladen! Nach der Bearbeitung auf „2️⃣ Zusammenfügen“ klicken.',
-                st_undo: 'Letzter Schritt rückgängig gemacht.',
-                st_invalid_file: 'Bitte eine gültige Bilddatei hineinziehen.',
-                st_mode_keystone: 'Klicken Sie nacheinander auf die 4 Ecken: Oben-Links, Oben-Rechts, Unten-Rechts, Unten-Links.',
-                st_keystone_ready: '4 Ecken gewählt. Rote Kreuze ziehen zum Anpassen, dann „✔ Korrektur bestätigen“ klicken.',
-                st_keystone_calc: 'Berechne Trapezkorrektur in hoher Qualität...',
-                st_keystone_done: 'Trapezkorrektur abgeschlossen.',
-                st_keystone_done_ratio: 'Trapezkorrektur abgeschlossen (Standardformat gesperrt).',
-                st_mode_mosaic: 'Ziehen Sie über den Bereich für das Mosaik (Erneut klicken zum Beenden).',
-                st_mosaic_done: 'Lokales Mosaik angewendet (Weiter ziehen oder zum Beenden klicken).',
-                st_mode_blackbox: 'Ziehen Sie über den Bereich, um Daten zu schwärzen (Erneut klicken zum Beenden).',
-                st_blackbox_done: 'Schwärzung angewendet (Weiter ziehen oder Schaltfläche zum Beenden klicken).',
-                st_mode_crop: 'Ziehen Sie einen Rahmen um den gewünschten Bildausschnitt.',
-                st_crop_done: 'Zuschneiden abgeschlossen.',
-                st_mode_redbox: 'Ziehen Sie, um einen roten Rahmen zu zeichnen (Erneut klicken zum Beenden).',
-                st_redbox_done: 'Roter Rahmen angewendet (Weiter ziehen oder Schaltfläche zum Beenden klicken).',
-                st_mode_redline: 'Ziehen Sie für eine rote Linie (Erneut klicken zum Beenden).',
-                st_redline_done: 'Rote Unterstreichung angewendet (Weiter ziehen oder zum Beenden klicken).',
-                st_bright_saved: 'Helligkeit gespeichert.',
-                st_bright_cancel: 'Helligkeitsänderung abgebrochen.',
-                st_doc_calc: 'Dokumentoptimierung & Schattenentfernung läuft...',
-                st_doc_done_stamp: 'Dokument optimiert (Farbige Stempel behalten).',
-                st_doc_done_bw: 'Dokument S/W-Optimierung angewendet.',
-                st_wm_no_img: 'Bitte zuerst ein Bild laden.',
-                st_wm_no_txt: 'Bitte Wasserzeichentext eingeben.',
-                st_wm_done: 'Wasserzeichen erfolgreich angewendet.',
-                st_front_no_img: 'Bitte zuerst die Vorderseite laden und bearbeiten.',
-                st_front_saved: 'Vorderseite gespeichert! Jetzt die Rückseite laden und zusammenfügen.',
-                st_front_cleared: 'Gespeicherte Vorderseite gelöscht.',
-                st_merge_err: 'Bitte sicherstellen, dass Vorderseite gespeichert und Rückseite geladen ist.',
-                st_merge_v_done: 'Vertikales Zusammenfügen abgeschlossen!',
-                st_merge_h_done: 'Horizontales Zusammenfügen abgeschlossen!',
-                st_rot_ccw: 'Um 90° nach links gedreht.',
-                st_rot_cw: 'Um 90° nach rechts gedreht.',
-                st_flip_h: 'Horizontal gespiegelt.',
-                st_flip_v: 'Vertikal gespiegelt.',
-                st_copy_no_img: 'Bitte zuerst ein Bild laden.',
-                st_copy_done: 'Bild in die Zwischenablage kopiert!',
-                st_copy_err: 'Kopieren fehlgeschlagen. Bitte „Bild herunterladen“ nutzen.',
-                st_dl_no_img: 'Bitte zuerst ein Bild laden.',
-                st_dl_done: 'Bild bereit! Bild gedrückt halten oder „Bild sichern“ wählen.',
-                st_pdf_no_img: 'Bitte zuerst ein Bild laden, bevor Sie ein PDF exportieren.',
-                st_pdf_done: 'PDF erfolgreich exportiert! Wählen Sie „In Dateien sichern“.'
-            },
-            'ko': {
-                docTitle: '행정 구원자 | 100% 오프라인 신분증 워터마크 및 사다리꼴 보정 도구',
-                g1Title: '1. 이미지 불러오기, 초기화 및 내보내기',
-                pasteHint: '<b>Ctrl+V</b>로 붙여넣기, <b>여기로 이미지 드래그</b>, 또는 파일 선택:',
-                btnSelectFile: '📁 파일 선택',
-                btnUndo: '↩ 실행 취소 (Ctrl+Z)',
-                btnReset: '전체 초기화',
-                btnCopy: '📋 이미지 복사',
-                btnDownload: '이미지 다운로드',
-                optPdfFit: 'PDF: A4 전체 페이지 맞춤',
-                optPdfId: 'PDF: 신분증 1:1 실제 크기 (A4)',
-                btnExportPdf: '📄 PDF 내보내기',
-                g2Title: '2. 이미지 회전 및 반전',
-                btnRotateCCW: '↺ 왼쪽 90° 회전',
-                btnRotateCW: '↻ 오른쪽 90° 회전',
-                btnFlipH: '↔ 좌우 반전',
-                btnFlipV: '↕ 상하 반전',
-                g3Title: '3. 밝기 및 픽셀 처리',
-                lblBrightness: '밝기 조절:',
-                btnApplyBrightness: '✔ 밝기 적용',
-                btnCancelBrightness: '✖ 취소',
-                btnDocEnhance: '📄 문서/신분증 흑백 선명화',
-                lblKeepStamp: '컬러 도장 유지',
-                btnCropMode: '✂️ 사각형 자르기',
-                btnRedBoxMode: '🟥 빨간 상자 강조',
-                btnRedLineMode: '🖍️ 빨간 밑줄 강조',
-                btnMosaicMode: '부분 모자이크 (드래그)',
-                btnBlackBoxMode: '⬛ 개인정보 먹칠',
-                btnKeystoneMode: '사다리꼴 보정 (좌상, 우상, 우하, 좌하 순서로 4점 클릭)',
-                optRatioAuto: '비율: 자동 계산',
-                optRatioIdH: '비율: 신분증 가로 (85.6×54mm)',
-                optRatioIdV: '비율: 신분증 세로 (54×85.6mm)',
-                optRatioA4V: '비율: A4 세로 문서 (210×297mm)',
-                optRatioA4H: '비율: A4 가로 문서 (297×210mm)',
-                btnApplyKeystone: '✔ 보정 확인',
-                tooltipTrigger: 'ⓘ 클릭 순서 안내',
-                tooltipDesc: '클릭 순서:<br><b>1.좌상 ➔ 2.우상 ➔ 3.우하 ➔ 4.좌하</b>',
-                lblWatermark: '도용 방지 워터마크:',
-                watermarkDefault: '업무 제출용 외 사용 금지',
-                watermarkPlaceholder: '워터마크 텍스트 입력...',
-                optWmGray: '반투명 다크 그레이',
-                optWmRed: '반투명 도장 레드',
-                optWmBlue: '반투명 공문 블루',
-                btnApplyWatermark: '🔏 전체 워터마크 삽입',
-                lblMerge: '🪪 신분증 앞뒷면 병합:',
-                btnSaveFront: '1️⃣ 현재 화면을 "앞면"으로 임시저장',
-                btnMergeV: '2️⃣ ↕ 상하 병합 (앞+뒤)',
-                btnMergeH: '2️⃣ ↔ 좌우 병합 (앞+뒤)',
-                btnClearFront: '✖ 임시저장 삭제',
-                frontEmpty: '(아직 앞면 이미지가 저장되지 않음)',
-                frontSaved: '(✔ 앞면 저장됨 {w}×{h}px. 뒷면 이미지를 불러온 후 병합 클릭)',
-                footerPrivacy: '🛡️ 100% 로컬 오프라인 작동. 개인정보 서버 전송 위험 없음.',
-                lblDonatePrompt: '업무 효율을 높이는 데 도움이 되었다면 후원으로 응원해 주세요',
-                btnDonateEcpay: '綠界科技',
-                lblModalHint: '📱 아래 이미지를 길게 눌러 사진 앱에 저장하세요',
-                btnCloseModal: '✖ 닫기',
-                st_waiting: '이미지 불러오기 대기 중...',
-                st_loaded: '이미지를 성공적으로 불러왔습니다. 편집, 회전, 복사, 다운로드가 가능합니다.',
-                st_back_loaded: '뒷면 이미지를 불러왔습니다! 보정 후 "2️⃣ 상하/좌우 병합"을 클릭하세요.',
-                st_undo: '이전 단계로 복구되었습니다.',
-                st_invalid_file: '유효한 이미지 파일을 드래그해 주세요.',
-                st_mode_keystone: '남길 영역의 좌상, 우상, 우하, 좌하 꼭짓점 4개를 순서대로 클릭하세요.',
-                st_keystone_ready: '4개의 꼭짓점이 선택되었습니다. 빨간 십자선을 드래그해 미세 조정 후 "✔ 보정 확인"을 클릭하세요.',
-                st_keystone_calc: '고화질 사다리꼴 보정 계산 중...',
-                st_keystone_done: '사다리꼴 보정이 완료되었습니다.',
-                st_keystone_done_ratio: '사다리꼴 보정이 완료되었습니다 (표준 비율 고정 적용).',
-                st_mode_mosaic: '모ザ이크할 영역을 드래그하세요 (연속 사용 가능, 버튼 재클릭 시 해제).',
-                st_mosaic_done: '부분 모자이크가 적용되었습니다 (계속 드래그하거나 버튼을 다시 눌러 종료).',
-                st_mode_blackbox: '가릴 영역을 드래그하세요 (연속 사용 가능, 버튼 재클릭 시 해제).',
-                st_blackbox_done: '검은 상자 마스킹이 적용되었습니다 (계속 드래그하거나 버튼을 다시 눌러 종료).',
-                st_mode_crop: '자르고 남길 영역을 드래그하세요.',
-                st_crop_done: '사각형 자르기가 완료되었습니다.',
-                st_mode_redbox: '드래그하여 빨간 상자를 그리세요 (연속 사용 가능, 버튼 재클릭 시 해제).',
-                st_redbox_done: '빨간 상자 강조가 적용되었습니다 (계속 드래그하거나 버튼을 다시 눌러 종료).',
-                st_mode_redline: '드래그하여 빨간 밑줄을 그리세요 (연속 사용 가능, 버튼 재클릭 시 해제).',
-                st_redline_done: '빨간 밑줄 강조가 적용되었습니다 (계속 드래그하거나 버튼을 다시 눌러 종료).',
-                st_bright_saved: '밝기가 저장되었습니다.',
-                st_bright_cancel: '밝기 조절이 취소되었습니다.',
-                st_doc_calc: '문서 그림자 제거 및 선명화 실행 중...',
-                st_doc_done_stamp: '문서 선명화 완료 (컬러 도장 유지됨).',
-                st_doc_done_bw: '문서/신분증 흑백 선명화가 적용되었습니다.',
-                st_wm_no_img: '워터마크를 삽입하기 전에 이미지를 먼저 불러오세요.',
-                st_wm_no_txt: '워터마크 텍스트를 입력하세요.',
-                st_wm_done: '전체 화면에 도용 방지 워터마크가 삽입되었습니다.',
-                st_front_no_img: '먼저 앞면 이미지를 불러와 보정한 후 임시저장을 클릭하세요.',
-                st_front_saved: '앞면 이미지가 임시저장되었습니다! 이제 "뒷면" 이미지를 불러와 병합하세요.',
-                st_front_cleared: '임시저장된 앞면 이미지가 삭제되었습니다.',
-                st_merge_err: '앞면 이미지가 임시저장되어 있고 현재 뒷면 이미지가 불러와져 있는지 확인하세요.',
-                st_merge_v_done: '신분증 앞뒷면 "상하 병합" 완료!',
-                st_merge_h_done: '신분증 앞뒷면 "좌우 병합" 완료!',
-                st_rot_ccw: '왼쪽으로 90° 회전했습니다.',
-                st_rot_cw: '오른쪽으로 90° 회전했습니다.',
-                st_flip_h: '좌우 반전되었습니다.',
-                st_flip_v: '상하 반전되었습니다.',
-                st_copy_no_img: '복사하기 전에 이미지를 먼저 불러오세요.',
-                st_copy_done: '클립보드에 복사되었습니다!',
-                st_copy_err: '복사 실패. 이미지 다운로드를 이용해 주세요.',
-                st_dl_no_img: '다운로드하기 전에 이미지를 먼저 불러오세요.',
-                st_dl_done: '이미지 준비 완료! 팝업 이미지를 길게 누르거나 "이미지 저장"을 선택하세요.',
-                st_pdf_no_img: 'PDF로 내보내기 전에 이미지를 먼저 불러오세요.',
-                st_pdf_done: 'PDF 내보내기 완료! 메뉴에서 "파일에 저장"을 선택하세요.'
-            },
-            'fr': {
-                docTitle: 'Sauveur Administratif | Outil 100% Hors-ligne Filigrane & Correction ID',
-                g1Title: '1. Source, Réinitialisation & Export',
-                pasteHint: 'Appuyez sur <b>Ctrl+V</b>, <b>glissez-déposez</b> une image ici, ou choisissez un fichier :',
-                btnSelectFile: '📁 Choisir un fichier',
-                btnUndo: '↩ Annuler (Ctrl+Z)',
-                btnReset: 'Tout réinitialiser',
-                btnCopy: '📋 Copier l’image',
-                btnDownload: 'Télécharger PNG',
-                optPdfFit: 'PDF : Ajuster à la page A4',
-                optPdfId: 'PDF : Carte ID taille réelle 1:1 (A4)',
-                btnExportPdf: '📄 Exporter en PDF',
-                g2Title: '2. Orientation de l’image',
-                btnRotateCCW: '↺ Pivoter 90° G',
-                btnRotateCW: '↻ Pivoter 90° D',
-                btnFlipH: '↔ Miroir horizontal',
-                btnFlipV: '↕ Miroir vertical',
-                g3Title: '3. Luminosité & Traitement des pixels',
-                lblBrightness: 'Luminosité :',
-                btnApplyBrightness: '✔ Appliquer',
-                btnCancelBrightness: '✖ Annuler',
-                btnDocEnhance: '📄 Amélioration N&B Document',
-                lblKeepStamp: 'Conserver les tampons colorés',
-                btnCropMode: '✂️ Recadrer',
-                btnRedBoxMode: '🟥 Cadre rouge',
-                btnRedLineMode: '🖍️ Soulignement rouge',
-                btnMosaicMode: 'Mosaïque locale (Glisser)',
-                btnBlackBoxMode: '⬛ Masquage noir',
-                btnKeystoneMode: 'Correction trapézoïdale (Haut-G, Haut-D, Bas-D, Bas-G)',
-                optRatioAuto: 'Ratio : Automatique',
-                optRatioIdH: 'Ratio : Carte ID Paysage (85,6×54mm)',
-                optRatioIdV: 'Ratio : Carte ID Portrait (54×85,6mm)',
-                optRatioA4V: 'Ratio : A4 Portrait (210×297mm)',
-                optRatioA4H: 'Ratio : A4 Paysage (297×210mm)',
-                btnApplyKeystone: '✔ Valider la correction',
-                tooltipTrigger: 'ⓘ Ordre des clics',
-                tooltipDesc: 'Ordre obligatoire :<br><b>1.Haut-G ➔ 2.Haut-D ➔ 3.Bas-D ➔ 4.Bas-G</b>',
-                lblWatermark: 'Filigrane de sécurité :',
-                watermarkDefault: 'USAGE ADMINISTRATIF UNIQUEMENT',
-                watermarkPlaceholder: 'Texte du filigrane...',
-                optWmGray: 'Gris foncé translucide',
-                optWmRed: 'Rouge tampon translucide',
-                optWmBlue: 'Bleu officiel translucide',
-                btnApplyWatermark: '🔏 Appliquer le filigrane',
-                lblMerge: '🪪 Fusionner Recto/Verso :',
-                btnSaveFront: '1️⃣ Mémoriser comme « Recto »',
-                btnMergeV: '2️⃣ ↕ Fusion verticale',
-                btnMergeH: '2️⃣ ↔ Fusion horizontale',
-                btnClearFront: '✖ Effacer',
-                frontEmpty: '(Aucun recto mémorisé)',
-                frontSaved: '(✔ Recto mémorisé {w}×{h}px. Chargez le verso puis fusionnez)',
-                footerPrivacy: '🛡️ Fonctionnement 100 % local et hors-ligne. Aucun envoi de données.',
-                lblDonatePrompt: 'Si cet outil améliore votre efficacité au travail, n’hésitez pas à me soutenir',
-                btnDonateEcpay: '綠界科技',
-                lblModalHint: '📱 Appuyez longuement sur l’image pour l’enregistrer dans Photos',
-                btnCloseModal: '✖ Fermer',
-                st_waiting: 'En attente d’une image...',
-                st_loaded: 'Image chargée. Prête à être modifiée, pivotée, copiée ou téléchargée.',
-                st_back_loaded: 'Verso chargé ! Après correction, cliquez sur « 2️⃣ Fusion verticale/horizontale ».',
-                st_undo: 'Action précédente annulée.',
-                st_invalid_file: 'Veuillez glisser un fichier image valide.',
-                st_mode_keystone: 'Cliquez dans l’ordre sur les 4 coins : Haut-Gauche, Haut-Droit, Bas-Droit, Bas-Gauche.',
-                st_keystone_ready: '4 coins sélectionnés. Ajustez les croix rouges puis cliquez sur « ✔ Valider la correction ».',
-                st_keystone_calc: 'Calcul de la correction trapézoïdale haute qualité...',
-                st_keystone_done: 'Correction trapézoïdale terminée.',
-                st_keystone_done_ratio: 'Correction trapézoïdale terminée (Ratio standard verrouillé).',
-                st_mode_mosaic: 'Faites glisser pour flouter (Mode continu ; recliquez pour quitter).',
-                st_mosaic_done: 'Mosaïque locale appliquée (Continuez à glisser ou recliquez pour quitter).',
-                st_mode_blackbox: 'Faites glisser pour masquer en noir (Mode continu ; recliquez pour quitter).',
-                st_blackbox_done: 'Masquage noir appliqué (Continuez à glisser ou recliquez pour quitter).',
-                st_mode_crop: 'Faites glisser pour sélectionner la zone à recadrer.',
-                st_crop_done: 'Recadrage terminé.',
-                st_mode_redbox: 'Faites glisser pour dessiner un cadre rouge (Recliquez pour quitter).',
-                st_redbox_done: 'Cadre rouge appliqué (Continuez à glisser ou recliquez pour quitter).',
-                st_mode_redline: 'Faites glisser pour souligner en rouge (Recliquez pour quitter).',
-                st_redline_done: 'Soulignement rouge appliqué (Continuez à glisser ou recliquez pour quitter).',
-                st_bright_saved: 'Luminosité enregistrée.',
-                st_bright_cancel: 'Modification de la luminosité annulée.',
-                st_doc_calc: 'Suppression des ombres et amélioration du document...',
-                st_doc_done_stamp: 'Document amélioré (Tampons colorés conservés).',
-                st_doc_done_bw: 'Amélioration N&B du document appliquée.',
-                st_wm_no_img: 'Veuillez d’abord charger une image.',
-                st_wm_no_txt: 'Veuillez saisir un texte de filigrane.',
-                st_wm_done: 'Filigrane de sécurité appliqué.',
-                st_front_no_img: 'Veuillez charger et préparer le recto avant de le mémoriser.',
-                st_front_saved: 'Recto mémorisé ! Chargez maintenant le « Verso » puis cliquez sur Fusionner.',
-                st_front_cleared: 'Recto mémorisé effacé.',
-                st_merge_err: 'Assurez-vous d’avoir mémorisé le recto et chargé le verso.',
-                st_merge_v_done: 'Fusion verticale terminée !',
-                st_merge_h_done: 'Fusion horizontale terminée !',
-                st_rot_ccw: 'Pivoté de 90° vers la gauche.',
-                st_rot_cw: 'Pivoté de 90° vers la droite.',
-                st_flip_h: 'Retourné horizontalement.',
-                st_flip_v: 'Retourné verticalement.',
-                st_copy_no_img: 'Veuillez d’abord charger une image.',
-                st_copy_done: 'Image copiée dans le presse-papiers !',
-                st_copy_err: 'Échec de la copie. Veuillez utiliser le bouton Télécharger.',
-                st_dl_no_img: 'Veuillez d’abord charger une image.',
-                st_dl_done: 'Image prête ! Maintenez l’image appuyée ou choisissez « Enregistrer l’image ».',
-                st_pdf_no_img: 'Veuillez charger une image avant d’exporter en PDF.',
-                st_pdf_done: 'PDF exporté ! Choisissez « Enregistrer dans Fichiers ».'
-            },
-            'nl': {
-                docTitle: 'Administratieve Redder | 100% Offline ID-Watermerk & Trapeziumcorrectie',
-                g1Title: '1. Bron, Resetten & Exporteren',
-                pasteHint: 'Druk op <b>Ctrl+V</b>, <b>sleep een afbeelding hierheen</b>, of kies een bestand:',
-                btnSelectFile: '📁 Bestand kiezen',
-                btnUndo: '↩ Ongedaan maken (Ctrl+Z)',
-                btnReset: 'Alles resetten',
-                btnCopy: '📋 Afbeelding kopiëren',
-                btnDownload: 'Download PNG',
-                optPdfFit: 'PDF: A4 Volledige pagina',
-                optPdfId: 'PDF: ID-kaart 1:1 Ware grootte (A4)',
-                btnExportPdf: '📄 Exporteer PDF',
-                g2Title: '2. Afbeelding draaien & spiegelen',
-                btnRotateCCW: '↺ 90° naar links',
-                btnRotateCW: '↻ 90° naar rechts',
-                btnFlipH: '↔ Horizontaal spiegelen',
-                btnFlipV: '↕ Verticaal spiegelen',
-                g3Title: '3. Helderheid & Pixelbewerking',
-                lblBrightness: 'Helderheid:',
-                btnApplyBrightness: '✔ Toepassen',
-                btnCancelBrightness: '✖ Annuleren',
-                btnDocEnhance: '📄 Document Z/W verbeteren',
-                lblKeepStamp: 'Kleurstempels behouden',
-                btnCropMode: '✂️ Bijsnijden',
-                btnRedBoxMode: '🟥 Rood kader',
-                btnRedLineMode: '🖍️ Rode onderstreping',
-                btnMosaicMode: 'Mozaïek (Slepen)',
-                btnBlackBoxMode: '⬛ Zwart maken',
-                btnKeystoneMode: 'Trapeziumcorrectie (Klik L-Boven, R-Boven, R-Onder, L-Onder)',
-                optRatioAuto: 'Verhouding: Automatisch',
-                optRatioIdH: 'Verhouding: ID-kaart Liggend (85,6×54mm)',
-                optRatioIdV: 'Verhouding: ID-kaart Staand (54×85,6mm)',
-                optRatioA4V: 'Verhouding: A4 Staand (210×297mm)',
-                optRatioA4H: 'Verhouding: A4 Liggend (297×210mm)',
-                btnApplyKeystone: '✔ Correctie bevestigen',
-                tooltipTrigger: 'ⓘ Klikvolgorde',
-                tooltipDesc: 'Volgorde:<br><b>1.L-Boven ➔ 2.R-Boven ➔ 3.R-Onder ➔ 4.L-Onder</b>',
-                lblWatermark: 'Watermerk:',
-                watermarkDefault: 'UITSLUITEND VOOR VERIFICATIE',
-                watermarkPlaceholder: 'Voer watermerktekst in...',
-                optWmGray: 'Halftransparant Donkergrijs',
-                optWmRed: 'Halftransparant Stempelrood',
-                optWmBlue: 'Halftransparant Documentblauw',
-                btnApplyWatermark: '🔏 Watermerk toepassen',
-                lblMerge: '🪪 ID Voor- & Achterkant samenvoegen:',
-                btnSaveFront: '1️⃣ Huidig opslaan als "Voorkant"',
-                btnMergeV: '2️⃣ ↕ Verticaal samenvoegen',
-                btnMergeH: '2️⃣ ↔ Horizontaal samenvoegen',
-                btnClearFront: '✖ Wissen',
-                frontEmpty: '(Nog geen voorkant opgeslagen)',
-                frontSaved: '(✔ Voorkant opgeslagen {w}×{h}px. Laad achterkant en voeg samen)',
-                footerPrivacy: '🛡️ 100% lokale offline verwerking. Geen enkel uploadrisico.',
-                lblDonatePrompt: 'Als deze tool uw werkefficiëntie verhoogt, steun mij dan gerust',
-                btnDonateEcpay: '綠界科技',
-                lblModalHint: '📱 Houd de afbeelding hieronder ingedrukt om op te slaan in Foto’s',
-                btnCloseModal: '✖ Sluiten',
-                st_waiting: 'Wachten op afbeelding...',
-                st_loaded: 'Afbeelding geladen. Klaar om te bewerken, draaien, kopiëren of downloaden.',
-                st_back_loaded: 'Achterkant geladen! Klik na bewerking op "2️⃣ Samenvoegen".',
-                st_undo: 'Vorige stap hersteld.',
-                st_invalid_file: 'Sleep een geldig afbeeldingsbestand.',
-                st_mode_keystone: 'Klik achtereenvolgens op de 4 hoeken: Linksboven, Rechtsboven, Rechtsonder, Linksonder.',
-                st_keystone_ready: '4 hoeken geselecteerd. Versleep rode kruisjes om aan te passen en klik op "✔ Correctie bevestigen".',
-                st_keystone_calc: 'Hoogwaardige trapeziumcorrectie berekenen...',
-                st_keystone_done: 'Trapeziumcorrectie voltooid.',
-                st_keystone_done_ratio: 'Trapeziumcorrectie voltooid (Standaardverhouding vergrendeld).',
-                st_mode_mosaic: 'Sleep om het mozaïekgebied te selecteren (Klik nogmaals om te sluiten).',
-                st_mosaic_done: 'Mozaïek toegepast (Blijf slepen of klik nogmaals om te sluiten).',
-                st_mode_blackbox: 'Sleep over de afbeelding om gegevens zwart te maken (Klik nogmaals om te sluiten).',
-                st_blackbox_done: 'Zwart vlak toegepast (Blijf slepen of klik nogmaals op de knop om te sluiten).',
-                st_mode_crop: 'Sleep over de afbeelding om het gebied bij te snijden.',
-                st_crop_done: 'Bijsnijden voltooid.',
-                st_mode_redbox: 'Sleep om een rood kader te tekenen (Klik nogmaals om te sluiten).',
-                st_redbox_done: 'Rood kader toegepast (Blijf slepen of klik nogmaals om te sluiten).',
-                st_mode_redline: 'Sleep om rood te onderstrepen (Klik nogmaals om te sluiten).',
-                st_redline_done: 'Rode onderstreping toegepast (Blijf slepen of klik nogmaals om te sluiten).',
-                st_bright_saved: 'Helderheid opgeslagen.',
-                st_bright_cancel: 'Helderheidsaanpassing geannuleerd.',
-                st_doc_calc: 'Schaduwen verwijderen en document verbeteren...',
-                st_doc_done_stamp: 'Document verbeterd (Kleurstempels behouden).',
-                st_doc_done_bw: 'Document Z/W-verbetering toegepast.',
-                st_wm_no_img: 'Laad eerst een afbeelding.',
-                st_wm_no_txt: 'Voer een watermerktekst in.',
-                st_wm_done: 'Watermerk toegepast.',
-                st_front_no_img: 'Laad en bewerk eerst de voorkant voordat u opslaat.',
-                st_front_saved: 'Voorkant opgeslagen! Laad nu de "Achterkant" en klik op Samenvoegen.',
-                st_front_cleared: 'Opgeslagen voorkant gewist.',
-                st_merge_err: 'Zorg dat de voorkant is opgeslagen en de achterkant is geladen.',
-                st_merge_v_done: 'Verticaal samenvoegen voltooid!',
-                st_merge_h_done: 'Horizontaal samenvoegen voltooid!',
-                st_rot_ccw: '90° naar links gedraaid.',
-                st_rot_cw: '90° naar rechts gedraaid.',
-                st_flip_h: 'Horizontaal gespiegeld.',
-                st_flip_v: 'Verticaal gespiegeld.',
-                st_copy_no_img: 'Laad eerst een afbeelding.',
-                st_copy_done: 'Afbeelding gekopieerd naar klembord!',
-                st_copy_err: 'Kopiëren mislukt. Gebruik de downloadknop.',
-                st_dl_no_img: 'Laad eerst een afbeelding.',
-                st_dl_done: 'Afbeelding klaar! Houd de afbeelding ingedrukt of kies "Afbeelding bewaren".',
-                st_pdf_no_img: 'Laad eerst een afbeelding voordat u naar PDF exporteert.',
-                st_pdf_done: 'PDF geëxporteerd! Kies "Bewaar in Bestanden".'
-            },
-            'es': {
-                docTitle: 'Salvador Administrativo | Herramienta 100% Offline para DNI y Documentos',
-                g1Title: '1. Origen, Restablecer y Exportar',
-                pasteHint: 'Presiona <b>Ctrl+V</b> para pegar, <b>arrastra la imagen aquí</b> o elige un archivo:',
-                btnSelectFile: '📁 Elegir archivo',
-                btnUndo: '↩ Deshacer (Ctrl+Z)',
-                btnReset: 'Restablecer todo',
-                btnCopy: '📋 Copiar imagen',
-                btnDownload: 'Descargar PNG',
-                optPdfFit: 'PDF: Ajustar a página A4',
-                optPdfId: 'PDF: Documento ID tamaño real 1:1 (A4)',
-                btnExportPdf: '📄 Exportar PDF',
-                g2Title: '2. Orientación de la imagen',
-                btnRotateCCW: '↺ Girar 90° Izq.',
-                btnRotateCW: '↻ Girar 90° Der.',
-                btnFlipH: '↔ Voltear horizontal',
-                btnFlipV: '↕ Voltear vertical',
-                g3Title: '3. Brillo y Procesamiento de Píxeles',
-                lblBrightness: 'Brillo:',
-                btnApplyBrightness: '✔ Aplicar',
-                btnCancelBrightness: '✖ Cancelar',
-                btnDocEnhance: '📄 Mejora B/N de Documento',
-                lblKeepStamp: 'Conservar sellos de color',
-                btnCropMode: '✂️ Recortar',
-                btnRedBoxMode: '🟥 Recuadro rojo',
-                btnRedLineMode: '🖍️ Subrayado rojo',
-                btnMosaicMode: 'Mosaico local (Arrastrar)',
-                btnBlackBoxMode: '⬛ Ocultación en negro',
-                btnKeystoneMode: 'Corrección trapezoidal (Clic Sup-Izq, Sup-Der, Inf-Der, Inf-Izq)',
-                optRatioAuto: 'Proporción: Automática',
-                optRatioIdH: 'Proporción: DNI/Tarjeta Horizontal (85,6×54mm)',
-                optRatioIdV: 'Proporción: DNI/Tarjeta Vertical (54×85,6mm)',
-                optRatioA4V: 'Proporción: A4 Vertical (210×297mm)',
-                optRatioA4H: 'Proporción: A4 Horizontal (297×210mm)',
-                btnApplyKeystone: '✔ Confirmar corrección',
-                tooltipTrigger: 'ⓘ Orden de clics',
-                tooltipDesc: 'Orden obligatorio:<br><b>1.Sup-Izq ➔ 2.Sup-Der ➔ 3.Inf-Der ➔ 4.Inf-Izq</b>',
-                lblWatermark: 'Marca de agua:',
-                watermarkDefault: 'SOLO PARA USO DE VERIFICACIÓN',
-                watermarkPlaceholder: 'Texto de marca de agua...',
-                optWmGray: 'Gris oscuro translúcido',
-                optWmRed: 'Rojo sello translúcido',
-                optWmBlue: 'Azul oficial translúcido',
-                btnApplyWatermark: '🔏 Aplicar marca de agua',
-                lblMerge: '🪪 Unir Anverso y Reverso:',
-                btnSaveFront: '1️⃣ Guardar actual como "Anverso"',
-                btnMergeV: '2️⃣ ↕ Unir verticalmente',
-                btnMergeH: '2️⃣ ↔ Unir horizontalmente',
-                btnClearFront: '✖ Borrar guardado',
-                frontEmpty: '(Anverso aún no guardado)',
-                frontSaved: '(✔ Anverso guardado {w}×{h}px. Carga el reverso y pulsa Unir)',
-                footerPrivacy: '🛡️ Procesamiento 100% local sin conexión. Cero riesgo de subida de datos.',
-                lblDonatePrompt: 'Si esta herramienta mejora tu eficiencia en el trabajo, no dudes en apoyarme',
-                btnDonateEcpay: '綠界科技',
-                lblModalHint: '📱 Mantén presionada la imagen de abajo para guardar en Fotos',
-                btnCloseModal: '✖ Cerrar',
-                st_waiting: 'Esperando imagen...',
-                st_loaded: 'Imagen cargada. Lista para editar, girar, copiar o descargar.',
-                st_back_loaded: '¡Reverso cargado! Tras corregir, haz clic en "2️⃣ Unir vertical/horizontalmente".',
-                st_undo: 'Deshecho al paso anterior.',
-                st_invalid_file: 'Por favor, arrastra un archivo de imagen válido.',
-                st_mode_keystone: 'Haz clic en las 4 esquinas en orden: Sup-Izquierda, Sup-Derecha, Inf-Derecha, Inf-Izquierda.',
-                st_keystone_ready: '4 esquinas seleccionadas. Arrastra las cruces rojas para ajustar y pulsa "✔ Confirmar corrección".',
-                st_keystone_calc: 'Calculando corrección trapezoidal en alta calidad...',
-                st_keystone_done: 'Corrección trapezoidal completada.',
-                st_keystone_done_ratio: 'Corrección trapezoidal completada (Proporción estándar fijada).',
-                st_mode_mosaic: 'Arrastra para seleccionar el área del mosaico (Haz clic de nuevo para salir).',
-                st_mosaic_done: 'Mosaico local aplicado (Sigue arrastrando o haz clic en el botón para salir).',
-                st_mode_blackbox: 'Arrastra para ocultar datos con un cuadro negro (Haz clic de nuevo para salir).',
-                st_blackbox_done: 'Ocultación aplicada (Sigue arrastrando o haz clic en el botón para salir).',
-                st_mode_crop: 'Arrastra para seleccionar el área a recortar.',
-                st_crop_done: 'Recorte completado.',
-                st_mode_redbox: 'Arrastra para dibujar un recuadro rojo (Haz clic de nuevo para salir).',
-                st_redbox_done: 'Recuadro rojo aplicado (Sigue arrastrando o haz clic en el botón para salir).',
-                st_mode_redline: 'Arrastra para subrayar en rojo (Haz clic de nuevo para salir).',
-                st_redline_done: 'Subrayado rojo aplicado (Sigue arrastrando o haz clic en el botón para salir).',
-                st_bright_saved: 'Brillo guardado.',
-                st_bright_cancel: 'Ajuste de brillo cancelado.',
-                st_doc_calc: 'Eliminando sombras y mejorando documento...',
-                st_doc_done_stamp: 'Documento mejorado (Sellos de color conservados).',
-                st_doc_done_bw: 'Mejora B/N de documento aplicada.',
-                st_wm_no_img: 'Carga una imagen antes de aplicar la marca de agua.',
-                st_wm_no_txt: 'Introduce el texto de la marca de agua.',
-                st_wm_done: 'Marca de agua aplicada.',
-                st_front_no_img: 'Carga y procesa primero el anverso antes de guardar.',
-                st_front_saved: '¡Anverso guardado! Ahora carga el "Reverso" y pulsa Unir.',
-                st_front_cleared: 'Anverso guardado eliminado.',
-                st_merge_err: 'Asegúrate de haber guardado el anverso y cargado el reverso.',
-                st_merge_v_done: '¡Unión vertical completada!',
-                st_merge_h_done: '¡Unión horizontal completada!',
-                st_rot_ccw: 'Girado 90° a la izquierda.',
-                st_rot_cw: 'Girado 90° a la derecha.',
-                st_flip_h: 'Volteado horizontalmente.',
-                st_flip_v: 'Volteado verticalmente.',
-                st_copy_no_img: 'Carga una imagen antes de copiar.',
-                st_copy_done: '¡Imagen copiada al portapapeles!',
-                st_copy_err: 'Error al copiar. Por favor, usa Descargar.',
-                st_dl_no_img: 'Carga una imagen antes de descargar.',
-                st_dl_done: '¡Imagen lista! Mantén presionada la imagen o selecciona "Guardar imagen".',
-                st_pdf_no_img: 'Carga una imagen antes de exportar a PDF.',
-                st_pdf_done: '¡PDF exportado! Selecciona "Guardar en Archivos".'
-            },
-            'sv': {
-                docTitle: 'Administrativ Räddare | 100 % Offline Vattenstämpel & Keystone-verktyg',
-                g1Title: '1. Bildkälla, Återställ & Exportera',
-                pasteHint: 'Tryck <b>Ctrl+V</b> för att klistra in, <b>dra och släpp</b> här, eller välj fil:',
-                btnSelectFile: '📁 Välj fil',
-                btnUndo: '↩ Ångra (Ctrl+Z)',
-                btnReset: 'Återställ allt',
-                btnCopy: '📋 Kopiera bild',
-                btnDownload: 'Ladda ner PNG',
-                optPdfFit: 'PDF: Anpassa till A4-sida',
-                optPdfId: 'PDF: ID-kort 1:1 Verklig storlek (A4)',
-                btnExportPdf: '📄 Exportera PDF',
-                g2Title: '2. Bildorientering',
-                btnRotateCCW: '↺ Rotera 90° V',
-                btnRotateCW: '↻ Rotera 90° H',
-                btnFlipH: '↔ Vänd vågrätt',
-                btnFlipV: '↕ Vänd lodrätt',
-                g3Title: '3. Ljusstyrka & Pixelbehandling',
-                lblBrightness: 'Ljusstyrka:',
-                btnApplyBrightness: '✔ Verkställ',
-                btnCancelBrightness: '✖ Avbryt',
-                btnDocEnhance: '📄 Dokument S/V-förbättring',
-                lblKeepStamp: 'Behåll färgstämplar',
-                btnCropMode: '✂️ Beskär',
-                btnRedBoxMode: '🟥 Röd ram',
-                btnRedLineMode: '🖍️ Röd understrykning',
-                btnMosaicMode: 'Lokal mosaik (Dra)',
-                btnBlackBoxMode: '⬛ Maskera med svart',
-                btnKeystoneMode: 'Keystone-korrigering (Klicka Övre-V, Övre-H, Nedre-H, Nedre-V)',
-                optRatioAuto: 'Proportion: Automatisk',
-                optRatioIdH: 'Proportion: ID-kort Liggande (85,6×54mm)',
-                optRatioIdV: 'Proportion: ID-kort Stående (54×85,6mm)',
-                optRatioA4V: 'Proportion: A4 Stående (210×297mm)',
-                optRatioA4H: 'Proportion: A4 Liggande (297×210mm)',
-                btnApplyKeystone: '✔ Bekräfta korrigering',
-                tooltipTrigger: 'ⓘ Klickordning',
-                tooltipDesc: 'Ordningen måste vara:<br><b>1.Övre-V ➔ 2.Övre-H ➔ 3.Nedre-H ➔ 4.Nedre-V</b>',
-                lblWatermark: 'Säkerhetsvattenstämpel:',
-                watermarkDefault: 'ENDAST FÖR VERIFIERING',
-                watermarkPlaceholder: 'Ange vattenstämpeltext...',
-                optWmGray: 'Halvtransparent Mörkgrå',
-                optWmRed: 'Halvtransparent Stämpelröd',
-                optWmBlue: 'Halvtransparent Dokumentblå',
-                btnApplyWatermark: '🔏 Lägg till vattenstämpel',
-                lblMerge: '🪪 Slå ihop ID Fram- & Baksida:',
-                btnSaveFront: '1️⃣ Spara aktuell som "Framsida"',
-                btnMergeV: '2️⃣ ↕ Slå ihop lodrätt',
-                btnMergeH: '2️⃣ ↔ Slå ihop vågrätt',
-                btnClearFront: '✖ Rensa sparad',
-                frontEmpty: '(Ingen framsida sparad ännu)',
-                frontSaved: '(✔ Framsida sparad {w}×{h}px. Ladda baksida och klicka Slå ihop)',
-                footerPrivacy: '🛡️ 100 % lokal offline-bearbetning. Ingen risk för datauppladdning.',
-                lblDonatePrompt: 'Om detta verktyg ökar din arbetseffektivitet får du gärna stödja mig',
-                btnDonateEcpay: '綠界科技',
-                lblModalHint: '📱 Håll bilden nedan intryckt för att spara i Bilder',
-                btnCloseModal: '✖ Stäng',
-                st_waiting: 'Väntar på bild...',
-                st_loaded: 'Bilden har laddats. Redo för redigering, rotering, kopiering eller nedladdning.',
-                st_back_loaded: 'Baksida laddad! Efter redigering, klicka på "2️⃣ Slå ihop lodrätt/vågrätt".',
-                st_undo: 'Ångrade till föregående steg.',
-                st_invalid_file: 'Dra och släpp en giltig bildfil.',
-                st_mode_keystone: 'Klicka på de 4 hörnen i ordning: Övre vänstra, Övre högra, Nedre högra, Nedre vänstra.',
-                st_keystone_ready: '4 hörn valda. Dra i de röda korsen för att finjustera och klicka sedan "✔ Bekräfta korrigering".',
-                st_keystone_calc: 'Beräknar högupplöst keystone-korrigering...',
-                st_keystone_done: 'Keystone-korrigering klar.',
-                st_keystone_done_ratio: 'Keystone-korrigering klar (Standardproportion låst).',
-                st_mode_mosaic: 'Dra på bilden för att markera mosaikområdet (Klicka igen för att avsluta).',
-                st_mosaic_done: 'Lokal mosaik tillämpad (Fortsätt dra eller klicka igen för att avsluta).',
-                st_mode_blackbox: 'Dra på bilden för att maskera med svart ruta (Klicka igen för att avsluta).',
-                st_blackbox_done: 'Svart maskering tillämpad (Fortsätt dra eller klicka på knappen för att avsluta).',
-                st_mode_crop: 'Dra på bilden för att markera området som ska beskäras.',
-                st_crop_done: 'Beskärning klar.',
-                st_mode_redbox: 'Dra för att rita en röd markeringsram (Klicka igen för att avsluta).',
-                st_redbox_done: 'Röd ram tillämpad (Fortsätt dra eller klicka på knappen för att avsluta).',
-                st_mode_redline: 'Dra för att rita en röd understrykning (Klicka igen för att avsluta).',
-                st_redline_done: 'Röd understrykning tillämpad (Fortsätt dra eller klicka igen för att avsluta).',
-                st_bright_saved: 'Ljusstyrka sparad.',
-                st_bright_cancel: 'Justering av ljusstyrka avbruten.',
-                st_doc_calc: 'Tar bort skuggor och förbättrar dokument...',
-                st_doc_done_stamp: 'Dokument förbättrat (Färgstämplar bevarade).',
-                st_doc_done_bw: 'Dokument S/V-förbättring tillämpad.',
-                st_wm_no_img: 'Ladda en bild innan du lägger till vattenstämpel.',
-                st_wm_no_txt: 'Ange text för vattenstämpeln.',
-                st_wm_done: 'Säkerhetsvattenstämpel tillämpad.',
-                st_front_no_img: 'Ladda och redigera framsidan innan du sparar.',
-                st_front_saved: 'Framsida sparad! Ladda nu "Baksidan" och klicka på Slå ihop.',
-                st_front_cleared: 'Sparad framsida rensad.',
-                st_merge_err: 'Kontrollera att framsidan är sparad och baksidan är laddad.',
-                st_merge_v_done: 'Lodrät ihopslagning klar!',
-                st_merge_h_done: 'Vågrät ihopslagning klar!',
-                st_rot_ccw: 'Roterad 90° åt vänster.',
-                st_rot_cw: 'Roterad 90° åt höger.',
-                st_flip_h: 'Vänd vågrätt.',
-                st_flip_v: 'Vänd lodrätt.',
-                st_copy_no_img: 'Ladda en bild innan du kopierar.',
-                st_copy_done: 'Bild kopierad till urklipp!',
-                st_copy_err: 'Kopiering misslyckades. Använd nedladdningsknappen istället.',
-                st_dl_no_img: 'Ladda en bild innan du laddar ner.',
-                st_dl_done: 'Bild klar! Håll bilden intryckt eller välj "Spara bild" i menyn.',
-                st_pdf_no_img: 'Ladda en bild innan du exporterar till PDF.',
-                st_pdf_done: 'PDF exporterad! Välj "Spara i Filer" i menyn.'
-            }
+            'zh-TW': { appShortName:'行政救星', docTitle:'行政救星 Admin Savior｜100%離線身分證浮水印、證件正反面合併、公文梯形校正工具', g1Title:'1. 圖片來源、重置與輸出', pasteHint:'直接按下 <b>Ctrl+V</b> 貼上、<b>拖曳圖片至此</b>，或選擇檔案：', btnSelectFile:'📁 選擇檔案', btnUndo:'↩ 上一步 (Ctrl+Z)', btnReset:'全部重置', btnCopy:'📋 複製圖片', btnDownload:'下載圖片', optPdfFit:'PDF：A4 滿版適應', optPdfId:'PDF：證件 1:1 實際尺寸 (A4)', btnExportPdf:'📄 匯出 PDF', g2Title:'2. 圖片轉向', btnRotateCCW:'↺ 向左轉 90°', btnRotateCW:'↻ 向右轉 90°', btnFlipH:'↔ 水平翻轉', btnFlipV:'↕ 上下翻轉', g3Title:'3. 亮度與像素處理', lblBrightness:'亮度調整:', btnApplyBrightness:'✔ 確定亮度', btnCancelBrightness:'✖ 取消', btnDocEnhance:'📄 公文/證件黑白強化', lblKeepStamp:'保留彩色印章', btnCropMode:'✂️ 矩形裁切', btnRedBoxMode:'🟥 紅框標註', btnRedLineMode:'🖍️ 紅底線標註', btnMosaicMode:'局部馬賽克 (拖曳框選)', btnBlackBoxMode:'⬛ 個資黑塊', btnKeystoneMode:'梯形校正 (依序點擊左上、右上、右下、左下4個頂點)', optRatioAuto:'比例：自動推算', optRatioIdH:'比例：身分證/健保卡 (85.6×54mm)', optRatioIdV:'比例：直式證件 (54×85.6mm)', optRatioA4V:'比例：A4 直式公文 (210×297mm)', optRatioA4H:'比例：A4 橫式文件 (297×210mm)', btnApplyKeystone:'✔ 確認校正', tooltipTrigger:'ⓘ 點擊順序示範', tooltipDesc:'順序必須為：<br><b>1.左上 ➔ 2.右上 ➔ 3.右下 ➔ 4.左下</b>', lblWatermark:'防盜用浮水印:', watermarkDefault:'僅供業務申辦使用 他用無效', watermarkPlaceholder:'請輸入浮水印文字...', optWmGray:'半透明深灰', optWmRed:'半透明印泥紅', optWmBlue:'半透明公文藍', btnApplyWatermark:'🔏 壓印滿版浮水印', lblMerge:'🪪 證件正反面合併:', btnSaveFront:'1️⃣ 暫存目前畫面為「正面」', btnMergeV:'2️⃣ ↕ 上下合併 (正+反)', btnMergeH:'2️⃣ ↔ 左右合併 (正+反)', btnClearFront:'✖ 清除暫存', frontEmpty:'（尚未暫存正面圖片）', frontSaved:'（✔ 已暫存正面 {w}×{h}px，請載入反面圖片後點擊合併）', footerPrivacy:'🛡️ 本工具純本機離線運作，無任何個資上傳風險', lblShortcutPrompt:'加入書籤或建立捷徑，節省更多喝咖啡的時間！', btnAddBookmark:'⭐ 加入瀏覽器書籤', btnAddShortcut:'📲 在手機桌面建立捷徑', lblDonatePrompt:'如果有提升你的工作效率，歡迎贊助支持我', btnDonateEcpay:'綠界科技', lblModalHint:'📱 請直接「長按下方圖片」➔「加入照片」存入相簿', btnCloseModal:'✖ 關閉', sc_bm_title:'⭐ 加入瀏覽器書籤', sc_bm_win:'請直接按下鍵盤快捷鍵 <span class="sc-kbd">Ctrl</span> + <span class="sc-kbd">D</span>，即可 1 秒將「<b>行政救星</b>」加入瀏覽器書籤列！', sc_bm_mac:'請直接按下鍵盤快捷鍵 <span class="sc-kbd">⌘ Command</span> + <span class="sc-kbd">D</span>，即可 1 秒將「<b>行政救星</b>」加入瀏覽器書籤列！', sc_bm_mob:'您目前使用的是行動裝置，建議點選旁邊的「<b>📲 在手機桌面建立捷徑</b>」，即可在手機桌面產生專屬圖示，隨點隨開！', sc_title_add:'📲 在手機桌面建立捷徑', sc_title_exists:'✔ 桌面已有捷徑', sc_title_done:'✔ 已在桌面建立捷徑', sc_msg_exists:'您的手機桌面已經有「<b>行政救星</b>」捷徑囉！無須重複建立，直接從手機桌面點開盾牌圖示即可使用。', sc_msg_done:'已在您的手機桌面建立「<b>行政救星</b>」捷徑！未來直接點擊桌面圖示即可秒開使用。', sc_step_line:'您目前在 App 內建瀏覽器中，請依序操作：<ol><li>點擊畫面右下角「<b>⋮</b>」或下方「<b>分享 [↑]</b>」按鈕。</li><li>點選「<b>以預設瀏覽器開啟</b>」或「<b>在 Safari 中打開</b>」。</li><li>切換至瀏覽器後，點選選單中的「<b>＋ 加入主畫面</b>」即可在桌面建立捷徑！</li></ol>', sc_step_ios:'請依以下步驟將專屬盾牌捷徑放到 iPhone / iPad 桌面：<ol><li>點擊底部網址列右側的「<b>•••</b>」或下方的「<b>分享 [↑]</b>」按鈕。</li><li>若點選「•••」，請再點選「<b>分享 [↑]</b>」並將選單<b>往上滑動</b>。</li><li>點選「<b>＋ 加入主畫面</b>」➔ 點擊右上角「<b>加入</b>」即可完成！</li></ol>', sc_step_android:'請依以下步驟將專屬盾牌捷徑放到手機桌面：<ol><li>點擊瀏覽器右上角的選單按鈕「<b>⋮</b>」。</li><li>點選「<b>加到主畫面</b>」或「<b>安裝應用程式</b>」。</li><li>點擊確認後，手機桌面即會產生「行政救星」捷徑！</li></ol>', sc_step_pc:'您目前使用的是電腦版瀏覽器：<br>• <b>電腦端</b>：請按 <span class="sc-kbd">Ctrl + D</span>（Mac 按 <span class="sc-kbd">⌘ + D</span>）加入書籤。<br>• <b>手機端</b>：用手機開啟本網頁並點擊此按鈕，即可在手機桌面建立專屬 App 圖示！', sc_btn_mark_done:'✔ 我已建立捷徑', sc_btn_reopen:'重新查看建立步驟', sc_btn_close:'確定', st_waiting:'等待載入圖片...', st_loaded:'圖片載入成功。您可以對圖片進行處理或轉向、複製、下載。', st_back_loaded:'反面圖片載入成功！校正處理後可點擊「2️⃣ 上下/左右合併」。', st_undo:'已復原至上一步', st_invalid_file:'請拖曳有效的圖片檔案格式。', st_mode_keystone:'請在圖片上依序點擊需要保留區域的 左上、右上、右下、左下 4個頂點', st_keystone_ready:'已選取 4 個頂點。可拖曳紅十字微調或選擇標準比例，完成後點擊「✔ 確認校正」', st_keystone_calc:'正在高品質計算梯形校正...', st_keystone_done:'梯形校正完成（已啟用高品質運算）', st_keystone_done_ratio:'梯形校正完成（已鎖定標準比例與高品質運算）', st_mode_mosaic:'請在圖片上拖曳框選欲打馬賽克的區域（可連續框選，再次點擊按鈕取消）', st_mosaic_done:'局部馬賽克已套用（可繼續拖曳框選，或再次點擊按鈕關閉）', st_mode_blackbox:'請在圖片上拖曳框選欲遮蔽的區域（可連續框選，再次點擊按鈕取消）', st_blackbox_done:'個資黑塊已套用（可繼續拖曳框選，或再次點擊按鈕關閉）', st_mode_crop:'請在圖片上拖曳框選欲保留的裁切區域', st_crop_done:'矩形裁切已完成', st_mode_redbox:'請在圖片上拖曳繪製紅框標註重點（可連續繪製，再次點擊按鈕取消）', st_redbox_done:'紅框重點標註已套用（可繼續拖曳繪製，或再次點擊按鈕關閉）', st_mode_redline:'請在圖片上拖曳繪製紅底線（接近水平自動拉直，再次點擊按鈕取消）', st_redline_done:'紅底線重點標註已套用（可繼續拖曳繪製，或再次點擊按鈕關閉）', st_bright_saved:'亮度已儲存', st_bright_cancel:'已取消亮度調整', st_doc_calc:'正在執行公文/證件去陰影強化...', st_doc_done_stamp:'公文強化完成（已保留彩色印章）', st_doc_done_bw:'公文/證件黑白強化已套用', st_wm_no_img:'請先載入圖片再壓印浮水印。', st_wm_no_txt:'請輸入浮水印文字。', st_wm_done:'已壓印滿版防盜用浮水印', st_front_no_img:'請先載入並處理好正面圖片，再點擊暫存。', st_front_saved:'正面圖片已暫存！現在請貼上或載入「反面」圖片，處理後即可點擊合併。', st_front_cleared:'已清除暫存的正面圖片。', st_merge_err:'請確認已暫存正面圖片且目前已載入反面圖片。', st_merge_v_done:'證件正反面「上下合併」完成！可繼續壓印浮水印或下載。', st_merge_h_done:'證件正反面「左右合併」完成！可繼續壓印浮水印或下載。', st_rot_ccw:'已向左轉', st_rot_cw:'已向右轉', st_flip_h:'已水平翻轉', st_flip_v:'已上下翻轉', st_copy_no_img:'請先載入圖片再進行複製。', st_copy_done:'圖片已複製到剪貼簿！可直接貼至 Word、Excel 或 LINE。', st_copy_err:'複製失敗（瀏覽器權限限制），請改用下載圖片。', st_dl_no_img:'請先載入圖片再進行下載。', st_dl_done:'圖片已準備完成！手機用戶請「長按彈出視窗中的圖片」或點選「儲存影像」存入相簿。', st_pdf_no_img:'請先載入圖片再匯出 PDF。', st_pdf_done:'PDF 已匯出！iPhone 用戶請於選單點選「儲存到檔案」或直接轉傳 LINE（相簿不支援顯示 PDF）。' },
+            'en-US': { appShortName:'Admin Savior', docTitle:'Admin Savior | 100% Offline ID Card Watermark, Merger & Perspective Correction Tool', g1Title:'1. Image Source, Reset & Export', pasteHint:'Press <b>Ctrl+V</b> to paste, <b>drag & drop</b> here, or select a file:', btnSelectFile:'📁 Choose File', btnUndo:'↩ Undo (Ctrl+Z)', btnReset:'Reset All', btnCopy:'📋 Copy Image', btnDownload:'Download PNG', optPdfFit:'PDF: A4 Full-Page Fit', optPdfId:'PDF: ID Card 1:1 Actual Size (A4)', btnExportPdf:'📄 Export PDF', g2Title:'2. Image Orientation', btnRotateCCW:'↺ Rotate Left 90°', btnRotateCW:'↻ Rotate Right 90°', btnFlipH:'↔ Flip Horizontal', btnFlipV:'↕ Flip Vertical', g3Title:'3. Brightness & Pixel Processing', lblBrightness:'Brightness:', btnApplyBrightness:'✔ Apply', btnCancelBrightness:'✖ Cancel', btnDocEnhance:'📄 Document B&W Enhance', lblKeepStamp:'Keep Colored Stamps', btnCropMode:'✂️ Free Crop', btnRedBoxMode:'🟥 Red Box', btnRedLineMode:'🖍️ Red Underline', btnMosaicMode:'Local Mosaic (Drag)', btnBlackBoxMode:'⬛ Blackout Redact', btnKeystoneMode:'Keystone Correction (Click Top-L, Top-R, Bot-R, Bot-L)', optRatioAuto:'Ratio: Auto Detect', optRatioIdH:'Ratio: ID Card Landscape (85.6×54mm)', optRatioIdV:'Ratio: ID Card Portrait (54×85.6mm)', optRatioA4V:'Ratio: A4 Portrait (210×297mm)', optRatioA4H:'Ratio: A4 Landscape (297×210mm)', btnApplyKeystone:'✔ Confirm Correction', tooltipTrigger:'ⓘ Click Order Demo', tooltipDesc:'Order must be:<br><b>1.Top-L ➔ 2.Top-R ➔ 3.Bot-R ➔ 4.Bot-L</b>', lblWatermark:'Security Watermark:', watermarkDefault:'FOR OFFICIAL VERIFICATION USE ONLY', watermarkPlaceholder:'Enter watermark text...', optWmGray:'Translucent Dark Gray', optWmRed:'Translucent Stamp Red', optWmBlue:'Translucent Official Blue', btnApplyWatermark:'🔏 Apply Tiled Watermark', lblMerge:'🪪 Merge ID Front & Back:', btnSaveFront:'1️⃣ Save Current as "Front"', btnMergeV:'2️⃣ ↕ Merge Vertically', btnMergeH:'2️⃣ ↔ Merge Horizontally', btnClearFront:'✖ Clear Saved', frontEmpty:'(No front image saved yet)', frontSaved:'(✔ Front saved {w}×{h}px. Load back image then click Merge)', footerPrivacy:'🛡️ 100% offline local processing. Zero data upload risk.', lblShortcutPrompt:'Bookmark or create a shortcut to save more time for coffee!', btnAddBookmark:'⭐ Bookmark This Page', btnAddShortcut:'📲 Add to Phone Home Screen', lblDonatePrompt:'If this tool boosts your work efficiency, feel free to support me', btnDonateEcpay:'綠界科技', lblModalHint:'📱 Long-press the image below to save to Photos', btnCloseModal:'✖ Close', sc_bm_title:'⭐ Add to Browser Bookmarks', sc_bm_win:'Press <span class="sc-kbd">Ctrl</span> + <span class="sc-kbd">D</span> on your keyboard to bookmark <b>Admin Savior</b> instantly!', sc_bm_mac:'Press <span class="sc-kbd">⌘ Command</span> + <span class="sc-kbd">D</span> on your keyboard to bookmark <b>Admin Savior</b> instantly!', sc_bm_mob:'On mobile devices, we recommend tapping "<b>📲 Add to Phone Home Screen</b>" to create an app icon on your home screen!', sc_title_add:'📲 Add to Phone Home Screen', sc_title_exists:'✔ Shortcut Already Exists', sc_title_done:'✔ Shortcut Created on Home Screen', sc_msg_exists:'<b>Admin Savior</b> is already on your phone home screen! No need to add it again—simply tap the icon on your home screen anytime.', sc_msg_done:'<b>Admin Savior</b> shortcut has been created on your home screen!', sc_step_line:'You are in an in-app browser. Please follow these steps:<ol><li>Tap "<b>⋮</b>" at the bottom-right or "<b>Share [↑]</b>" at the bottom.</li><li>Select "<b>Open in default browser</b>" or "<b>Open in Safari</b>".</li><li>In your browser menu, tap "<b>＋ Add to Home Screen</b>"!</li></ol>', sc_step_ios:'To add the app icon to your iPhone / iPad Home Screen:<ol><li>Tap "<b>•••</b>" on the address bar or the "<b>Share [↑]</b>" button at the bottom.</li><li>Scroll down the share menu.</li><li>Tap "<b>＋ Add to Home Screen</b>" ➔ Tap "<b>Add</b>" at the top-right!</li></ol>', sc_step_android:'To add the app icon to your Android Home Screen:<ol><li>Tap the browser menu icon "<b>⋮</b>" at the top-right.</li><li>Select "<b>Add to Home screen</b>" or "<b>Install app</b>".</li><li>Confirm to place the icon on your home screen!</li></ol>', sc_step_pc:'You are on a desktop browser:<br>• <b>Desktop</b>: Press <span class="sc-kbd">Ctrl + D</span> (or <span class="sc-kbd">⌘ + D</span> on Mac) to bookmark.<br>• <b>Mobile</b>: Open this page on your phone and tap this button to add an app icon to your home screen!', sc_btn_mark_done:'✔ I Have Added the Shortcut', sc_btn_reopen:'View Instructions Again', sc_btn_close:'OK', st_waiting:'Waiting for image...', st_loaded:'Image loaded. Ready for editing, rotation, copying, or export.', st_back_loaded:'Back image loaded! After editing, click "2️⃣ Merge Vertically/Horizontally".', st_undo:'Undone to previous step.', st_invalid_file:'Please drag and drop a valid image file.', st_mode_keystone:'Click the 4 corners in order: Top-Left, Top-Right, Bottom-Right, Bottom-Left.', st_keystone_ready:'4 corners selected. Drag red crosshairs to fine-tune or select a ratio, then click "✔ Confirm Correction".', st_keystone_calc:'Calculating high-quality keystone correction...', st_keystone_done:'Keystone correction complete (High-quality mode).', st_keystone_done_ratio:'Keystone correction complete (Standard ratio locked).', st_mode_mosaic:'Drag to apply mosaic (Continuous mode; click button again to exit).', st_mosaic_done:'Local mosaic applied (Continue dragging or click button again to exit).', st_mode_blackbox:'Drag to black out sensitive info (Continuous mode; click button again to exit).', st_blackbox_done:'Blackout applied (Continue dragging or click button again to exit).', st_mode_crop:'Drag on the image to select the area to crop.', st_crop_done:'Rectangular crop completed.', st_mode_redbox:'Drag to draw red boxes (Continuous mode; click button again to exit).', st_redbox_done:'Red box applied (Continue dragging or click button again to exit).', st_mode_redline:'Drag to draw red underlines (Auto-straightens; click button again to exit).', st_redline_done:'Red underline applied (Continue dragging or click button again to exit).', st_bright_saved:'Brightness saved.', st_bright_cancel:'Brightness adjustment canceled.', st_doc_calc:'Enhancing document & removing shadows...', st_doc_done_stamp:'Document enhanced (Colored stamps preserved).', st_doc_done_bw:'Document B&W enhancement applied.', st_wm_no_img:'Please load an image before applying a watermark.', st_wm_no_txt:'Please enter watermark text.', st_wm_done:'Tiled security watermark applied.', st_front_no_img:'Please load and process the front image before saving.', st_front_saved:'Front image saved! Now load the "Back" image and click Merge.', st_front_cleared:'Saved front image cleared.', st_merge_err:'Please ensure the front image is saved and the back image is loaded.', st_merge_v_done:'Vertical merge complete! You can now add a watermark or export.', st_merge_h_done:'Horizontal merge complete! You can now add a watermark or export.', st_rot_ccw:'Rotated 90° counter-clockwise.', st_rot_cw:'Rotated 90° clockwise.', st_flip_h:'Flipped horizontally.', st_flip_v:'Flipped vertically.', st_copy_no_img:'Please load an image before copying.', st_copy_done:'Image copied to clipboard!', st_copy_err:'Copy failed (browser permission limit). Please use Download instead.', st_dl_no_img:'Please load an image before downloading.', st_dl_done:'Image ready! Long-press the preview image or select "Save Image" to save to Photos.', st_pdf_no_img:'Please load an image before exporting to PDF.', st_pdf_done:'PDF exported! Select "Save to Files" or share to chat apps.' },
+            'ja': { appShortName:'事務の救世主', docTitle:'事務の救世主 | 完全オフライン身分証透かし・表裏結合・台形補正ツール', g1Title:'1. 画像の読み込み・リセット・出力', pasteHint:'<b>Ctrl+V</b> で貼り付け、<b>ここへドラッグ＆ドロップ</b>、またはファイルを選択：', btnSelectFile:'📁 ファイルを選択', btnUndo:'↩ 元に戻す (Ctrl+Z)', btnReset:'すべてリセット', btnCopy:'📋 画像をコピー', btnDownload:'画像を保存', optPdfFit:'PDF：A4 ページに合わせて配置', optPdfId:'PDF：身分証 1:1 実寸サイズ (A4)', btnExportPdf:'📄 PDF出力', g2Title:'2. 画像の回転・反転', btnRotateCCW:'↺ 左へ 90° 回転', btnRotateCW:'↻ 右へ 90° 回転', btnFlipH:'↔ 左右反転', btnFlipV:'↕ 上下反転', g3Title:'3. 明るさ調整・ピクセル処理', lblBrightness:'明るさ調整:', btnApplyBrightness:'✔ 確定', btnCancelBrightness:'✖ キャンセル', btnDocEnhance:'📄 書類/身分証の白黒くっきり補正', lblKeepStamp:'カラー印鑑を保持', btnCropMode:'✂️ 矩形トリミング', btnRedBoxMode:'🟥 赤枠で強調', btnRedLineMode:'🖍️ 赤下線で強調', btnMosaicMode:'部分モザイク (ドラッグ選択)', btnBlackBoxMode:'⬛ 黒塗りマスク', btnKeystoneMode:'台形補正 (左上・右上・右下・左下の順に4点をクリック)', optRatioAuto:'比率：自動計算', optRatioIdH:'比率：身分証/カード横 (85.6×54mm)', optRatioIdV:'比率：身分証/カード縦 (54×85.6mm)', optRatioA4V:'比率：A4 縦長書類 (210×297mm)', optRatioA4H:'比率：A4 横長書類 (297×210mm)', btnApplyKeystone:'✔ 補正を実行', tooltipTrigger:'ⓘ クリック順の案内', tooltipDesc:'クリック順序：<br><b>1.左上 ➔ 2.右上 ➔ 3.右下 ➔ 4.左下</b>', lblWatermark:'不正利用防止透かし:', watermarkDefault:'提出・確認用のみ 他用無効', watermarkPlaceholder:'透かし文字を入力...', optWmGray:'半透明ダークグレー', optWmRed:'半透明朱肉レッド', optWmBlue:'半透明ブルー', btnApplyWatermark:'🔏 全面に透かしを入れる', lblMerge:'🪪 身分証の表裏結合:', btnSaveFront:'1️⃣ 現在の画像を「表面」として一時保存', btnMergeV:'2️⃣ ↕ 上下に結合 (表+裏)', btnMergeH:'2️⃣ ↔ 左右に結合 (表+裏)', btnClearFront:'✖ 保存をクリア', frontEmpty:'（表面の画像は未保存です）', frontSaved:'（✔ 表面を保存済 {w}×{h}px。裏面を読み込んで結合をクリック）', footerPrivacy:'🛡️ 完全ローカル（オフライン）動作。外部へのデータ送信は一切ありません。', lblShortcutPrompt:'ブックマークやショートカットを作成して、コーヒーを楽しむ時間を増やしましょう！', btnAddBookmark:'⭐ ブックマークに追加', btnAddShortcut:'📲 スマホのホーム画面に追加', lblDonatePrompt:'作業効率が向上しましたら、ぜひご支援をお願いします', btnDonateEcpay:'綠界科技', lblModalHint:'📱 下の画像を長押しして「写真に保存」を選択してください', btnCloseModal:'✖ 閉じる', sc_bm_title:'⭐ ブラウザのブックマークに追加', sc_bm_win:'キーボードの <span class="sc-kbd">Ctrl</span> + <span class="sc-kbd">D</span> を押すと、すぐにブックマークへ追加できます！', sc_bm_mac:'キーボードの <span class="sc-kbd">⌘ Command</span> + <span class="sc-kbd">D</span> を押すと、すぐにブックマークへ追加できます！', sc_bm_mob:'スマートフォンでは「<b>📲 スマホのホーム画面に追加</b>」をタップしてホーム画面にアイコンを作成するのがおすすめです！', sc_title_add:'📲 スマホのホーム画面に追加', sc_title_exists:'✔ ショートカットは作成済みです', sc_title_done:'✔ ホーム画面に作成しました', sc_msg_exists:'ホーム画面にすでにショートカットが存在します！重複して作成する必要はありません。', sc_msg_done:'ホーム画面にショートカットを作成しました！次回からワンタップで起動できます。', sc_step_line:'現在アプリ内ブラウザで開いています：<ol><li>右下の「<b>⋮</b>」または下部の「<b>共有 [↑]</b>」をタップします。</li><li>「<b>デフォルトのブラウザで開く</b>」または「<b>Safariで開く</b>」を選択します。</li><li>ブラウザのメニューから「<b>＋ ホーム画面に追加</b>」をタップしてください。</li></ol>', sc_step_ios:'iPhone / iPad のホーム画面にアイコンを追加する手順：<ol><li>下部の「<b>•••</b>」または「<b>共有 [↑]</b>」をタップします。</li><li>メニューを上にスクロールします。</li><li>「<b>＋ ホーム画面に追加</b>」➔ 右上の「<b>追加</b>」をタップして完了です！</li></ol>', sc_step_android:'Android のホーム画面にアイコンを追加する手順：<ol><li>ブラウザ右上のメニュー「<b>⋮</b>」をタップします。</li><li>「<b>ホーム画面に追加</b>」または「<b>アプリをインストール</b>」を選択します。</li></ol>', sc_step_pc:'現在はPCブラウザをご利用中です：<br>• <b>PC</b>：<span class="sc-kbd">Ctrl + D</span>（Macは <span class="sc-kbd">⌘ + D</span>）でブックマークに追加できます。<br>• <b>スマホ</b>：スマホでこのページを開いてタップするとホーム画面にアイコンを作成できます。', sc_btn_mark_done:'✔ 追加完了（次回から表示しない）', sc_btn_reopen:'手順をもう一度見る', sc_btn_close:'閉じる', st_waiting:'画像の読み込みを待っています...', st_loaded:'画像を読み込みました。補正・回転・コピー・保存が可能です。', st_back_loaded:'裏面画像を読み込みました！補正後に「2️⃣ 上下/左右に結合」をクリックしてください。', st_undo:'1つ前の状態に戻しました。', st_invalid_file:'有効な画像ファイルをドラッグ＆ドロップしてください。', st_mode_keystone:'残したい領域の「左上・右上・右下・左下」の4点を順にクリックしてください。', st_keystone_ready:'4点を選択しました。赤い十字をドラッグして微調整し、「✔ 補正を実行」をクリックしてください。', st_keystone_calc:'高画質で台形補正を計算中...', st_keystone_done:'台形補正が完了しました（高画質演算）。', st_keystone_done_ratio:'台形補正が完了しました（標準比率ロック適用）。', st_mode_mosaic:'モザイクをかけたい領域をドラッグしてください（連続選択可、ボタン再クリックで解除）。', st_mosaic_done:'部分モザイクを適用しました（続けて選択するか、ボタン再クリックで終了）。', st_mode_blackbox:'黒塗りしたい領域をドラッグしてください（連続選択可、ボタン再クリックで解除）。', st_blackbox_done:'黒塗りマスクを適用しました（続けて選択するか、ボタン再クリックで終了）。', st_mode_crop:'残したい領域をドラッグして選択してください。', st_crop_done:'トリミングが完了しました。', st_mode_redbox:'ドラッグして赤枠を描画してください（連続描画可、ボタン再クリックで解除）。', st_redbox_done:'赤枠の強調を適用しました（続けて描画するか、ボタン再クリックで終了）。', st_mode_redline:'ドラッグして赤下線を描画してください（水平自動補正、ボタン再クリックで解除）。', st_redline_done:'赤下線の強調を適用しました（続けて描画するか、ボタン再クリックで終了）。', st_bright_saved:'明るさを保存しました。', st_bright_cancel:'明るさ調整をキャンセルしました。', st_doc_calc:'書類の影除去・くっきり補正を実行中...', st_doc_done_stamp:'書類補正が完了しました（カラー印鑑を保持）。', st_doc_done_bw:'書類の白黒くっきり補正を適用しました。', st_wm_no_img:'透かしを入れる前に画像を読み込んでください。', st_wm_no_txt:'透かし文字を入力してください。', st_wm_done:'全面に不正利用防止透かしを適用しました。', st_front_no_img:'先に表面の画像を読み込んで処理してから一時保存してください。', st_front_saved:'表面を保存しました！続けて「裏面」を読み込み、結合ボタンをクリックしてください。', st_front_cleared:'一時保存した表面画像をクリアしました。', st_merge_err:'表面が保存されており、裏面が読み込まれていることを確認してください。', st_merge_v_done:'表裏の「上下結合」が完了しました！', st_merge_h_done:'表裏の「左右結合」が完了しました！', st_rot_ccw:'左へ90°回転しました。', st_rot_cw:'右へ90°回転しました。', st_flip_h:'左右反転しました。', st_flip_v:'上下反転しました。', st_copy_no_img:'コピーする前に画像を読み込んでください。', st_copy_done:'クリップボードにコピーしました！', st_copy_err:'コピーに失敗しました。「画像を保存」をご利用ください。', st_dl_no_img:'保存する前に画像を読み込んでください。', st_dl_done:'画像の準備ができました！画像を長押しするかメニューから「画像を保存」を選択してください。', st_pdf_no_img:'PDF出力の前に画像を読み込んでください。', st_pdf_done:'PDFを出力しました！メニューから「ファイルに保存」または共有先を選択してください。' },
+            'de': { appShortName:'Büro-Retter', docTitle:'Büro-Retter | 100% Offline Ausweis-Wasserzeichen & Trapezkorrektur', g1Title:'1. Bildquelle, Zurücksetzen & Export', pasteHint:'<b>Strg+V</b> zum Einfügen, <b>Bild hierher ziehen</b> oder Datei wählen:', btnSelectFile:'📁 Datei auswählen', btnUndo:'↩ Rückgängig (Strg+Z)', btnReset:'Alles zurücksetzen', btnCopy:'📋 Bild kopieren', btnDownload:'Bild herunterladen', optPdfFit:'PDF: A4-Seite anpassen', optPdfId:'PDF: Ausweis 1:1 Originalgröße (A4)', btnExportPdf:'📄 PDF exportieren', g2Title:'2. Bildausrichtung', btnRotateCCW:'↺ 90° nach links', btnRotateCW:'↻ 90° nach rechts', btnFlipH:'↔ Horizontal spiegeln', btnFlipV:'↕ Vertikal spiegeln', g3Title:'3. Helligkeit & Bildbearbeitung', lblBrightness:'Helligkeit:', btnApplyBrightness:'✔ Übernehmen', btnCancelBrightness:'✖ Abbrechen', btnDocEnhance:'📄 Dokument S/W-Optimierung', lblKeepStamp:'Farbige Stempel behalten', btnCropMode:'✂️ Zuschneiden', btnRedBoxMode:'🟥 Roter Rahmen', btnRedLineMode:'🖍️ Rote Unterstreichung', btnMosaicMode:'Mosaik (Ziehen)', btnBlackBoxMode:'⬛ Schwärzen', btnKeystoneMode:'Trapezkorrektur (Oben-L, Oben-R, Unten-R, Unten-L klicken)', optRatioAuto:'Format: Automatisch', optRatioIdH:'Format: Ausweis Quer (85,6×54mm)', optRatioIdV:'Format: Ausweis Hoch (54×85,6mm)', optRatioA4V:'Format: A4 Hochformat (210×297mm)', optRatioA4H:'Format: A4 Querformat (297×210mm)', btnApplyKeystone:'✔ Korrektur bestätigen', tooltipTrigger:'ⓘ Klick-Reihenfolge', tooltipDesc:'Reihenfolge:<br><b>1.Oben-L ➔ 2.Oben-R ➔ 3.Unten-R ➔ 4.Unten-L</b>', lblWatermark:'Wasserzeichen:', watermarkDefault:'NUR ZUR VERIFIZIERUNG GÜLTIG', watermarkPlaceholder:'Wasserzeichentext eingeben...', optWmGray:'Halbtransparent Dunkelgrau', optWmRed:'Halbtransparent Stempelrot', optWmBlue:'Halbtransparent Dokumentblau', btnApplyWatermark:'🔏 Wasserzeichen anwenden', lblMerge:'🪪 Ausweis Vorder- & Rückseite:', btnSaveFront:'1️⃣ Aktuelles Bild als „Vorderseite“ merken', btnMergeV:'2️⃣ ↕ Vertikal zusammenfügen', btnMergeH:'2️⃣ ↔ Horizontal zusammenfügen', btnClearFront:'✖ Gespeichertes löschen', frontEmpty:'(Noch keine Vorderseite gespeichert)', frontSaved:'(✔ Vorderseite {w}×{h}px gespeichert. Rückseite laden & zusammenfügen)', footerPrivacy:'🛡️ 100% lokale Offline-Verarbeitung. Kein Daten-Upload.', lblShortcutPrompt:'Lesezeichen oder Verknüpfung erstellen und mehr Zeit für Kaffee sparen!', btnAddBookmark:'⭐ Lesezeichen hinzufügen', btnAddShortcut:'📲 Zum Startbildschirm', lblDonatePrompt:'Wenn dieses Tool Ihre Arbeitseffizienz steigert, unterstützen Sie mich gerne', btnDonateEcpay:'綠界科技', lblModalHint:'📱 Bild unten gedrückt halten, um es in Fotos zu speichern', btnCloseModal:'✖ Schließen', sc_bm_title:'⭐ Browser-Lesezeichen hinzufügen', sc_bm_win:'Drücken Sie <span class="sc-kbd">Strg</span> + <span class="sc-kbd">D</span> auf Ihrer Tastatur, um diese Seite sofort als Lesezeichen zu speichern!', sc_bm_mac:'Drücken Sie <span class="sc-kbd">⌘ Command</span> + <span class="sc-kbd">D</span> auf Ihrer Tastatur, um diese Seite sofort als Lesezeichen zu speichern!', sc_bm_mob:'Auf Mobilgeräten empfehlen wir „<b>📲 Zum Startbildschirm</b>“, um ein App-Symbol auf Ihrem Handy zu erstellen!', sc_title_add:'📲 Zum Startbildschirm hinzufügen', sc_title_exists:'✔ Verknüpfung bereits vorhanden', sc_title_done:'✔ Verknüpfung erstellt', sc_msg_exists:'Die Verknüpfung befindet sich bereits auf Ihrem Startbildschirm! Kein erneutes Erstellen nötig.', sc_msg_done:'Die Verknüpfung wurde auf Ihrem Startbildschirm erstellt!', sc_step_line:'Sie nutzen einen In-App-Browser:<ol><li>Tippen Sie unten rechts auf „<b>⋮</b>“ oder auf „<b>Teilen [↑]</b>“.</li><li>Wählen Sie „<b>Im Standardbrowser öffnen</b>“ oder „<b>In Safari öffnen</b>“.</li><li>Wählen Sie dort „<b>＋ Zum Home-Bildschirm</b>“!</li></ol>', sc_step_ios:'So fügen Sie das Symbol auf dem iPhone / iPad hinzu:<ol><li>Tippen Sie unten auf „<b>•••</b>“ oder „<b>Teilen [↑]</b>“.</li><li>Scrollen Sie im Menü nach unten.</li><li>Tippen Sie auf „<b>＋ Zum Home-Bildschirm</b>“ ➔ „<b>Hinzufügen</b>“!</li></ol>', sc_step_android:'So fügen Sie das Symbol unter Android hinzu:<ol><li>Tippen Sie oben rechts auf das Browser-Menü „<b>⋮</b>“.</li><li>Wählen Sie „<b>Zum Startbildschirm hinzufügen</b>“ oder „<b>App installieren</b>“.</li></ol>', sc_step_pc:'Sie nutzen einen Desktop-Browser:<br>• <b>PC</b>: Drücken Sie <span class="sc-kbd">Strg + D</span> (<span class="sc-kbd">⌘ + D</span> auf Mac) für ein Lesezeichen.<br>• <b>Handy</b>: Öffnen Sie diese Seite auf dem Smartphone für ein Startbildschirm-Symbol!', sc_btn_mark_done:'✔ Verknüpfung wurde erstellt', sc_btn_reopen:'Anleitung erneut zeigen', sc_btn_close:'OK', st_waiting:'Warten auf Bild...', st_loaded:'Bild geladen. Bereit zum Bearbeiten, Drehen, Kopieren oder Herunterladen.', st_back_loaded:'Rückseite geladen! Nach der Bearbeitung auf „2️⃣ Zusammenfügen“ klicken.', st_undo:'Letzter Schritt rückgängig gemacht.', st_invalid_file:'Bitte eine gültige Bilddatei hineinziehen.', st_mode_keystone:'Klicken Sie nacheinander auf die 4 Ecken: Oben-Links, Oben-Rechts, Unten-Rechts, Unten-Links.', st_keystone_ready:'4 Ecken gewählt. Rote Kreuze ziehen zum Anpassen, dann „✔ Korrektur bestätigen“ klicken.', st_keystone_calc:'Berechne Trapezkorrektur in hoher Qualität...', st_keystone_done:'Trapezkorrektur abgeschlossen.', st_keystone_done_ratio:'Trapezkorrektur abgeschlossen (Standardformat gesperrt).', st_mode_mosaic:'Ziehen Sie über den Bereich für das Mosaik (Erneut klicken zum Beenden).', st_mosaic_done:'Lokales Mosaik angewendet (Weiter ziehen oder zum Beenden klicken).', st_mode_blackbox:'Ziehen Sie über den Bereich, um Daten zu schwärzen (Erneut klicken zum Beenden).', st_blackbox_done:'Schwärzung angewendet (Weiter ziehen oder Schaltfläche zum Beenden klicken).', st_mode_crop:'Ziehen Sie einen Rahmen um den gewünschten Bildausschnitt.', st_crop_done:'Zuschneiden abgeschlossen.', st_mode_redbox:'Ziehen Sie, um einen roten Rahmen zu zeichnen (Erneut klicken zum Beenden).', st_redbox_done:'Roter Rahmen angewendet (Weiter ziehen oder Schaltfläche zum Beenden klicken).', st_mode_redline:'Ziehen Sie für eine rote Linie (Erneut klicken zum Beenden).', st_redline_done:'Rote Unterstreichung angewendet (Weiter ziehen oder zum Beenden klicken).', st_bright_saved:'Helligkeit gespeichert.', st_bright_cancel:'Helligkeitsänderung abgebrochen.', st_doc_calc:'Dokumentoptimierung & Schattenentfernung läuft...', st_doc_done_stamp:'Dokument optimiert (Farbige Stempel behalten).', st_doc_done_bw:'Dokument S/W-Optimierung angewendet.', st_wm_no_img:'Bitte zuerst ein Bild laden.', st_wm_no_txt:'Bitte Wasserzeichentext eingeben.', st_wm_done:'Wasserzeichen erfolgreich angewendet.', st_front_no_img:'Bitte zuerst die Vorderseite laden und bearbeiten.', st_front_saved:'Vorderseite gespeichert! Jetzt die Rückseite laden und zusammenfügen.', st_front_cleared:'Gespeicherte Vorderseite gelöscht.', st_merge_err:'Bitte sicherstellen, dass Vorderseite gespeichert und Rückseite geladen ist.', st_merge_v_done:'Vertikales Zusammenfügen abgeschlossen!', st_merge_h_done:'Horizontales Zusammenfügen abgeschlossen!', st_rot_ccw:'Um 90° nach links gedreht.', st_rot_cw:'Um 90° nach rechts gedreht.', st_flip_h:'Horizontal gespiegelt.', st_flip_v:'Vertikal gespiegelt.', st_copy_no_img:'Bitte zuerst ein Bild laden.', st_copy_done:'Bild in die Zwischenablage kopiert!', st_copy_err:'Kopieren fehlgeschlagen. Bitte „Bild herunterladen“ nutzen.', st_dl_no_img:'Bitte zuerst ein Bild laden.', st_dl_done:'Bild bereit! Bild gedrückt halten oder „Bild sichern“ wählen.', st_pdf_no_img:'Bitte zuerst ein Bild laden, bevor Sie ein PDF exportieren.', st_pdf_done:'PDF erfolgreich exportiert! Wählen Sie „In Dateien sichern“.' },
+            'ko': { appShortName:'행정 구원자', docTitle:'행정 구원자 | 100% 오프라인 신분증 워터마크 및 사다리꼴 보정 도구', g1Title:'1. 이미지 불러오기, 초기화 및 내보내기', pasteHint:'<b>Ctrl+V</b>로 붙여넣기, <b>여기로 이미지 드래그</b>, 또는 파일 선택:', btnSelectFile:'📁 파일 선택', btnUndo:'↩ 실행 취소 (Ctrl+Z)', btnReset:'전체 초기화', btnCopy:'📋 이미지 복사', btnDownload:'이미지 다운로드', optPdfFit:'PDF: A4 전체 페이지 맞춤', optPdfId:'PDF: 신분증 1:1 실제 크기 (A4)', btnExportPdf:'📄 PDF 내보내기', g2Title:'2. 이미지 회전 및 반전', btnRotateCCW:'↺ 왼쪽 90° 회전', btnRotateCW:'↻ 오른쪽 90° 회전', btnFlipH:'↔ 좌우 반전', btnFlipV:'↕ 상하 반전', g3Title:'3. 밝기 및 픽셀 처리', lblBrightness:'밝기 조절:', btnApplyBrightness:'✔ 밝기 적용', btnCancelBrightness:'✖ 취소', btnDocEnhance:'📄 문서/신분증 흑백 선명화', lblKeepStamp:'컬러 도장 유지', btnCropMode:'✂️ 사각형 자르기', btnRedBoxMode:'🟥 빨간 상자 강조', btnRedLineMode:'🖍️ 빨간 밑줄 강조', btnMosaicMode:'부분 모자이크 (드래그)', btnBlackBoxMode:'⬛ 개인정보 먹칠', btnKeystoneMode:'사다리꼴 보정 (좌상, 우상, 우하, 좌하 순서로 4점 클릭)', optRatioAuto:'비율: 자동 계산', optRatioIdH:'비율: 신분증 가로 (85.6×54mm)', optRatioIdV:'비율: 신분증 세로 (54×85.6mm)', optRatioA4V:'비율: A4 세로 문서 (210×297mm)', optRatioA4H:'비율: A4 가로 문서 (297×210mm)', btnApplyKeystone:'✔ 보정 확인', tooltipTrigger:'ⓘ 클릭 순서 안내', tooltipDesc:'클릭 순서:<br><b>1.좌상 ➔ 2.우상 ➔ 3.우하 ➔ 4.좌하</b>', lblWatermark:'도용 방지 워터마크:', watermarkDefault:'업무 제출용 외 사용 금지', watermarkPlaceholder:'워터마크 텍스트 입력...', optWmGray:'반투명 다크 그레이', optWmRed:'반투명 도장 레드', optWmBlue:'반투명 공문 블루', btnApplyWatermark:'🔏 전체 워터마크 삽입', lblMerge:'🪪 신분증 앞뒷면 병합:', btnSaveFront:'1️⃣ 현재 화면을 "앞면"으로 임시저장', btnMergeV:'2️⃣ ↕ 상하 병합 (앞+뒤)', btnMergeH:'2️⃣ ↔ 좌우 병합 (앞+뒤)', btnClearFront:'✖ 임시저장 삭제', frontEmpty:'(아직 앞면 이미지가 저장되지 않음)', frontSaved:'(✔ 앞면 저장됨 {w}×{h}px. 뒷면 이미지를 불러온 후 병합 클릭)', footerPrivacy:'🛡️ 100% 로컬 오프라인 작동. 개인정보 서버 전송 위험 없음.', lblShortcutPrompt:'북마크나 바로가기를 추가하고 커피 한 잔의 여유를 즐기세요!', btnAddBookmark:'⭐ 북마크 추가', btnAddShortcut:'📲 폰 홈 화면에 바로가기 추가', lblDonatePrompt:'업무 효율을 높이는 데 도움이 되었다면 후원으로 응원해 주세요', btnDonateEcpay:'綠界科技', lblModalHint:'📱 아래 이미지를 길게 눌러 사진 앱에 저장하세요', btnCloseModal:'✖ 닫기', sc_bm_title:'⭐ 브라우저 북마크 추가', sc_bm_win:'키보드에서 <span class="sc-kbd">Ctrl</span> + <span class="sc-kbd">D</span>를 누르면 즉시 북마크에 추가됩니다!', sc_bm_mac:'키보드에서 <span class="sc-kbd">⌘ Command</span> + <span class="sc-kbd">D</span>를 누르면 즉시 북마크에 추가됩니다!', sc_bm_mob:'모바일에서는 옆의 "<b>📲 폰 홈 화면에 바로가기 추가</b>"를 눌러 홈 화면에 아이콘을 만드세요!', sc_title_add:'📲 폰 홈 화면에 바로가기 추가', sc_title_exists:'✔ 이미 바로가기가 있습니다', sc_title_done:'✔ 홈 화면에 바로가기 생성 완료', sc_msg_exists:'휴대폰 홈 화면에 이미 바로가기가 있습니다! 중복해서 만들 필요가 없습니다.', sc_msg_done:'휴대폰 홈 화면에 바로가기가 생성되었습니다!', sc_step_line:'현재 인앱 브라우저를 사용 중입니다:<ol><li>우측 하단 "<b>⋮</b>" 또는 하단 "<b>공유 [↑]</b>" 버튼을 탭하세요.</li><li>"<b>기본 브라우저로 열기</b>" 또는 "<b>Safari에서 열기</b>"를 선택하세요.</li><li>브라우저 메뉴에서 "<b>＋ 홈 화면에 추가</b>"를 탭하면 완료됩니다!</li></ol>', sc_step_ios:'iPhone / iPad 홈 화면에 아이콘을 추가하는 방법:<ol><li>하단 주소창 옆의 "<b>•••</b>" 또는 "<b>공유 [↑]</b>" 버튼을 탭하세요.</li><li>공유 메뉴를 위로 스크롤하세요.</li><li>"<b>＋ 홈 화면에 추가</b>" ➔ 우측 상단 "<b>추가</b>"를 탭하세요!</li></ol>', sc_step_android:'Android 홈 화면에 아이콘을 추가하는 방법:<ol><li>브라우저 우측 상단 메뉴 "<b>⋮</b>"를 탭하세요.</li><li>"<b>홈 화면에 추가</b>" 또는 "<b>앱 설치</b>"를 선택하세요!</li></ol>', sc_step_pc:'현재 PC 브라우저를 사용 중입니다:<br>• <b>PC</b>: <span class="sc-kbd">Ctrl + D</span>(Mac은 <span class="sc-kbd">⌘ + D</span>)를 눌러 북마크하세요.<br>• <b>모바일</b>: 휴대폰에서 이 페이지를 열고 탭하면 홈 화면에 바로가기를 만들 수 있습니다!', sc_btn_mark_done:'✔ 바로가기 추가 완료', sc_btn_reopen:'설치 방법 다시 보기', sc_btn_close:'확인', st_waiting:'이미지 불러오기 대기 중...', st_loaded:'이미지를 성공적으로 불러왔습니다. 편집, 회전, 복사, 다운로드가 가능합니다.', st_back_loaded:'뒷면 이미지를 불러왔습니다! 보정 후 "2️⃣ 상하/좌우 병합"을 클릭하세요.', st_undo:'이전 단계로 복구되었습니다.', st_invalid_file:'유효한 이미지 파일을 드래그해 주세요.', st_mode_keystone:'남길 영역의 좌상, 우상, 우하, 좌하 꼭짓점 4개를 순서대로 클릭하세요.', st_keystone_ready:'4개의 꼭짓점이 선택되었습니다. 빨간 십자선을 드래그해 미세 조정 후 "✔ 보정 확인"을 클릭하세요.', st_keystone_calc:'고화질 사다리꼴 보정 계산 중...', st_keystone_done:'사다리꼴 보정이 완료되었습니다.', st_keystone_done_ratio:'사다리꼴 보정이 완료되었습니다 (표준 비율 고정 적용).', st_mode_mosaic:'모자이크할 영역을 드래그하세요 (연속 사용 가능, 버튼 재클릭 시 해제).', st_mosaic_done:'부분 모자이크가 적용되었습니다 (계속 드래그하거나 버튼을 다시 눌러 종료).', st_mode_blackbox:'가릴 영역을 드래그하세요 (연속 사용 가능, 버튼 재클릭 시 해제).', st_blackbox_done:'검은 상자 마스킹이 적용되었습니다 (계속 드래그하거나 버튼을 다시 눌러 종료).', st_mode_crop:'자르고 남길 영역을 드래그하세요.', st_crop_done:'사각형 자르기가 완료되었습니다.', st_mode_redbox:'드래그하여 빨간 상자를 그리세요 (연속 사용 가능, 버튼 재클릭 시 해제).', st_redbox_done:'빨간 상자 강조가 적용되었습니다 (계속 드래그하거나 버튼을 다시 눌러 종료).', st_mode_redline:'드래그하여 빨간 밑줄을 그리세요 (연속 사용 가능, 버튼 재클릭 시 해제).', st_redline_done:'빨간 밑줄 강조가 적용되었습니다 (계속 드래그하거나 버튼을 다시 눌러 종료).', st_bright_saved:'밝기가 저장되었습니다.', st_bright_cancel:'밝기 조절이 취소되었습니다.', st_doc_calc:'문서 그림자 제거 및 선명화 실행 중...', st_doc_done_stamp:'문서 선명화 완료 (컬러 도장 유지됨).', st_doc_done_bw:'문서/신분증 흑백 선명화가 적용되었습니다.', st_wm_no_img:'워터마크를 삽입하기 전에 이미지를 먼저 불러오세요.', st_wm_no_txt:'워터마크 텍스트를 입력하세요.', st_wm_done:'전체 화면에 도용 방지 워터마크가 삽입되었습니다.', st_front_no_img:'먼저 앞면 이미지를 불러와 보정한 후 임시저장을 클릭하세요.', st_front_saved:'앞면 이미지가 임시저장되었습니다! 이제 "뒷면" 이미지를 불러와 병합하세요.', st_front_cleared:'임시저장된 앞면 이미지가 삭제되었습니다.', st_merge_err:'앞면 이미지가 임시저장되어 있고 현재 뒷면 이미지가 불러와져 있는지 확인하세요.', st_merge_v_done:'신분증 앞뒷면 "상하 병합" 완료!', st_merge_h_done:'신분증 앞뒷면 "좌우 병합" 완료!', st_rot_ccw:'왼쪽으로 90° 회전했습니다.', st_rot_cw:'오른쪽으로 90° 회전했습니다.', st_flip_h:'좌우 반전되었습니다.', st_flip_v:'상하 반전되었습니다.', st_copy_no_img:'복사하기 전에 이미지를 먼저 불러오세요.', st_copy_done:'클립보드에 복사되었습니다!', st_copy_err:'복사 실패. 이미지 다운로드를 이용해 주세요.', st_dl_no_img:'다운로드하기 전에 이미지를 먼저 불러오세요.', st_dl_done:'이미지 준비 완료! 팝업 이미지를 길게 누르거나 "이미지 저장"을 선택하세요.', st_pdf_no_img:'PDF로 내보내기 전에 이미지를 먼저 불러오세요.', st_pdf_done:'PDF 내보내기 완료! 메뉴에서 "파일에 저장"을 선택하세요.' },
+            'fr': { appShortName:'Admin Savior', docTitle:'Sauveur Administratif | Outil 100% Hors-ligne Filigrane & Correction ID', g1Title:'1. Source, Réinitialisation & Export', pasteHint:'Appuyez sur <b>Ctrl+V</b>, <b>glissez-déposez</b> une image ici, ou choisissez un fichier :', btnSelectFile:'📁 Choisir un fichier', btnUndo:'↩ Annuler (Ctrl+Z)', btnReset:'Tout réinitialiser', btnCopy:'📋 Copier l’image', btnDownload:'Télécharger PNG', optPdfFit:'PDF : Ajuster à la page A4', optPdfId:'PDF : Carte ID taille réelle 1:1 (A4)', btnExportPdf:'📄 Exporter en PDF', g2Title:'2. Orientation de l’image', btnRotateCCW:'↺ Pivoter 90° G', btnRotateCW:'↻ Pivoter 90° D', btnFlipH:'↔ Miroir horizontal', btnFlipV:'↕ Miroir vertical', g3Title:'3. Luminosité & Traitement des pixels', lblBrightness:'Luminosité :', btnApplyBrightness:'✔ Appliquer', btnCancelBrightness:'✖ Annuler', btnDocEnhance:'📄 Amélioration N&B Document', lblKeepStamp:'Conserver les tampons colorés', btnCropMode:'✂️ Recadrer', btnRedBoxMode:'🟥 Cadre rouge', btnRedLineMode:'🖍️ Soulignement rouge', btnMosaicMode:'Mosaïque locale (Glisser)', btnBlackBoxMode:'⬛ Masquage noir', btnKeystoneMode:'Correction trapézoïdale (Haut-G, Haut-D, Bas-D, Bas-G)', optRatioAuto:'Ratio : Automatique', optRatioIdH:'Ratio : Carte ID Paysage (85,6×54mm)', optRatioIdV:'Ratio : Carte ID Portrait (54×85,6mm)', optRatioA4V:'Ratio : A4 Portrait (210×297mm)', optRatioA4H:'Ratio : A4 Paysage (297×210mm)', btnApplyKeystone:'✔ Valider la correction', tooltipTrigger:'ⓘ Ordre des clics', tooltipDesc:'Ordre obligatoire :<br><b>1.Haut-G ➔ 2.Haut-D ➔ 3.Bas-D ➔ 4.Bas-G</b>', lblWatermark:'Filigrane de sécurité :', watermarkDefault:'USAGE ADMINISTRATIF UNIQUEMENT', watermarkPlaceholder:'Texte du filigrane...', optWmGray:'Gris foncé translucide', optWmRed:'Rouge tampon translucide', optWmBlue:'Bleu officiel translucide', btnApplyWatermark:'🔏 Appliquer le filigrane', lblMerge:'🪪 Fusionner Recto/Verso :', btnSaveFront:'1️⃣ Mémoriser comme « Recto »', btnMergeV:'2️⃣ ↕ Fusion verticale', btnMergeH:'2️⃣ ↔ Fusion horizontale', btnClearFront:'✖ Effacer', frontEmpty:'(Aucun recto mémorisé)', frontSaved:'(✔ Recto mémorisé {w}×{h}px. Chargez le verso puis fusionnez)', footerPrivacy:'🛡️ Fonctionnement 100 % local et hors-ligne. Aucun envoi de données.', lblShortcutPrompt:'Ajoutez aux favoris ou créez un raccourci pour gagner du temps pour votre café !', btnAddBookmark:'⭐ Ajouter aux favoris', btnAddShortcut:'📲 Raccourci sur l’écran d’accueil', lblDonatePrompt:'Si cet outil améliore votre efficacité au travail, n’hésitez pas à me soutenir', btnDonateEcpay:'綠界科技', lblModalHint:'📱 Appuyez longuement sur l’image pour l’enregistrer dans Photos', btnCloseModal:'✖ Fermer', sc_bm_title:'⭐ Ajouter aux favoris', sc_bm_win:'Appuyez sur <span class="sc-kbd">Ctrl</span> + <span class="sc-kbd">D</span> pour ajouter cette page à vos favoris !', sc_bm_mac:'Appuyez sur <span class="sc-kbd">⌘ Command</span> + <span class="sc-kbd">D</span> pour ajouter cette page à vos favoris !', sc_bm_mob:'Sur mobile, appuyez plutôt sur « <b>📲 Raccourci sur l’écran d’accueil</b> » pour créer une icône sur votre téléphone !', sc_title_add:'📲 Ajouter à l’écran d’accueil', sc_title_exists:'✔ Raccourci déjà présent', sc_title_done:'✔ Raccourci créé', sc_msg_exists:'Le raccourci est déjà présent sur votre écran d’accueil ! Inutile de le recréer.', sc_msg_done:'Le raccourci a été ajouté à votre écran d’accueil !', sc_step_line:'Vous êtes dans un navigateur intégré :<ol><li>Appuyez sur « <b>⋮</b> » en bas à droite ou sur « <b>Partager [↑]</b> ».</li><li>Choisissez « <b>Ouvrir dans le navigateur par défaut</b> » ou « <b>Ouvrir dans Safari</b> ».</li><li>Sélectionnez ensuite « <b>＋ Sur l’écran d’accueil</b> » !</li></ol>', sc_step_ios:'Pour ajouter l’icône sur iPhone / iPad :<ol><li>Appuyez sur « <b>•••</b> » ou sur « <b>Partager [↑]</b> » en bas.</li><li>Faites défiler le menu vers le bas.</li><li>Appuyez sur « <b>＋ Sur l’écran d’accueil</b> » ➔ « <b>Ajouter</b> » !</li></ol>', sc_step_android:'Pour ajouter l’icône sur Android :<ol><li>Appuyez sur le menu « <b>⋮</b> » en haut à droite.</li><li>Sélectionnez « <b>Ajouter à l’écran d’accueil</b> » ou « <b>Installer l’application</b> ».</li></ol>', sc_step_pc:'Vous êtes sur ordinateur :<br>• <b>PC/Mac</b> : Appuyez sur <span class="sc-kbd">Ctrl + D</span> (<span class="sc-kbd">⌘ + D</span>) pour ajouter aux favoris.<br>• <b>Mobile</b> : Ouvrez cette page sur votre téléphone pour créer un raccourci !', sc_btn_mark_done:'✔ J’ai créé le raccourci', sc_btn_reopen:'Revoir les instructions', sc_btn_close:'OK', st_waiting:'En attente d’une image...', st_loaded:'Image chargée. Prête à être modifiée, pivotée, copiée ou téléchargée.', st_back_loaded:'Verso chargé ! Après correction, cliquez sur « 2️⃣ Fusion verticale/horizontale ».', st_undo:'Action précédente annulée.', st_invalid_file:'Veuillez glisser un fichier image valide.', st_mode_keystone:'Cliquez dans l’ordre sur les 4 coins : Haut-Gauche, Haut-Droit, Bas-Droit, Bas-Gauche.', st_keystone_ready:'4 coins sélectionnés. Ajustez les croix rouges puis cliquez sur « ✔ Valider la correction ».', st_keystone_calc:'Calcul de la correction trapézoïdale haute qualité...', st_keystone_done:'Correction trapézoïdale terminée.', st_keystone_done_ratio:'Correction trapézoïdale terminée (Ratio standard verrouillé).', st_mode_mosaic:'Faites glisser pour flouter (Mode continu ; recliquez pour quitter).', st_mosaic_done:'Mosaïque locale appliquée (Continuez à glisser ou recliquez pour quitter).', st_mode_blackbox:'Faites glisser pour masquer en noir (Mode continu ; recliquez pour quitter).', st_blackbox_done:'Masquage noir appliqué (Continuez à glisser ou recliquez pour quitter).', st_mode_crop:'Faites glisser pour sélectionner la zone à recadrer.', st_crop_done:'Recadrage terminé.', st_mode_redbox:'Faites glisser pour dessiner un cadre rouge (Recliquez pour quitter).', st_redbox_done:'Cadre rouge appliqué (Continuez à glisser ou recliquez pour quitter).', st_mode_redline:'Faites glisser pour souligner en rouge (Recliquez pour quitter).', st_redline_done:'Soulignement rouge appliqué (Continuez à glisser ou recliquez pour quitter).', st_bright_saved:'Luminosité enregistrée.', st_bright_cancel:'Modification de la luminosité annulée.', st_doc_calc:'Suppression des ombres et amélioration du document...', st_doc_done_stamp:'Document amélioré (Tampons colorés conservés).', st_doc_done_bw:'Amélioration N&B du document appliquée.', st_wm_no_img:'Veuillez d’abord charger une image.', st_wm_no_txt:'Veuillez saisir un texte de filigrane.', st_wm_done:'Filigrane de sécurité appliqué.', st_front_no_img:'Veuillez charger et préparer le recto avant de le mémoriser.', st_front_saved:'Recto mémorisé ! Chargez maintenant le « Verso » puis cliquez sur Fusionner.', st_front_cleared:'Recto mémorisé effacé.', st_merge_err:'Assurez-vous d’avoir mémorisé le recto et chargé le verso.', st_merge_v_done:'Fusion verticale terminée !', st_merge_h_done:'Fusion horizontale terminée !', st_rot_ccw:'Pivoté de 90° vers la gauche.', st_rot_cw:'Pivoté de 90° vers la droite.', st_flip_h:'Retourné horizontalement.', st_flip_v:'Retourné verticalement.', st_copy_no_img:'Veuillez d’abord charger une image.', st_copy_done:'Image copiée dans le presse-papiers !', st_copy_err:'Échec de la copie. Veuillez utiliser le bouton Télécharger.', st_dl_no_img:'Veuillez d’abord charger une image.', st_dl_done:'Image prête ! Maintenez l’image appuyée ou choisissez « Enregistrer l’image ».', st_pdf_no_img:'Veuillez charger une image avant d’exporter en PDF.', st_pdf_done:'PDF exporté ! Choisissez « Enregistrer dans Fichiers ».' },
+            'nl': { appShortName:'Admin Redder', docTitle:'Administratieve Redder | 100% Offline ID-Watermerk & Trapeziumcorrectie', g1Title:'1. Bron, Resetten & Exporteren', pasteHint:'Druk op <b>Ctrl+V</b>, <b>sleep een afbeelding hierheen</b>, of kies een bestand:', btnSelectFile:'📁 Bestand kiezen', btnUndo:'↩ Ongedaan maken (Ctrl+Z)', btnReset:'Alles resetten', btnCopy:'📋 Afbeelding kopiëren', btnDownload:'Download PNG', optPdfFit:'PDF: A4 Volledige pagina', optPdfId:'PDF: ID-kaart 1:1 Ware grootte (A4)', btnExportPdf:'📄 Exporteer PDF', g2Title:'2. Afbeelding draaien & spiegelen', btnRotateCCW:'↺ 90° naar links', btnRotateCW:'↻ 90° naar rechts', btnFlipH:'↔ Horizontaal spiegelen', btnFlipV:'↕ Verticaal spiegelen', g3Title:'3. Helderheid & Pixelbewerking', lblBrightness:'Helderheid:', btnApplyBrightness:'✔ Toepassen', btnCancelBrightness:'✖ Annuleren', btnDocEnhance:'📄 Document Z/W verbeteren', lblKeepStamp:'Kleurstempels behouden', btnCropMode:'✂️ Bijsnijden', btnRedBoxMode:'🟥 Rood kader', btnRedLineMode:'🖍️ Rode onderstreping', btnMosaicMode:'Mozaïek (Slepen)', btnBlackBoxMode:'⬛ Zwart maken', btnKeystoneMode:'Trapeziumcorrectie (Klik L-Boven, R-Boven, R-Onder, L-Onder)', optRatioAuto:'Verhouding: Automatisch', optRatioIdH:'Verhouding: ID-kaart Liggend (85,6×54mm)', optRatioIdV:'Verhouding: ID-kaart Staand (54×85,6mm)', optRatioA4V:'Verhouding: A4 Staand (210×297mm)', optRatioA4H:'Verhouding: A4 Liggend (297×210mm)', btnApplyKeystone:'✔ Correctie bevestigen', tooltipTrigger:'ⓘ Klikvolgorde', tooltipDesc:'Volgorde:<br><b>1.L-Boven ➔ 2.R-Boven ➔ 3.R-Onder ➔ 4.L-Onder</b>', lblWatermark:'Watermerk:', watermarkDefault:'UITSLUITEND VOOR VERIFICATIE', watermarkPlaceholder:'Voer watermerktekst in...', optWmGray:'Halftransparant Donkergrijs', optWmRed:'Halftransparant Stempelrood', optWmBlue:'Halftransparant Documentblauw', btnApplyWatermark:'🔏 Watermerk toepassen', lblMerge:'🪪 ID Voor- & Achterkant samenvoegen:', btnSaveFront:'1️⃣ Huidig opslaan als "Voorkant"', btnMergeV:'2️⃣ ↕ Verticaal samenvoegen', btnMergeH:'2️⃣ ↔ Horizontaal samenvoegen', btnClearFront:'✖ Wissen', frontEmpty:'(Nog geen voorkant opgeslagen)', frontSaved:'(✔ Voorkant opgeslagen {w}×{h}px. Laad achterkant en voeg samen)', footerPrivacy:'🛡️ 100% lokale offline verwerking. Geen enkel uploadrisico.', lblShortcutPrompt:'Maak een bladwijzer of snelkoppeling en bespaar meer tijd voor koffie!', btnAddBookmark:'⭐ Bladwijzer maken', btnAddShortcut:'📲 Op startscherm plaatsen', lblDonatePrompt:'Als deze tool uw werkefficiëntie verhoogt, steun mij dan gerust', btnDonateEcpay:'綠界科技', lblModalHint:'📱 Houd de afbeelding hieronder ingedrukt om op te slaan in Foto’s', btnCloseModal:'✖ Sluiten', sc_bm_title:'⭐ Toevoegen aan bladwijzers', sc_bm_win:'Druk op <span class="sc-kbd">Ctrl</span> + <span class="sc-kbd">D</span> om deze pagina direct aan uw bladwijzers toe te voegen!', sc_bm_mac:'Druk op <span class="sc-kbd">⌘ Command</span> + <span class="sc-kbd">D</span> om deze pagina direct aan uw bladwijzers toe te voegen!', sc_bm_mob:'Op mobiel raden we aan op "<b>📲 Op startscherm plaatsen</b>" te tikken voor een app-icoon op uw telefoon!', sc_title_add:'📲 Op startscherm plaatsen', sc_title_exists:'✔ Snelkoppeling bestaat al', sc_title_done:'✔ Snelkoppeling geplaatst', sc_msg_exists:'De snelkoppeling staat al op uw startscherm! U hoeft deze niet opnieuw aan te maken.', sc_msg_done:'De snelkoppeling is op uw startscherm geplaatst!', sc_step_line:'U gebruikt een in-app browser:<ol><li>Tik rechtsonder op "<b>⋮</b>" of onderaan op "<b>Delen [↑]</b>".</li><li>Kies "<b>Openen in standaardbrowser</b>" of "<b>Open in Safari</b>".</li><li>Kies daarna "<b>＋ Zet op beginscherm</b>"!</li></ol>', sc_step_ios:'Snelkoppeling toevoegen op iPhone / iPad:<ol><li>Tik onderaan op "<b>•••</b>" of "<b>Delen [↑]</b>".</li><li>Scroll omlaag in het menu.</li><li>Tik op "<b>＋ Zet op beginscherm</b>" ➔ "<b>Voeg toe</b>"!</li></ol>', sc_step_android:'Snelkoppeling toevoegen op Android:<ol><li>Tik rechtsboven op het menu "<b>⋮</b>".</li><li>Kies "<b>Toevoegen aan startscherm</b>" of "<b>App installeren</b>".</li></ol>', sc_step_pc:'U gebruikt een computer:<br>• <b>PC/Mac</b>: Druk op <span class="sc-kbd">Ctrl + D</span> (<span class="sc-kbd">⌘ + D</span>) voor een bladwijzer.<br>• <b>Mobiel</b>: Open deze pagina op uw telefoon om een snelkoppeling te maken!', sc_btn_mark_done:'✔ Ik heb de snelkoppeling gemaakt', sc_btn_reopen:'Stappen opnieuw bekijken', sc_btn_close:'OK', st_waiting:'Wachten op afbeelding...', st_loaded:'Afbeelding geladen. Klaar om te bewerken, draaien, kopiëren of downloaden.', st_back_loaded:'Achterkant geladen! Klik na bewerking op "2️⃣ Samenvoegen".', st_undo:'Vorige stap hersteld.', st_invalid_file:'Sleep een geldig afbeeldingsbestand.', st_mode_keystone:'Klik achtereenvolgens op de 4 hoeken: Linksboven, Rechtsboven, Rechtsonder, Linksonder.', st_keystone_ready:'4 hoeken geselecteerd. Versleep rode kruisjes om aan te passen en klik op "✔ Correctie bevestigen".', st_keystone_calc:'Hoogwaardige trapeziumcorrectie berekenen...', st_keystone_done:'Trapeziumcorrectie voltooid.', st_keystone_done_ratio:'Trapeziumcorrectie voltooid (Standaardverhouding vergrendeld).', st_mode_mosaic:'Sleep om het mozaïekgebied te selecteren (Klik nogmaals om te sluiten).', st_mosaic_done:'Mozaïek toegepast (Blijf slepen of klik nogmaals om te sluiten).', st_mode_blackbox:'Sleep over de afbeelding om gegevens zwart te maken (Klik nogmaals om te sluiten).', st_blackbox_done:'Zwart vlak toegepast (Blijf slepen of klik nogmaals op de knop om te sluiten).', st_mode_crop:'Sleep over de afbeelding om het gebied bij te snijden.', st_crop_done:'Bijsnijden voltooid.', st_mode_redbox:'Sleep om een rood kader te tekenen (Klik nogmaals om te sluiten).', st_redbox_done:'Rood kader toegepast (Blijf slepen of klik nogmaals om te sluiten).', st_mode_redline:'Sleep om rood te onderstrepen (Klik nogmaals om te sluiten).', st_redline_done:'Rode onderstreping toegepast (Blijf slepen of klik nogmaals om te sluiten).', st_bright_saved:'Helderheid opgeslagen.', st_bright_cancel:'Helderheidsaanpassing geannuleerd.', st_doc_calc:'Schaduwen verwijderen en document verbeteren...', st_doc_done_stamp:'Document verbeterd (Kleurstempels behouden).', st_doc_done_bw:'Document Z/W-verbetering toegepast.', st_wm_no_img:'Laad eerst een afbeelding.', st_wm_no_txt:'Voer een watermerktekst in.', st_wm_done:'Watermerk toegepast.', st_front_no_img:'Laad en bewerk eerst de voorkant voordat u opslaat.', st_front_saved:'Voorkant opgeslagen! Laad nu de "Achterkant" en klik op Samenvoegen.', st_front_cleared:'Opgeslagen voorkant gewist.', st_merge_err:'Zorg dat de voorkant is opgeslagen en de achterkant is geladen.', st_merge_v_done:'Verticaal samenvoegen voltooid!', st_merge_h_done:'Horizontaal samenvoegen voltooid!', st_rot_ccw:'90° naar links gedraaid.', st_rot_cw:'90° naar rechts gedraaid.', st_flip_h:'Horizontaal gespiegeld.', st_flip_v:'Verticaal gespiegeld.', st_copy_no_img:'Laad eerst een afbeelding.', st_copy_done:'Afbeelding gekopieerd naar klembord!', st_copy_err:'Kopiëren mislukt. Gebruik de downloadknop.', st_dl_no_img:'Laad eerst een afbeelding.', st_dl_done:'Afbeelding klaar! Houd de afbeelding ingedrukt of kies "Afbeelding bewaren".', st_pdf_no_img:'Laad eerst een afbeelding voordat u naar PDF exporteert.', st_pdf_done:'PDF geëxporteerd! Kies "Bewaar in Bestanden".' },
+            'es': { appShortName:'Admin Savior', docTitle:'Salvador Administrativo | Herramienta 100% Offline para DNI y Documentos', g1Title:'1. Origen, Restablecer y Exportar', pasteHint:'Presiona <b>Ctrl+V</b> para pegar, <b>arrastra la imagen aquí</b> o elige un archivo:', btnSelectFile:'📁 Elegir archivo', btnUndo:'↩ Deshacer (Ctrl+Z)', btnReset:'Restablecer todo', btnCopy:'📋 Copiar imagen', btnDownload:'Descargar PNG', optPdfFit:'PDF: Ajustar a página A4', optPdfId:'PDF: Documento ID tamaño real 1:1 (A4)', btnExportPdf:'📄 Exportar PDF', g2Title:'2. Orientación de la imagen', btnRotateCCW:'↺ Girar 90° Izq.', btnRotateCW:'↻ Girar 90° Der.', btnFlipH:'↔ Voltear horizontal', btnFlipV:'↕ Voltear vertical', g3Title:'3. Brillo y Procesamiento de Píxeles', lblBrightness:'Brillo:', btnApplyBrightness:'✔ Aplicar', btnCancelBrightness:'✖ Cancelar', btnDocEnhance:'📄 Mejora B/N de Documento', lblKeepStamp:'Conservar sellos de color', btnCropMode:'✂️ Recortar', btnRedBoxMode:'🟥 Recuadro rojo', btnRedLineMode:'🖍️ Subrayado rojo', btnMosaicMode:'Mosaico local (Arrastrar)', btnBlackBoxMode:'⬛ Ocultación en negro', btnKeystoneMode:'Corrección trapezoidal (Clic Sup-Izq, Sup-Der, Inf-Der, Inf-Izq)', optRatioAuto:'Proporción: Automática', optRatioIdH:'Proporción: DNI/Tarjeta Horizontal (85,6×54mm)', optRatioIdV:'Proporción: DNI/Tarjeta Vertical (54×85,6mm)', optRatioA4V:'Proporción: A4 Vertical (210×297mm)', optRatioA4H:'Proporción: A4 Horizontal (297×210mm)', btnApplyKeystone:'✔ Confirmar corrección', tooltipTrigger:'ⓘ Orden de clics', tooltipDesc:'Orden obligatorio:<br><b>1.Sup-Izq ➔ 2.Sup-Der ➔ 3.Inf-Der ➔ 4.Inf-Izq</b>', lblWatermark:'Marca de agua:', watermarkDefault:'SOLO PARA USO DE VERIFICACIÓN', watermarkPlaceholder:'Texto de marca de agua...', optWmGray:'Gris oscuro translúcido', optWmRed:'Rojo sello translúcido', optWmBlue:'Azul oficial translúcido', btnApplyWatermark:'🔏 Aplicar marca de agua', lblMerge:'🪪 Unir Anverso y Reverso:', btnSaveFront:'1️⃣ Guardar actual como "Anverso"', btnMergeV:'2️⃣ ↕ Unir verticalmente', btnMergeH:'2️⃣ ↔ Unir horizontalmente', btnClearFront:'✖ Borrar guardado', frontEmpty:'(Anverso aún no guardado)', frontSaved:'(✔ Anverso guardado {w}×{h}px. Carga el reverso y pulsa Unir)', footerPrivacy:'🛡️ Procesamiento 100% local sin conexión. Cero riesgo de subida de datos.', lblShortcutPrompt:'¡Añade a marcadores o crea un acceso directo y ahorra tiempo para tu café!', btnAddBookmark:'⭐ Añadir a marcadores', btnAddShortcut:'📲 Crear acceso directo en el móvil', lblDonatePrompt:'Si esta herramienta mejora tu eficiencia en el trabajo, no dudes en apoyarme', btnDonateEcpay:'綠界科技', lblModalHint:'📱 Mantén presionada la imagen de abajo para guardar en Fotos', btnCloseModal:'✖ Cerrar', sc_bm_title:'⭐ Añadir a marcadores', sc_bm_win:'¡Presiona <span class="sc-kbd">Ctrl</span> + <span class="sc-kbd">D</span> en tu teclado para guardar esta página en tus marcadores!', sc_bm_mac:'¡Presiona <span class="sc-kbd">⌘ Command</span> + <span class="sc-kbd">D</span> en tu teclado para guardar esta página en tus marcadores!', sc_bm_mob:'En dispositivos móviles, te recomendamos pulsar "<b>📲 Crear acceso directo en el móvil</b>" para añadir un icono a tu pantalla de inicio.', sc_title_add:'📲 Añadir a pantalla de inicio', sc_title_exists:'✔ El acceso directo ya existe', sc_title_done:'✔ Acceso directo creado', sc_msg_exists:'¡Ya tienes el acceso directo en la pantalla de inicio de tu móvil! No es necesario volver a crearlo.', sc_msg_done:'¡Se ha creado el acceso directo en tu pantalla de inicio!', sc_step_line:'Estás en un navegador integrado:<ol><li>Pulsa "<b>⋮</b>" abajo a la derecha o "<b>Compartir [↑]</b>".</li><li>Elige "<b>Abrir en el navegador predeterminado</b>" o "<b>Abrir en Safari</b>".</li><li>Luego selecciona "<b>＋ Añadir a pantalla de inicio</b>".</li></ol>', sc_step_ios:'Para añadir el icono en iPhone / iPad:<ol><li>Pulsa "<b>•••</b>" o el botón "<b>Compartir [↑]</b>" en la barra inferior.</li><li>Desliza el menú hacia arriba.</li><li>Pulsa "<b>＋ Añadir a pantalla de inicio</b>" ➔ "<b>Añadir</b>".</li></ol>', sc_step_android:'Para añadir el icono en Android:<ol><li>Pulsa el menú "<b>⋮</b>" arriba a la derecha.</li><li>Selecciona "<b>Añadir a pantalla de inicio</b>" o "<b>Instalar aplicación</b>".</li></ol>', sc_step_pc:'Estás en un navegador de escritorio:<br>• <b>PC/Mac</b>: Presiona <span class="sc-kbd">Ctrl + D</span> (<span class="sc-kbd">⌘ + D</span>) para añadir a marcadores.<br>• <b>Móvil</b>: Abre esta página en tu teléfono para crear un acceso directo.', sc_btn_mark_done:'✔ Ya creé el acceso directo', sc_btn_reopen:'Ver pasos de nuevo', sc_btn_close:'Aceptar', st_waiting:'Esperando imagen...', st_loaded:'Imagen cargada. Lista para editar, girar, copiar o descargar.', st_back_loaded:'¡Reverso cargado! Tras corregir, haz clic en "2️⃣ Unir vertical/horizontalmente".', st_undo:'Deshecho al paso anterior.', st_invalid_file:'Por favor, arrastra un archivo de imagen válido.', st_mode_keystone:'Haz clic en las 4 esquinas en orden: Sup-Izquierda, Sup-Derecha, Inf-Derecha, Inf-Izquierda.', st_keystone_ready:'4 esquinas seleccionadas. Arrastra las cruces rojas para ajustar y pulsa "✔ Confirmar corrección".', st_keystone_calc:'Calculando corrección trapezoidal en alta calidad...', st_keystone_done:'Corrección trapezoidal completada.', st_keystone_done_ratio:'Corrección trapezoidal completada (Proporción estándar fijada).', st_mode_mosaic:'Arrastra para seleccionar el área del mosaico (Haz clic de nuevo para salir).', st_mosaic_done:'Mosaico local aplicado (Sigue arrastrando o haz clic en el botón para salir).', st_mode_blackbox:'Arrastra para ocultar datos con un cuadro negro (Haz clic de nuevo para salir).', st_blackbox_done:'Ocultación aplicada (Sigue arrastrando o haz clic en el botón para salir).', st_mode_crop:'Arrastra para seleccionar el área a recortar.', st_crop_done:'Recorte completado.', st_mode_redbox:'Arrastra para dibujar un recuadro rojo (Haz clic de nuevo para salir).', st_redbox_done:'Recuadro rojo aplicado (Sigue arrastrando o haz clic en el botón para salir).', st_mode_redline:'Arrastra para subrayar en rojo (Haz clic de nuevo para salir).', st_redline_done:'Subrayado rojo aplicado (Sigue arrastrando o haz clic en el botón para salir).', st_bright_saved:'Brillo guardado.', st_bright_cancel:'Ajuste de brillo cancelado.', st_doc_calc:'Eliminando sombras y mejorando documento...', st_doc_done_stamp:'Documento mejorado (Sellos de color conservados).', st_doc_done_bw:'Mejora B/N de documento aplicada.', st_wm_no_img:'Carga una imagen antes de aplicar la marca de agua.', st_wm_no_txt:'Introduce el texto de la marca de agua.', st_wm_done:'Marca de agua aplicada.', st_front_no_img:'Carga y procesa primero el anverso antes de guardar.', st_front_saved:'¡Anverso guardado! Ahora carga el "Reverso" y pulsa Unir.', st_front_cleared:'Anverso guardado eliminado.', st_merge_err:'Asegúrate de haber guardado el anverso y cargado el reverso.', st_merge_v_done:'¡Unión vertical completada!', st_merge_h_done:'¡Unión horizontal completada!', st_rot_ccw:'Girado 90° a la izquierda.', st_rot_cw:'Girado 90° a la derecha.', st_flip_h:'Volteado horizontalmente.', st_flip_v:'Volteado verticalmente.', st_copy_no_img:'Carga una imagen antes de copiar.', st_copy_done:'¡Imagen copiada al portapapeles!', st_copy_err:'Error al copiar. Por favor, usa Descargar.', st_dl_no_img:'Carga una imagen antes de descargar.', st_dl_done:'¡Imagen lista! Mantén presionada la imagen o selecciona "Guardar imagen".', st_pdf_no_img:'Carga una imagen antes de exportar a PDF.', st_pdf_done:'¡PDF exportado! Selecciona "Guardar en Archivos".' },
+            'sv': { appShortName:'Admin Räddare', docTitle:'Administrativ Räddare | 100 % Offline Vattenstämpel & Keystone-verktyg', g1Title:'1. Bildkälla, Återställ & Exportera', pasteHint:'Tryck <b>Ctrl+V</b> för att klistra in, <b>dra och släpp</b> här, eller välj fil:', btnSelectFile:'📁 Välj fil', btnUndo:'↩ Ångra (Ctrl+Z)', btnReset:'Återställ allt', btnCopy:'📋 Kopiera bild', btnDownload:'Ladda ner PNG', optPdfFit:'PDF: Anpassa till A4-sida', optPdfId:'PDF: ID-kort 1:1 Verklig storlek (A4)', btnExportPdf:'📄 Exportera PDF', g2Title:'2. Bildorientering', btnRotateCCW:'↺ Rotera 90° V', btnRotateCW:'↻ Rotera 90° H', btnFlipH:'↔ Vänd vågrätt', btnFlipV:'↕ Vänd lodrätt', g3Title:'3. Ljusstyrka & Pixelbehandling', lblBrightness:'Ljusstyrka:', btnApplyBrightness:'✔ Verkställ', btnCancelBrightness:'✖ Avbryt', btnDocEnhance:'📄 Dokument S/V-förbättring', lblKeepStamp:'Behåll färgstämplar', btnCropMode:'✂️ Beskär', btnRedBoxMode:'🟥 Röd ram', btnRedLineMode:'🖍️ Röd understrykning', btnMosaicMode:'Lokal mosaik (Dra)', btnBlackBoxMode:'⬛ Maskera med svart', btnKeystoneMode:'Keystone-korrigering (Klicka Övre-V, Övre-H, Nedre-H, Nedre-V)', optRatioAuto:'Proportion: Automatisk', optRatioIdH:'Proportion: ID-kort Liggande (85,6×54mm)', optRatioIdV:'Proportion: ID-kort Stående (54×85,6mm)', optRatioA4V:'Proportion: A4 Stående (210×297mm)', optRatioA4H:'Proportion: A4 Liggande (297×210mm)', btnApplyKeystone:'✔ Bekräfta korrigering', tooltipTrigger:'ⓘ Klickordning', tooltipDesc:'Ordningen måste vara:<br><b>1.Övre-V ➔ 2.Övre-H ➔ 3.Nedre-H ➔ 4.Nedre-V</b>', lblWatermark:'Säkerhetsvattenstämpel:', watermarkDefault:'ENDAST FÖR VERIFIERING', watermarkPlaceholder:'Ange vattenstämpeltext...', optWmGray:'Halvtransparent Mörkgrå', optWmRed:'Halvtransparent Stämpelröd', optWmBlue:'Halvtransparent Dokumentblå', btnApplyWatermark:'🔏 Lägg till vattenstämpel', lblMerge:'🪪 Slå ihop ID Fram- & Baksida:', btnSaveFront:'1️⃣ Spara aktuell som "Framsida"', btnMergeV:'2️⃣ ↕ Slå ihop lodrätt', btnMergeH:'2️⃣ ↔ Slå ihop vågrätt', btnClearFront:'✖ Rensa sparad', frontEmpty:'(Ingen framsida sparad ännu)', frontSaved:'(✔ Framsida sparad {w}×{h}px. Ladda baksida och klicka Slå ihop)', footerPrivacy:'🛡️ 100 % lokal offline-bearbetning. Ingen risk för datauppladdning.', lblShortcutPrompt:'Lägg till bokmärke eller genväg och spara mer tid för kaffe!', btnAddBookmark:'⭐ Lägg till bokmärke', btnAddShortcut:'📲 Skapa genväg på hemskärmen', lblDonatePrompt:'Om detta verktyg ökar din arbetseffektivitet får du gärna stödja mig', btnDonateEcpay:'綠界科技', lblModalHint:'📱 Håll bilden nedan intryckt för att spara i Bilder', btnCloseModal:'✖ Stäng', sc_bm_title:'⭐ Lägg till bokmärke', sc_bm_win:'Tryck på <span class="sc-kbd">Ctrl</span> + <span class="sc-kbd">D</span> på tangentbordet för att bokmärka sidan direkt!', sc_bm_mac:'Tryck på <span class="sc-kbd">⌘ Command</span> + <span class="sc-kbd">D</span> på tangentbordet för att bokmärka sidan direkt!', sc_bm_mob:'På mobilen rekommenderar vi att trycka på "<b>📲 Skapa genväg på hemskärmen</b>" för att skapa en appikon!', sc_title_add:'📲 Lägg till på hemskärmen', sc_title_exists:'✔ Genväg finns redan', sc_title_done:'✔ Genväg skapad på hemskärmen', sc_msg_exists:'Genvägen finns redan på din hemskärm! Du behöver inte skapa den igen.', sc_msg_done:'Genvägen har skapats på din hemskärm!', sc_step_line:'Du använder en inbyggd webbläsare:<ol><li>Tryck på "<b>⋮</b>" längst ner till höger eller "<b>Dela [↑]</b>".</li><li>Välj "<b>Öppna i standardwebbläsare</b>" eller "<b>Öppna i Safari</b>".</li><li>Välj sedan "<b>＋ Lägg till på hemskärmen</b>"!</li></ol>', sc_step_ios:'Lägg till ikonen på iPhone / iPad:<ol><li>Tryck på "<b>•••</b>" eller "<b>Dela [↑]</b>" längst ner.</li><li>Scrolla ner i menyn.</li><li>Tryck på "<b>＋ Lägg till på hemskärmen</b>" ➔ "<b>Lägg till</b>"!</li></ol>', sc_step_android:'Lägg till ikonen på Android:<ol><li>Tryck på menyn "<b>⋮</b>" högst upp till höger.</li><li>Välj "<b>Lägg till på startskärmen</b>" eller "<b>Installera app</b>".</li></ol>', sc_step_pc:'Du använder en dator:<br>• <b>PC/Mac</b>: Tryck <span class="sc-kbd">Ctrl + D</span> (<span class="sc-kbd">⌘ + D</span>) för bokmärke.<br>• <b>Mobil</b>: Öppna sidan i mobilen för att skapa en genväg på hemskärmen!', sc_btn_mark_done:'✔ Jag har skapat genvägen', sc_btn_reopen:'Visa instruktioner igen', sc_btn_close:'OK', st_waiting:'Väntar på bild...', st_loaded:'Bilden har laddats. Redo för redigering, rotering, kopiering eller nedladdning.', st_back_loaded:'Baksida laddad! Efter redigering, klicka på "2️⃣ Slå ihop lodrätt/vågrätt".', st_undo:'Ångrade till föregående steg.', st_invalid_file:'Dra och släpp en giltig bildfil.', st_mode_keystone:'Klicka på de 4 hörnen i ordning: Övre vänstra, Övre högra, Nedre högra, Nedre vänstra.', st_keystone_ready:'4 hörn valda. Dra i de röda korsen för att finjustera och klicka sedan "✔ Bekräfta korrigering".', st_keystone_calc:'Beräknar högupplöst keystone-korrigering...', st_keystone_done:'Keystone-korrigering klar.', st_keystone_done_ratio:'Keystone-korrigering klar (Standardproportion låst).', st_mode_mosaic:'Dra på bilden för att markera mosaikområdet (Klicka igen för att avsluta).', st_mosaic_done:'Lokal mosaik tillämpad (Fortsätt dra eller klicka igen för att avsluta).', st_mode_blackbox:'Dra på bilden för att maskera med svart ruta (Klicka igen för att avsluta).', st_blackbox_done:'Svart maskering tillämpad (Fortsätt dra eller klicka på knappen för att avsluta).', st_mode_crop:'Dra på bilden för att markera området som ska beskäras.', st_crop_done:'Beskärning klar.', st_mode_redbox:'Dra för att rita en röd markeringsram (Klicka igen för att avsluta).', st_redbox_done:'Röd ram tillämpad (Fortsätt dra eller klicka på knappen för att avsluta).', st_mode_redline:'Dra för att rita en röd understrykning (Klicka igen för att avsluta).', st_redline_done:'Röd understrykning tillämpad (Fortsätt dra eller klicka igen för att avsluta).', st_bright_saved:'Ljusstyrka sparad.', st_bright_cancel:'Justering av ljusstyrka avbruten.', st_doc_calc:'Tar bort skuggor och förbättrar dokument...', st_doc_done_stamp:'Dokument förbättrat (Färgstämplar bevarade).', st_doc_done_bw:'Dokument S/V-förbättring tillämpad.', st_wm_no_img:'Ladda en bild innan du lägger till vattenstämpel.', st_wm_no_txt:'Ange text för vattenstämpeln.', st_wm_done:'Säkerhetsvattenstämpel tillämpad.', st_front_no_img:'Ladda och redigera framsidan innan du sparar.', st_front_saved:'Framsida sparad! Ladda nu "Baksidan" och klicka på Slå ihop.', st_front_cleared:'Sparad framsida rensad.', st_merge_err:'Kontrollera att framsidan är sparad och baksidan är laddad.', st_merge_v_done:'Lodrät ihopslagning klar!', st_merge_h_done:'Vågrät ihopslagning klar!', st_rot_ccw:'Roterad 90° åt vänster.', st_rot_cw:'Roterad 90° åt höger.', st_flip_h:'Vänd vågrätt.', st_flip_v:'Vänd lodrätt.', st_copy_no_img:'Ladda en bild innan du kopierar.', st_copy_done:'Bild kopierad till urklipp!', st_copy_err:'Kopiering misslyckades. Använd nedladdningsknappen istället.', st_dl_no_img:'Ladda en bild innan du laddar ner.', st_dl_done:'Bild klar! Håll bilden intryckt eller välj "Spara bild" i menyn.', st_pdf_no_img:'Ladda en bild innan du exporterar till PDF.', st_pdf_done:'PDF exporterad! Välj "Spara i Filer" i menyn.' }
         };
 
         const _0x1a02 = Object.values(_0x1a01).map(_0xl => _0xl.watermarkDefault);
         const _0x1a03 = 'papaya_doc_tool_lang';
+        const _0x1a03_sc = 'papaya_doc_tool_shortcut_added';
         const _0x1a04 = document.getElementById('mainCanvas'), _0x1a05 = _0x1a04.getContext('2d');
         const _0x1a06 = document.getElementById('magnifierCanvas'), _0x1a07 = _0x1a06.getContext('2d');
         const _0x1a08 = document.createElement('canvas'), _0x1a09 = _0x1a08.getContext('2d');
@@ -1163,12 +305,61 @@
         const _0x1a28 = document.getElementById('btnRotateCCW'), _0x1a29 = document.getElementById('btnRotateCW');
         const _0x1a2a = document.getElementById('btnFlipH'), _0x1a2b = document.getElementById('btnFlipV');
         const _0x1a3d = document.getElementById('mobileSaveModal'), _0x1a3e = document.getElementById('mobileSaveImg'), _0x1a3f = document.getElementById('btnCloseModal');
+        const _0xbtnBm = document.getElementById('btnAddBookmark'), _0xbtnSc = document.getElementById('btnAddShortcut');
+        const _0xscModal = document.getElementById('shortcutModal'), _0xscTitle = document.getElementById('scModalTitle'), _0xscBody = document.getElementById('scModalBody');
+        const _0xscIcon = document.getElementById('scModalIcon'), _0xbtnScDone = document.getElementById('btnScMarkDone'), _0xbtnScReopen = document.getElementById('btnScReopenGuide'), _0xbtnScClose = document.getElementById('btnScClose');
 
         let _0x1a2c = 'zh-TW', _0x1a2d = 'st_waiting', _0x1a2e = '#d9534f';
         let _0x1a2f = new Image(), _0x1a30 = null, _0x1a31 = null, _0x1a32 = null;
         let _0x1a33 = [], _0x1a35 = 'NONE', _0x1a36 = false, _0x1a37, _0x1a38, _0x1a39, _0x1a3a;
-        let _0x1a3b = [], _0x1a3c = -1, _0x1a40 = null;
+        let _0x1a3b = [], _0x1a3c = -1, _0x1a40 = null, _0xdeferredPrompt = null;
         const _0x1a34 = 15;
+
+        function _0xgenAppIcon(){
+            try{
+                const _0xic=document.createElement('canvas');_0xic.width=180;_0xic.height=180;
+                const _0xictx=_0xic.getContext('2d');
+                const _0xgrd=_0xictx.createLinearGradient(0,0,0,180);
+                _0xgrd.addColorStop(0,'#0f253e');_0xgrd.addColorStop(1,'#183b61');
+                _0xictx.fillStyle=_0xgrd;_0xictx.fillRect(0,0,180,180);
+                _0xictx.strokeStyle='rgba(0,210,255,0.35)';_0xictx.lineWidth=6;_0xictx.strokeRect(3,3,174,174);
+                _0xictx.save();
+                _0xictx.beginPath();
+                _0xictx.moveTo(90,22);_0xictx.lineTo(142,40);_0xictx.lineTo(142,80);
+                _0xictx.quadraticCurveTo(142,116,90,132);
+                _0xictx.quadraticCurveTo(38,116,38,80);
+                _0xictx.lineTo(38,40);_0xictx.closePath();
+                const _0xsgrd=_0xictx.createLinearGradient(38,22,142,132);
+                _0xsgrd.addColorStop(0,'#00b4d8');_0xsgrd.addColorStop(1,'#0077b6');
+                _0xictx.fillStyle=_0xsgrd;_0xictx.fill();
+                _0xictx.lineWidth=5;_0xictx.strokeStyle='#ffd166';_0xictx.stroke();
+                _0xictx.beginPath();_0xictx.moveTo(68,77);_0xictx.lineTo(84,93);_0xictx.lineTo(114,61);
+                _0xictx.strokeStyle='#ffffff';_0xictx.lineWidth=9;_0xictx.lineCap='round';_0xictx.lineJoin='round';_0xictx.stroke();
+                _0xictx.restore();
+                _0xictx.fillStyle='#ffffff';
+                _0xictx.font='bold 30px "Microsoft JhengHei", "PingFang TC", sans-serif';
+                _0xictx.textAlign='center';_0xictx.textBaseline='middle';
+                _0xictx.fillText('行政救星',90,157);
+                const _0xdu=_0xic.toDataURL('image/png');
+                const _0xati=document.getElementById('appleTouchIcon'),_0xfvi=document.getElementById('favIcon');
+                if(_0xati)_0xati.href=_0xdu;
+                if(_0xfvi)_0xfvi.href=_0xdu;
+                if(_0xscIcon)_0xscIcon.src=_0xdu;
+            }catch(_0xe){}
+        }
+        _0xgenAppIcon();
+
+        function _0xisStandalone(){
+            return (window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)||window.navigator.standalone===true;
+        }
+        if(_0xisStandalone()){try{localStorage.setItem(_0x1a03_sc,'1');}catch(_0xe){}}
+
+        window.addEventListener('beforeinstallprompt',(_0xe)=>{_0xe.preventDefault();_0xdeferredPrompt=_0xe;});
+        window.addEventListener('appinstalled',()=>{
+            try{localStorage.setItem(_0x1a03_sc,'1');}catch(_0xe){}
+            _0xdeferredPrompt=null;
+            _0xshowScModal(_0x1f01('sc_title_done'),_0x1f01('sc_msg_done'),false,false);
+        });
 
         function _0x1f01(_0xk){return (_0x1a01[_0x1a2c]&&_0x1a01[_0x1a2c][_0xk])||_0x1a01['zh-TW'][_0xk]||_0xk;}
         function _0x1f02(_0xk,_0xc){_0x1a2d=_0xk;_0x1a2e=_0xc;_0x1a0b.textContent=_0x1f01(_0xk);_0x1a0b.style.color=_0xc;}
@@ -1179,12 +370,19 @@
         function _0x1f04(_0xl){
             if(!_0x1a01[_0xl])_0xl='zh-TW';
             _0x1a2c=_0xl;_0x1a0a.value=_0xl;document.documentElement.lang=_0xl;document.title=_0x1f01('docTitle');
-            const _0xids=['g1Title','btnSelectFile','btnUndo','btnReset','btnCopy','btnDownload','optPdfFit','optPdfId','btnExportPdf','g2Title','btnRotateCCW','btnRotateCW','btnFlipH','btnFlipV','g3Title','lblBrightness','btnApplyBrightness','btnCancelBrightness','btnDocEnhance','lblKeepStamp','btnCropMode','btnRedBoxMode','btnRedLineMode','btnMosaicMode','btnBlackBoxMode','btnKeystoneMode','optRatioAuto','optRatioIdH','optRatioIdV','optRatioA4V','optRatioA4H','btnApplyKeystone','tooltipTrigger','lblWatermark','optWmGray','optWmRed','optWmBlue','btnApplyWatermark','lblMerge','btnSaveFront','btnMergeV','btnMergeH','btnClearFront','footerPrivacy','lblDonatePrompt','btnDonateEcpay','lblModalHint','btnCloseModal'];
+            const _0xsn=_0x1f01('appShortName');
+            const _0xmt1=document.getElementById('metaAppTitle'),_0xmt2=document.getElementById('metaAppName');
+            if(_0xmt1)_0xmt1.setAttribute('content',_0xsn);
+            if(_0xmt2)_0xmt2.setAttribute('content',_0xsn);
+            const _0xids=['g1Title','btnSelectFile','btnUndo','btnReset','btnCopy','btnDownload','optPdfFit','optPdfId','btnExportPdf','g2Title','btnRotateCCW','btnRotateCW','btnFlipH','btnFlipV','g3Title','lblBrightness','btnApplyBrightness','btnCancelBrightness','btnDocEnhance','lblKeepStamp','btnCropMode','btnRedBoxMode','btnRedLineMode','btnMosaicMode','btnBlackBoxMode','btnKeystoneMode','optRatioAuto','optRatioIdH','optRatioIdV','optRatioA4V','optRatioA4H','btnApplyKeystone','tooltipTrigger','lblWatermark','optWmGray','optWmRed','optWmBlue','btnApplyWatermark','lblMerge','btnSaveFront','btnMergeV','btnMergeH','btnClearFront','footerPrivacy','lblShortcutPrompt','btnAddBookmark','btnAddShortcut','lblDonatePrompt','btnDonateEcpay','lblModalHint','btnCloseModal'];
             _0xids.forEach(_0xid=>{const _0xel=document.getElementById(_0xid);if(_0xel)_0xel.textContent=_0x1f01(_0xid);});
             document.getElementById('pasteHint').innerHTML=_0x1f01('pasteHint');
             document.getElementById('tooltipDesc').innerHTML=_0x1f01('tooltipDesc');
             _0x1a20.placeholder=_0x1f01('watermarkPlaceholder');
             if(_0x1a02.includes(_0x1a20.value.trim())){_0x1a20.value=_0x1f01('watermarkDefault');}
+            _0xbtnScDone.textContent=_0x1f01('sc_btn_mark_done');
+            _0xbtnScReopen.textContent=_0x1f01('sc_btn_reopen');
+            _0xbtnScClose.textContent=_0x1f01('sc_btn_close');
             _0x1f03();_0x1f02(_0x1a2d,_0x1a2e);
         }
         function _0x1f05(_0xrl){
@@ -1211,6 +409,57 @@
         _0x1a0d.addEventListener('click',()=>_0x1a0c.click());
         _0x1a3f.addEventListener('click',()=>{_0x1a3d.style.display='none';});
         _0x1a3d.addEventListener('click',(_0xe)=>{if(_0xe.target===_0x1a3d)_0x1a3d.style.display='none';});
+
+        function _0xshowScModal(_0xtitle,_0xhtml,_0xshowMarkDone,_0xshowReopen){
+            _0xscTitle.textContent=_0xtitle;_0xscBody.innerHTML=_0xhtml;
+            _0xbtnScDone.style.display=_0xshowMarkDone?'inline-block':'none';
+            _0xbtnScReopen.style.display=_0xshowReopen?'inline-block':'none';
+            _0xbtnScClose.textContent=_0x1f01('sc_btn_close');
+            _0xscModal.style.display='flex';
+        }
+        _0xbtnScClose.addEventListener('click',()=>{_0xscModal.style.display='none';});
+        _0xscModal.addEventListener('click',(_0xe)=>{if(_0xe.target===_0xscModal)_0xscModal.style.display='none';});
+
+        _0xbtnBm.addEventListener('click',()=>{
+            if(_0x1f22()){_0xshowScModal(_0x1f01('sc_bm_title'),_0x1f01('sc_bm_mob'),false,false);return;}
+            const _0xisMac=/Mac|iPod|iPhone|iPad/i.test(navigator.platform||navigator.userAgent);
+            _0xshowScModal(_0x1f01('sc_bm_title'),_0xisMac?_0x1f01('sc_bm_mac'):_0x1f01('sc_bm_win'),false,false);
+        });
+
+        function _0xopenShortcutGuide(){
+            const _0xua=navigator.userAgent||'';
+            const _0xisInApp=/Line\/|FBAN|FBAV|Instagram|Threads/i.test(_0xua);
+            const _0xisIOS=/iPhone|iPad|iPod/i.test(_0xua)||(/Macintosh/i.test(_0xua)&&navigator.maxTouchPoints>1);
+            const _0xisAndroid=/Android/i.test(_0xua);
+            if(_0xisInApp)_0xshowScModal(_0x1f01('sc_title_add'),_0x1f01('sc_step_line'),true,false);
+            else if(_0xisIOS)_0xshowScModal(_0x1f01('sc_title_add'),_0x1f01('sc_step_ios'),true,false);
+            else if(_0xisAndroid)_0xshowScModal(_0x1f01('sc_title_add'),_0x1f01('sc_step_android'),true,false);
+            else _0xshowScModal(_0x1f01('sc_title_add'),_0x1f01('sc_step_pc'),false,false);
+        }
+
+        _0xbtnSc.addEventListener('click',async()=>{
+            let _0xhasSc=_0xisStandalone();
+            try{if(localStorage.getItem(_0x1a03_sc)==='1')_0xhasSc=true;}catch(_0xe){}
+            if(_0xhasSc){_0xshowScModal(_0x1f01('sc_title_exists'),_0x1f01('sc_msg_exists'),false,true);return;}
+            if(_0xdeferredPrompt){
+                try{
+                    _0xdeferredPrompt.prompt();
+                    const _0xchoice=await _0xdeferredPrompt.userChoice;
+                    if(_0xchoice&&_0xchoice.outcome==='accepted'){
+                        try{localStorage.setItem(_0x1a03_sc,'1');}catch(_0xe){}
+                        _0xdeferredPrompt=null;
+                        _0xshowScModal(_0x1f01('sc_title_done'),_0x1f01('sc_msg_done'),false,false);return;
+                    }
+                }catch(_0xerr){}
+            }
+            _0xopenShortcutGuide();
+        });
+
+        _0xbtnScDone.addEventListener('click',()=>{
+            try{localStorage.setItem(_0x1a03_sc,'1');}catch(_0xe){}
+            _0xshowScModal(_0x1f01('sc_title_done'),_0x1f01('sc_msg_done'),false,false);
+        });
+        _0xbtnScReopen.addEventListener('click',()=>{_0xopenShortcutGuide();});
 
         function _0x1f24(){
             const _0xr=_0x1a04.getBoundingClientRect();
@@ -1510,13 +759,11 @@
                     _0x1a05.moveTo(_0xp.x-_0xarm,_0xp.y);_0x1a05.lineTo(_0xp.x+_0xarm,_0xp.y);
                     _0x1a05.moveTo(_0xp.x,_0xp.y-_0xarm);_0x1a05.lineTo(_0xp.x,_0xp.y+_0xarm);
                     _0x1a05.stroke();
-
                     _0x1a05.strokeStyle='#ff0000';_0x1a05.lineWidth=3.8*_0xsc;
                     _0x1a05.beginPath();
                     _0x1a05.moveTo(_0xp.x-_0xarm,_0xp.y);_0x1a05.lineTo(_0xp.x+_0xarm,_0xp.y);
                     _0x1a05.moveTo(_0xp.x,_0xp.y-_0xarm);_0x1a05.lineTo(_0xp.x,_0xp.y+_0xarm);
                     _0x1a05.stroke();
-
                     const _0xfs=Math.round(18*_0xsc);
                     _0x1a05.font=`bold ${_0xfs}px Arial`;
                     const _0xnx=(_0xp.x>_0x1a04.width-35*_0xsc)?(_0xp.x-22*_0xsc):(_0xp.x+13*_0xsc);
