@@ -1,112 +1,132 @@
-![Visitor Count](https://komarev.com/ghpvc/?username=bboypapaya&color=blue&style=flat-square)
+# 🛡️ 行政救星 Admin Savior
 
-# 🛡️ 行政救星 (Admin Savior)
-**純本機離線公文與雙證件影像處理工具 | 100% Offline Document & ID Image Processing Tool**
+[![100% Offline](https://img.shields.io/badge/100%25_Offline-純本機離線運算-28a745?style=for-the-badge)](#)
+[![Zero Upload](https://img.shields.io/badge/Zero_Server_Upload-零個資上傳風險-007bff?style=for-the-badge)](#)
+[![Release](https://img.shields.io/badge/Release-v1.0.1-6f42c1?style=for-the-badge)](https://github.com/bboypapaya/admin-savior/releases/latest)
+[![Visitors](https://visitor-badge.laobi.icu/badge?page_id=bboypapaya.admin-savior&style=for-the-badge)](#)
 
-[![Live Demo](https://img.shields.io/badge/線上立即使用-Live_Demo-007bff?style=for-the-badge)](https://bboypapaya.github.io/admin-savior/)
-[![Privacy](https://img.shields.io/badge/Privacy-100%25_Offline_Local-28a745?style=for-the-badge)](#-專案簡介)
-[![Device](https://img.shields.io/badge/Device-PC_%26_Mobile_Touch-6f42c1?style=for-the-badge)](#-核心功能總覽)
-[![Languages](https://img.shields.io/badge/i18n-9_Languages-ff9800?style=for-the-badge)](#-支援語系-9-國語言國際化)
-
-[繁體中文](#-專案簡介) | [English](#-project-overview)
+**[繁體中文](#-專案簡介) | [English](#-project-overview)**
 
 ---
 
 ## 📌 專案簡介
 
-**「行政救星 (Admin Savior)」** 是一款專為行政、總務、人資與日常公務需求設計的**純前端 HTML 離線影像處理工具**（完整支援電腦滑鼠與手機觸控操作）。
+**《行政救星 Admin Savior》** 是一款專為行政人員、人資、公務機關與一般民眾打造的 **100% 純本機離線公文與雙證件影像處理工具**。
 
-在日常公務中，常需處理身分證、健保卡、存摺或內部公文影像。若使用一般線上工具，檔案須上傳至第三方伺服器，存在嚴重的個資外洩風險。本專案核心宗旨為 **「100% 純本機瀏覽器運算、零伺服器上傳、零資料庫留存」**，所有影像處理皆在使用者端裝置記憶體內完成，即使拔除網路線亦能完整運作，提供最高等級的資安與隱私保障。
+在日常申辦業務或處理公文時，我們常收到拍得歪斜、隔著透明卡套反光泛霧、或是帶有手機黑影的身分證與健保卡照片。傳統做法不是要開啟肥大的修圖與排版軟體耗時處理，就是得冒著敏感個資外洩的風險，將證件上傳至來路不明的免費線上工具。
 
-![行政救星操作示範 Demo](./demo.gif)
-
-🔗 **線上直接使用**：[https://bboypapaya.github.io/admin-savior/](https://bboypapaya.github.io/admin-savior/)
+本專案將所有影像矩陣運算與 PDF 生成技術封裝於**單一 `index.html` 檔案**中，透過瀏覽器內建的 `HTML5 Canvas` 在您自己的電腦或手機記憶體內完成處理——**無後端伺服器、無資料庫、無外部追蹤腳本，拔掉網路線或開啟飛航模式依然能 100% 正常運作**。
 
 ---
 
-## ✨ 核心功能總覽
+## 🚀 立即使用與離線下載
 
-| 功能分類 | 功能項目 | 技術與實務亮點 |
-| :--- | :--- | :--- |
-| **📐 幾何與比例校正** | **公文/證件梯形校正** | 依序點擊四個頂點即可將拍歪的文件拉直。內建 **十字準星放大鏡**（手機觸控支援**指尖偏心引導**與**放大鏡頂角自動避讓**，完全不擋視線），支援**紅十字拖曳微調**與**標準比例鎖定**（身分證/健保卡 `85.6×54mm`、直式證件、A4 直/橫式）。 |
-| **🪪 證件拼接處理** | **雙證件正反面合併** | 支援將目前處理好的畫面暫存為「正面」，接著載入「反面」圖片後，一鍵執行**上下合併**或**左右合併**，自動對齊寬度與留白邊距。 |
-| **📄 影像清晰強化** | **公文去陰影與黑白強化** | 採用積分圖局部自適應演算法，有效去除手機翻拍陰影並強化文字對比；支援**「智慧保留彩色印章」**（自動偵測並保留紅色印泥與藍色公章）。 |
-| **🔒 隱私防護遮蔽** | **局部馬賽克 & 個資黑塊** | 提供 **局部馬賽克** 與 **⬛ 個資黑塊（去識別化實心遮罩）** 兩種遮蔽工具，皆支援**常駐連續框選模式**，快速塗銷敏感個資。 |
-| **🔏 防冒用機制** | **壓印滿版防盜浮水印** | 支援自訂浮水印文字（如：`僅供業務申辦使用 他用無效`），並提供**半透明深灰、印泥紅、公文藍**三種斜向滿版壓印色彩，防止證件遭挪作他用。 |
-| **🖍️ 無紙化重點標註** | **紅框標註 & 紅底線標註** | 支援常駐連續繪製紅框與紅底線（紅底線於接近水平時或按住 `Shift` 鍵會**自動拉直**），免去傳統「列印 ➔ 手工畫線 ➔ 重新掃描」的繁瑣流程。 |
-| **✂️ 基礎編修轉向** | **矩形裁切、轉向與亮度** | 支援自由拖曳矩形裁切、左右 90° 旋轉、水平/上下翻轉、亮度滑桿調整，以及最多 **15 步復原 (`Ctrl+Z`)**。 |
-| **📤 多元輸入與輸出** | **剪貼簿連動 & 離線 PDF** | 電腦支援 **`Ctrl+V` 直接貼上截圖**或拖曳圖片，手機支援**直接拍照或從相簿選圖**；完成後可**一鍵複製圖片**（直接貼回 Word / Excel / LINE）、手機長按存入相簿，或由本機直接生成 **A4 滿版 PDF** 與 **證件 1:1 實際尺寸 PDF**（列印出來即為真實證件大小）。 |
-| **📲 桌面捷徑與書籤** | **一鍵建立手機桌面捷徑** | 內嵌動態生成之高解析度專屬盾牌 App 圖示，支援 **iOS / Android 手機桌面建立捷徑**（具備 LINE 內建瀏覽器環境偵測引導與防重複建立機制）及電腦版快速書籤引導，隨點隨開免找連結。 |
+* 🌐 **線上立即開啟（電腦 / 手機皆可，支援建立手機桌面捷徑）**：
+  👉 **[https://bboypapaya.github.io/admin-savior/](https://bboypapaya.github.io/admin-savior/)**
+* 💻 **電腦版單一檔案離線下載（下載後無須網路，雙擊即可開啟）**：
+  👉 **[點此直接下載最新版 `index.html`](https://github.com/bboypapaya/admin-savior/releases/latest/download/index.html)**（或前往 **[Releases 頁面](https://github.com/bboypapaya/admin-savior/releases/latest)** 查看更新日誌）
 
 ---
 
-## 🌐 支援語系 (9 國語言國際化)
+## 🎬 操作示範
 
-系統會自動偵測瀏覽器語系並記憶使用者偏好，支援即時切換以下 9 種語言（連同預設防盜浮水印文字與捷徑引導皆會自動對應轉換）：
-- `zh-TW` 繁體中文
-- `en-US` English (US)
-- `ja` 日本語
-- `de` Deutsch
-- `ko` 한국어
-- `fr` Français
-- `nl` Nederlands
-- `es` Español
-- `sv` Svenska
+![行政救星操作示範 Demo](https://raw.githubusercontent.com/bboypapaya/admin-savior/main/demo.gif)
 
 ---
 
-## 🚀 快速使用方式
+## ✨ 核心功能一覽
 
-1. **線上開啟（電腦 / 手機皆可）**：直接點擊 [https://bboypapaya.github.io/admin-savior/](https://bboypapaya.github.io/admin-savior/) 即可使用，亦可點擊網頁底部的「**📲 在手機桌面建立捷徑**」將工具釘選至手機主畫面。
-2. **純離線單檔保存**：您也可以前往 [Releases](https://github.com/bboypapaya/admin-savior/releases) 下載本專案中的 `index.html` 至電腦桌面，未來在無網路環境下直接以瀏覽器（Chrome / Edge / Safari / Firefox）雙擊開啟即可運作。
+| 功能模組 | 實務痛點解決與技術亮點 |
+| :--- | :--- |
+| **📐 智慧梯形校正**<br>*(含邊緣微銳化補償)* | 依序點擊拍歪證件或公文的 4 個角落，瞬間拉正為矩形。支援鎖定 **身分證/健保卡 (`85.6×54mm`)**、**直式證件** 與 **A4 直橫式** 標準比例，並內建雙線性內插後的 **3×3 降噪邊緣微銳化**，確保拉直後文字依然銳利清晰。 |
+| **👆 手機觸控偏心放大鏡** | 手機點選梯形頂點時，紅十字準星自動偏移於指尖上方並搭配青色引導線，左上/右上放大鏡（`88px`）具備頂角自動避讓機制，徹底解決手指擋住視線的問題。 |
+| **✨ 智慧去霧清晰化**<br>*(v1.0.1 新增・保留全彩)* | 針對隔著卡套翻拍、室內光線不足或表面反光導致「灰灰霧霧」的各類彩色證件、駕照、護照與銀行存摺，一鍵執行 **高動態範圍去霧 (Auto-Percentile HDR) ＋ 積分圖局部清晰度反差 (Clarity) ＋ Gamma 微增亮 ＋ 自然飽和度補償 (Vibrance) ＋ 邊緣銳化**，加深淡色字跡與存摺點陣字，同時保護大頭照膚色自然不失真。 |
+| **📄 公文去陰影黑白強化**<br>*(智慧保留紅藍印章)* | 採用積分圖局部自適應演算法，一鍵消除手機翻拍公文時的桌面陰影並轉為高對比白底黑字；內建 **「保留彩色印章」** 色相偵測，自動保留紅色印泥與藍色公章。 |
+| **🪪 雙證件正反面合併** | 處理完證件正面後點擊「暫存正面」，接著載入反面影像，即可一鍵完成 **「↕ 上下合併」** 或 **「↔ 左右合併」**，自動留白對齊並維持高解析度。 |
+| **🔏 滿版防盜用浮水印** | 支援自訂文字（如：`僅供業務申辦使用 他用無效`），一鍵壓印滿版交錯斜向浮水印，提供 **半透明深灰、印泥紅、公文藍** 3 種專業配色，防範證件遭盜用且不遮蓋重要字跡。 |
+| **⬛ 個資遮蔽與馬賽克** | 提供常駐連續繪製的 **「局部馬賽克」** 與 **「⬛ 個資黑塊」**，拖曳即可快速遮蔽敏感流水號、條碼或非必要個資。 |
+| **🖍️ 無紙化重點標註** | 支援常駐連續繪製 **「🟥 紅框標註」** 與 **「🖍️ 紅底線標註」**（接近水平自動拉直），免去「列印 ➔ 手工畫線 ➔ 重新掃描」的繁瑣流程，並支援最多 15 步 `Ctrl+Z` 復原。 |
+| **📤 本機 PDF 與圖片匯出** | 免上傳伺服器，直接於瀏覽器端生成 **「A4 滿版適應 PDF」** 或 **「證件 1:1 實際尺寸 (A4) PDF」**（印出來即為真實身分證大小）。支援 `Ctrl+V` 剪貼簿直接貼上、一鍵複製圖片貼回 Word / LINE，以及手機原生分享與長按存入相簿。 |
+| **📲 桌面捷徑與 9 國語系** | 內嵌動態繪製之「深藍盾牌」App 圖示，支援 iOS / Android **加入手機主畫面捷徑**（含 LINE / Threads 內建瀏覽器環境偵測引導）與電腦版快速書籤。內建 **繁中、英、日、德、韓、法、荷、西、瑞典** 9 國語系自動偵測與切換。 |
+
+---
+
+## 🛡️ 資安承諾與公開查驗方式
+
+處理身分證、健保卡、存摺與內部公文時，**「資訊安全」是不可妥協的底線**。本工具不要求您相信口頭保證，您可隨時透過以下 4 種科學方式親自查驗：
+
+1. **檢視開源原始碼**：全專案僅一個 `index.html` 純文字檔，您可以直接按 `Ctrl+F` 搜尋是否有任何網路傳輸語法（如 `fetch`、`XMLHttpRequest`、`WebSocket`、`axios`），結果為 **0 個**。
+2. **交由 AI 進行資安審計**：您可直接複製本專案的 `index.html` 原始碼，貼給 ChatGPT、Claude 或 Gemini，詢問：「*這段程式碼是否有留後門或將圖片上傳至外部伺服器？*」即可立即獲得客觀驗證。
+3. **瀏覽器封包監控 (`F12` Network)**：在網頁按下 `F12` 開啟開發者工具並切換至 `Network（網路）` 分頁，載入照片、去霧清晰化、壓印浮水印或匯出 PDF，對外發送的網路封包全程為 **0 Bytes**。
+4. **物理斷網執行**：將 `index.html` 下載至電腦並拔除網路線，或於手機開啟「飛航模式」後再載入證件處理，在物理層面上 100% 隔絕任何外傳可能。
 
 ---
 
 ## ☕ 贊助支持與免責聲明
 
-本工具為**完全免費公開、無任何功能鎖定（No Paywall）**之開放資源，所有使用者無須付費或註冊即可使用 100% 完整功能。
+本專案為免費開源工具，旨在提升第一線行政人員的工作效率並守護大眾的個資安全。如果這個小工具幫您省下了寶貴的時間、讓您能多喝一杯咖啡，歡迎隨緣贊助支持開發者持續維護：
 
-若本工具成功提升了您的日常行政工作效率，歡迎透過頁面底部的贊助連結支持開發者持續維護與開發：
-- **國內贊助（綠界科技 ECPay）**：[https://p.ecpay.com.tw/04052B1](https://p.ecpay.com.tw/04052B1)
-- **海外贊助（Ko-fi / PayPal）**：[https://ko-fi.com/bboypapaya](https://ko-fi.com/bboypapaya)
+* 💳 **台灣本地贊助（綠界科技 ECPay）**：[https://p.ecpay.com.tw/04052B1](https://p.ecpay.com.tw/04052B1)
+* ☕ **海外與小額贊助（Ko-fi）**：[https://ko-fi.com/bboypapaya](https://ko-fi.com/bboypapaya)
 
-> **【贊助性質與服務條款聲明】**
-> 1. 本專案網站（`https://bboypapaya.github.io/admin-savior/`）為免費公開提供大眾使用之純前端離線工具，所有影像運算皆於使用者本機端完成，本網站不蒐集、不傳輸亦不留存任何使用者之圖片或個人資料。
-> 2. 頁面內所設置之收款連結純屬使用者基於認同與感謝之「自由隨緣贊助（無對價關係之贈與）」，不涉及任何實體商品販售、付費解鎖權限或專屬客製化客服承諾。
-> 3. **聯絡開發者**：`bboy.papaya@gmail.com`
+> **⚖️ 服務條款與免責聲明**：
+> 1. **純本機運算聲明**：本工具所有影像處理功能皆於使用者端瀏覽器記憶體內執行，開發者不蒐集、不傳輸、亦不留存任何使用者之圖片或個人資料。
+> 2. **無對價贈與說明**：本工具所有功能皆為 100% 免費開放使用，無任何付費解鎖或會員分級機制。上述贊助連結純屬使用者基於認同本開源專案理念之**自願性無償贈與（打賞）**，無涉及任何商品買賣或對價勞務關係。
+> 3. **聯絡資訊**：如有功能建議或專案合作事宜，歡迎透過 GitHub Issues 或電郵聯繫開發者（`bboypapaya`）。
 
+---
 ---
 
 ## 📌 Project Overview
 
-**Admin Savior** is a lightweight, **100% client-side offline HTML document and ID image processing tool** designed for administrative staff, HR professionals, and everyday office workflows on both desktop and mobile devices.
+**Admin Savior** is a **100% offline, client-side document and ID card image processing web application** designed for administrative staff, HR professionals, civil servants, and everyday users who value privacy.
 
-Processing sensitive images—such as ID cards, health insurance cards, bankbooks, or official documents—on standard online tools carries severe privacy risks due to server uploads. **Admin Savior** processes all pixels locally within your browser's memory using HTML5 Canvas. **Zero data is uploaded to any server**, and the tool functions completely offline.
+When handling ID cards, health insurance cards, bank passbooks, or official documents, we often deal with skewed photos, hazy glare through plastic sleeves, or heavy phone shadows. Uploading sensitive personal IDs to unknown third-party online tools poses severe privacy risks.
 
-![Admin Savior Demo](./demo.gif)
+Admin Savior packs all matrix transformations, adaptive image enhancements, and PDF generation into a **single standalone `index.html` file** powered by `HTML5 Canvas`. **There is no backend server, no database, and zero external uploads—it works 100% normally even with your internet disconnected or in Airplane Mode.**
 
-🔗 **Live Web App**: [https://bboypapaya.github.io/admin-savior/](https://bboypapaya.github.io/admin-savior/)
+---
+
+## 🚀 Live Web App & Offline Download
+
+* 🌐 **Live Web App (PC / Mobile, supports Home Screen App Shortcuts)**:
+  👉 **[https://bboypapaya.github.io/admin-savior/](https://bboypapaya.github.io/admin-savior/)**
+* 💻 **Offline Single-File Download (Double-click to run offline on any PC/Mac)**:
+  👉 **[Download Latest `index.html` Directly](https://github.com/bboypapaya/admin-savior/releases/latest/download/index.html)** (or visit the **[Releases Page](https://github.com/bboypapaya/admin-savior/releases/latest)** for release notes)
 
 ---
 
 ## ✨ Key Features
 
-- **📐 Keystone (Perspective) Correction**: Click 4 corners to straighten skewed document photos. Includes a built-in **crosshair magnifier** (with smart mobile touch-offset and corner auto-dodging), draggable red crosshair fine-tuning, and **Standard Aspect Ratio Locking** (ID Card Landscape `85.6×54mm`, ID Portrait `54×85.6mm`, A4 Portrait/Landscape).
-- **🪪 ID Card Front & Back Merger**: Temporarily store the processed "Front" image in memory, load the "Back" image, and merge them **Vertically** or **Horizontally** in one click with automatic alignment and padding.
-- **📄 Document B&W Enhancement & Stamp Preservation**: Removes uneven lighting and shadows using adaptive integral-image thresholding while offering a smart **"Keep Colored Stamps"** mode to preserve red and blue official seals.
-- **🔒 Privacy Redaction (Sticky Modes)**: Features both **Local Mosaic** and **⬛ Blackout Redact (solid black rectangle)** in continuous/sticky drawing mode to quickly mask personally identifiable information (PII).
-- **🔏 Tiled Security Watermark**: Apply full-page angled anti-theft watermarks with customizable text and 3 translucent color presets (Dark Gray, Stamp Red, Official Blue).
-- **🖍️ Paperless Highlighting**: Draw **Red Boxes** and **Red Underlines** (auto-straightens when near horizontal or holding `Shift`) in continuous mode—eliminating the need to print, highlight by hand, and re-scan.
-- **✂️ Crop, Orientation & History**: Free rectangular cropping, 90° rotations, horizontal/vertical flips, brightness adjustment, and up to **15 steps of Undo (`Ctrl+Z`)**.
-- **📤 Seamless Input & Local PDF Export**: Paste images directly from your clipboard (`Ctrl+V`), drag & drop files, or capture photos on mobile; copy processed images straight back to your clipboard (for Word/Excel/LINE), save directly to mobile Photos, or generate **A4 Full-Page PDFs** and **1:1 Actual-Size ID Card PDFs** entirely offline.
-- **📲 Home Screen Shortcut & Bookmark Guide**: Built-in high-resolution shield app icon generator and smart environment detection (iOS Safari, Android Chrome, and In-App Browsers) with duplicate-prevention logic for one-tap access from your phone's home screen.
+| Feature | Description & Technical Highlights |
+| :--- | :--- |
+| **📐 Smart Keystone Correction**<br>*(with Edge Micro-Sharpening)* | Click 4 corners of a skewed document or ID card to straighten it into a clean rectangle. Supports aspect ratio locking for **ID Cards (`85.6×54mm`)**, **Portrait IDs**, and **Standard A4**, followed by noise-gated **3×3 edge micro-sharpening** to keep text razor-sharp. |
+| **👆 Mobile Touch-Offset Magnifier** | On mobile devices, the red crosshair automatically offsets above your fingertip with a cyan tracking line, paired with an auto-dodging `88px` corner magnifier so your finger never blocks alignment points. |
+| **✨ Smart Dehaze & Clarity**<br>*(New in v1.0.1・Full-Color)* | Designed for hazy, dim, or glare-affected ID cards, driver's licenses, passports, and bank passbooks. Combines **Auto-Percentile HDR Dehazing, Integral-Image Local Contrast (Clarity), Gamma Brightening, Vibrance Boost, and Edge Sharpening** while preserving natural portrait skin tones. |
+| **📄 Document B&W Enhancement**<br>*(Preserves Colored Stamps)* | Uses fast integral-image adaptive thresholding to remove phone shadows and convert documents into crisp black-and-white text, featuring a smart **"Keep Colored Stamps"** detector to preserve red and blue official seals. |
+| **🪪 ID Card Front & Back Merger** | Temporarily store the processed front image in memory, load the back image, and merge them **Vertically** or **Horizontally** with one click, complete with automatic alignment and clean white padding. |
+| **🔏 Tiled Security Watermarks** | Apply custom angled full-page watermarks (e.g., `FOR OFFICIAL VERIFICATION USE ONLY`) in **Translucent Dark Gray, Stamp Red, or Official Blue** to prevent unauthorized reuse of your ID copies. |
+| **⬛ Privacy Redaction & Mosaic** | Continuous drag-and-draw modes for **Local Pixelation Mosaic** and **⬛ Blackout Redaction** to quickly mask out sensitive numbers or personal details. |
+| **🖍️ Paperless Highlighting** | Continuous drawing modes for **Red Boxes** and **Red Underlines** (auto-straightens near horizontal), backed by up to 15 steps of Undo (`Ctrl+Z`). |
+| **📤 Local PDF & Image Export** | Generate **A4 Full-Page Fit PDFs** or **1:1 Actual-Size ID Card PDFs** directly in your browser. Supports `Ctrl+V` clipboard pasting, one-click image copying, native mobile sharing (`Web Share API`), and long-press saving to Photos. |
+| **📲 Home Screen Shortcuts & 9 Languages** | Built-in dynamic high-res shield app icon generator, supporting iOS/Android Home Screen shortcuts (with in-app browser detection guides) and instant switching across **9 languages** (`zh-TW`, `en-US`, `ja`, `de`, `ko`, `fr`, `nl`, `es`, `sv`). |
 
 ---
 
-## ☕ Support & Contact
+## 🛡️ Privacy Guarantee & Verification
 
-**Admin Savior** is 100% free to use with no paywalls or locked features. If this tool boosts your work efficiency, feel free to support the developer:
+We believe in **verifiable security** rather than verbal promises. You can verify Admin Savior's zero-upload architecture anytime:
 
-- **Ko-fi (International)**: [https://ko-fi.com/bboypapaya](https://ko-fi.com/bboypapaya)
-- **ECPay (Taiwan Domestic)**: [https://p.ecpay.com.tw/04052B1](https://p.ecpay.com.tw/04052B1)
-- **Developer Contact**: `bboy.papaya@gmail.com`
+1. **Inspect the Source Code**: The entire application lives in a single `index.html` file. Search for any network API (`fetch`, `XMLHttpRequest`, `WebSocket`)—there are **none**.
+2. **Audit with AI**: Copy the `index.html` code and ask ChatGPT, Claude, or Gemini: *"Does this code contain any backdoors or upload images to any server?"*
+3. **Monitor Network Traffic (`F12`)**: Open your browser's Developer Tools (`F12` -> `Network` tab). Load images, apply enhancements, add watermarks, and export PDFs—outbound traffic remains **0 Bytes**.
+4. **Run Completely Offline**: Turn on Airplane Mode or unplug your Ethernet cable before loading your ID photos.
+
+---
+
+## ☕ Support & Disclaimer
+
+Admin Savior is 100% free and open-source. If this tool saves you time and boosts your daily efficiency, feel free to buy me a coffee:
+
+* 💳 **ECPay (Taiwan Local Support)**: [https://p.ecpay.com.tw/04052B1](https://p.ecpay.com.tw/04052B1)
+* ☕ **Ko-fi (International Support)**: [https://ko-fi.com/bboypapaya](https://ko-fi.com/bboypapaya)
