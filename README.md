@@ -38,16 +38,17 @@
 
 | 功能模組 | 實務痛點解決與技術亮點 |
 | :--- | :--- |
-| **📐 智慧梯形校正**<br>*(含邊緣微銳化補償)* | 依序點擊拍歪證件或公文的 4 個角落，瞬間拉正為矩形。支援鎖定 **身分證/健保卡 (`85.6×54mm`)**、**直式證件** 與 **A4 直橫式** 標準比例，並內建雙線性內插後的 **3×3 降噪邊緣微銳化**，確保拉直後文字依然銳利清晰。 |
+| **🗂️ 置頂懸浮 3 大頁籤介面**<br>*(v1.0.1 結構改版)* | 採用 **「頂部常駐控制列」＋「1. 校正・裁切・合併 / 2. 畫質・去霧・去陰影 / 3. 浮水印・遮蔽・標註」** 3 大分類頁籤，並支援 `Sticky` 置頂吸附，手機與筆電用戶免上下來回滑動即可邊點按鈕、邊看圖片變化。 |
+| **📐 智慧梯形校正與比例適配**<br>*(9 國證件自動正規化 ＋ 免重選微調)* | 點擊拍歪證件或公文的 4 個角落瞬間拉正。預設自動正規化為各國法定證件尺寸 **`85.6×54mm`**（並依語系自動適配 **A4** 或北美 **US Letter** 公文比例），內建 **3×3 邊緣微銳化補償**；校正後**免重選 4 個角**，可直接切換比例選單或拉動 **「↔ 寬高自由微調」** 滑桿。 |
 | **👆 手機觸控偏心放大鏡** | 手機點選梯形頂點時，紅十字準星自動偏移於指尖上方並搭配青色引導線，左上/右上放大鏡（`88px`）具備頂角自動避讓機制，徹底解決手指擋住視線的問題。 |
-| **✨ 智慧去霧清晰化**<br>*(v1.0.1 新增・保留全彩)* | 針對隔著卡套翻拍、室內光線不足或表面反光導致「灰灰霧霧」的各類彩色證件、駕照、護照與銀行存摺，一鍵執行 **高動態範圍去霧 (Auto-Percentile HDR) ＋ 積分圖局部清晰度反差 (Clarity) ＋ Gamma 微增亮 ＋ 自然飽和度補償 (Vibrance) ＋ 邊緣銳化**，加深淡色字跡與存摺點陣字，同時保護大頭照膚色自然不失真。 |
+| **✨ 智慧去霧清晰化**<br>*(v1.0.1 新增・保留全彩)* | 針對隔著卡套翻拍、光線昏暗或反光泛霧的各類彩色證件、駕照、護照與銀行存摺，一鍵執行 **高動態範圍去霧 (Auto-Percentile HDR) ＋ 積分圖局部清晰度反差 (Clarity) ＋ Gamma 微增亮 ＋ 自然飽和度補償 (Vibrance) ＋ 邊緣銳化**，加深淡色字跡與存摺點陣字，同時保護大頭照膚色自然不失真。 |
 | **📄 公文去陰影黑白強化**<br>*(智慧保留紅藍印章)* | 採用積分圖局部自適應演算法，一鍵消除手機翻拍公文時的桌面陰影並轉為高對比白底黑字；內建 **「保留彩色印章」** 色相偵測，自動保留紅色印泥與藍色公章。 |
 | **🪪 雙證件正反面合併** | 處理完證件正面後點擊「暫存正面」，接著載入反面影像，即可一鍵完成 **「↕ 上下合併」** 或 **「↔ 左右合併」**，自動留白對齊並維持高解析度。 |
 | **🔏 滿版防盜用浮水印** | 支援自訂文字（如：`僅供業務申辦使用 他用無效`），一鍵壓印滿版交錯斜向浮水印，提供 **半透明深灰、印泥紅、公文藍** 3 種專業配色，防範證件遭盜用且不遮蓋重要字跡。 |
 | **⬛ 個資遮蔽與馬賽克** | 提供常駐連續繪製的 **「局部馬賽克」** 與 **「⬛ 個資黑塊」**，拖曳即可快速遮蔽敏感流水號、條碼或非必要個資。 |
 | **🖍️ 無紙化重點標註** | 支援常駐連續繪製 **「🟥 紅框標註」** 與 **「🖍️ 紅底線標註」**（接近水平自動拉直），免去「列印 ➔ 手工畫線 ➔ 重新掃描」的繁瑣流程，並支援最多 15 步 `Ctrl+Z` 復原。 |
-| **📤 本機 PDF 與圖片匯出** | 免上傳伺服器，直接於瀏覽器端生成 **「A4 滿版適應 PDF」** 或 **「證件 1:1 實際尺寸 (A4) PDF」**（印出來即為真實身分證大小）。支援 `Ctrl+V` 剪貼簿直接貼上、一鍵複製圖片貼回 Word / LINE，以及手機原生分享與長按存入相簿。 |
-| **📲 桌面捷徑與 9 國語系** | 內嵌動態繪製之「深藍盾牌」App 圖示，支援 iOS / Android **加入手機主畫面捷徑**（含 LINE / Threads 內建瀏覽器環境偵測引導）與電腦版快速書籤。內建 **繁中、英、日、德、韓、法、荷、西、瑞典** 9 國語系自動偵測與切換。 |
+| **📤 本機 PDF 與圖片匯出** | 免上傳伺服器，直接於瀏覽器端生成 **「滿版適應 PDF (A4 / US Letter)」** 或 **「證件 1:1 實際尺寸 PDF」**（印出來即為真實身分證大小）。支援 `Ctrl+V` 剪貼簿直接貼上、一鍵複製圖片、手機原生分享與長按存入相簿。 |
+| **📲 桌面捷徑與 9 國語系** | 內嵌動態繪製之「深藍盾牌」App 圖示，支援 iOS / Android **加入手機主畫面捷徑**（含 LINE / Threads 內建瀏覽器環境偵測引導）與電腦版快速書籤。內建 **繁中、英、日、德、韓、法、荷、西、瑞典** 9 國語系與紙張規格自動切換。 |
 
 ---
 
@@ -100,7 +101,8 @@ Admin Savior packs all matrix transformations, adaptive image enhancements, and 
 
 | Feature | Description & Technical Highlights |
 | :--- | :--- |
-| **📐 Smart Keystone Correction**<br>*(with Edge Micro-Sharpening)* | Click 4 corners of a skewed document or ID card to straighten it into a clean rectangle. Supports aspect ratio locking for **ID Cards (`85.6×54mm`)**, **Portrait IDs**, and **Standard A4**, followed by noise-gated **3×3 edge micro-sharpening** to keep text razor-sharp. |
+| **🗂️ Sticky 3-Tab Toolbar UI**<br>*(New in v1.0.1)* | Features a **Persistent Top Bar** (File / Undo / Export) and **3 Logical Tabs** (*1. Straighten, Crop & Merge*, *2. Enhance & Dehaze*, *3. Watermark & Redact*) with sticky positioning, eliminating the need to scroll up and down on mobile or laptop screens. |
+| **📐 Smart Keystone & Auto-Ratio**<br>*(9-Locale Standard ID + Live Tuning)* | Click 4 corners to straighten skewed documents or ID cards. Automatically normalizes to international standard ID card size (**`85.6×54mm`**) and adapts document ratios to **US Letter (`8.5×11"`)** or **A4** based on language, with **3×3 edge micro-sharpening** and a **Post-Correction Aspect Slider** (no need to re-select corners). |
 | **👆 Mobile Touch-Offset Magnifier** | On mobile devices, the red crosshair automatically offsets above your fingertip with a cyan tracking line, paired with an auto-dodging `88px` corner magnifier so your finger never blocks alignment points. |
 | **✨ Smart Dehaze & Clarity**<br>*(New in v1.0.1・Full-Color)* | Designed for hazy, dim, or glare-affected ID cards, driver's licenses, passports, and bank passbooks. Combines **Auto-Percentile HDR Dehazing, Integral-Image Local Contrast (Clarity), Gamma Brightening, Vibrance Boost, and Edge Sharpening** while preserving natural portrait skin tones. |
 | **📄 Document B&W Enhancement**<br>*(Preserves Colored Stamps)* | Uses fast integral-image adaptive thresholding to remove phone shadows and convert documents into crisp black-and-white text, featuring a smart **"Keep Colored Stamps"** detector to preserve red and blue official seals. |
@@ -108,7 +110,7 @@ Admin Savior packs all matrix transformations, adaptive image enhancements, and 
 | **🔏 Tiled Security Watermarks** | Apply custom angled full-page watermarks (e.g., `FOR OFFICIAL VERIFICATION USE ONLY`) in **Translucent Dark Gray, Stamp Red, or Official Blue** to prevent unauthorized reuse of your ID copies. |
 | **⬛ Privacy Redaction & Mosaic** | Continuous drag-and-draw modes for **Local Pixelation Mosaic** and **⬛ Blackout Redaction** to quickly mask out sensitive numbers or personal details. |
 | **🖍️ Paperless Highlighting** | Continuous drawing modes for **Red Boxes** and **Red Underlines** (auto-straightens near horizontal), backed by up to 15 steps of Undo (`Ctrl+Z`). |
-| **📤 Local PDF & Image Export** | Generate **A4 Full-Page Fit PDFs** or **1:1 Actual-Size ID Card PDFs** directly in your browser. Supports `Ctrl+V` clipboard pasting, one-click image copying, native mobile sharing (`Web Share API`), and long-press saving to Photos. |
+| **📤 Local PDF & Image Export** | Generate **Full-Page Fit PDFs (A4 / US Letter)** or **1:1 Actual-Size ID Card PDFs** directly in your browser. Supports `Ctrl+V` clipboard pasting, one-click image copying, native mobile sharing (`Web Share API`), and long-press saving to Photos. |
 | **📲 Home Screen Shortcuts & 9 Languages** | Built-in dynamic high-res shield app icon generator, supporting iOS/Android Home Screen shortcuts (with in-app browser detection guides) and instant switching across **9 languages** (`zh-TW`, `en-US`, `ja`, `de`, `ko`, `fr`, `nl`, `es`, `sv`). |
 
 ---
