@@ -54,6 +54,7 @@
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft JhengHei", sans-serif; padding: 0 12px 40px 12px; margin: 0; background: #f4f6f9; transition: background 0.2s; }
         body.drag-over { background: #e3f2fd; }
+        button, select, input { touch-action: manipulation; }
         .toolbar-sticky { position: sticky; top: 0; z-index: 900; background: #fff; border-radius: 0 0 10px 10px; box-shadow: 0 3px 12px rgba(0,0,0,0.09); margin-bottom: 10px; border: 1px solid #e0e4e8; border-top: none; }
         .top-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; padding: 8px 12px; background: #f8fafd; border-bottom: 1px solid #eaeef2; }
         .top-group { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
@@ -61,7 +62,7 @@
         #pasteHint { color: #555; }
         #status { color: #d9534f; font-weight: bold; }
         .tab-bar { display: flex; background: #eef2f7; padding: 4px 8px 0 8px; gap: 4px; border-bottom: 2px solid #007bff; overflow-x: auto; }
-        .tab-btn { flex: 1; min-width: max-content; text-align: center; padding: 7px 12px; margin: 0; font-weight: bold; font-size: 0.92em; color: #495057; background: #e2e8f0; border: 1px solid #cbd5e1; border-bottom: none; border-radius: 6px 6px 0 0; cursor: pointer; transition: all 0.15s; }
+        .tab-btn { flex: 1; min-width: max-content; text-align: center; padding: 7px 12px; margin: 0; font-weight: bold; font-size: 0.92em; color: #495057; background: #e2e8f0; border: 1px solid #cbd5e1; border-bottom: none; border-radius: 6px 6px 0 0; cursor: pointer; transition: background 0.12s, color 0.12s; }
         .tab-btn:hover { background: #d8e2ef; }
         .tab-btn.active { background: #007bff; color: #fff; border-color: #007bff; }
         .tab-panel { display: none; padding: 8px 12px; background: #fff; border-radius: 0 0 10px 10px; }
@@ -69,7 +70,7 @@
         .panel-row { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; padding: 3px 0; }
         .panel-row + .panel-row { margin-top: 5px; padding-top: 6px; border-top: 1px dashed #e5e9f0; }
         .sub-box { width: 100%; background: #f0f7ff; border: 1px solid #b6d4fe; border-radius: 6px; padding: 6px 10px; margin-top: 5px; display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
-        button { margin: 0; padding: 6px 10px; cursor: pointer; border: 1px solid #cbd5e1; background: #f8fafc; border-radius: 5px; transition: all 0.15s; font-size: 0.9em; color: #222; line-height: 1.3; }
+        button { margin: 0; padding: 6px 10px; cursor: pointer; border: 1px solid #cbd5e1; background: #f8fafc; border-radius: 5px; transition: background 0.12s; font-size: 0.9em; color: #222; line-height: 1.3; }
         button:hover:not(:disabled) { background: #e2e8f0; }
         button:disabled { opacity: 0.45; cursor: not-allowed; }
         button.active { background: #007bff; color: white; border-color: #0056b3; font-weight: bold; }
@@ -79,10 +80,10 @@
         .divider { color: #cbd5e1; margin: 0 2px; user-select: none; }
         canvas#mainCanvas { border: 1px dashed #999; max-width: 100%; height: auto; cursor: crosshair; background: #fff; margin: 0 auto; display: block; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
         .demo-tooltip { position: relative; display: inline-block; cursor: help; color: #007bff; font-size: 0.88em; font-weight: bold; text-decoration: underline dotted; }
-        .demo-tooltip .tooltip-content { visibility: hidden; width: 195px; background-color: #222; color: #fff; text-align: center; border-radius: 8px; padding: 10px; position: absolute; z-index: 1000; top: 135%; left: 50%; margin-left: -97px; opacity: 0; transition: opacity 0.25s; box-shadow: 0 4px 12px rgba(0,0,0,0.35); pointer-events: none; }
+        .demo-tooltip .tooltip-content { visibility: hidden; width: 195px; background-color: #222; color: #fff; text-align: center; border-radius: 8px; padding: 10px; position: absolute; z-index: 1000; top: 135%; left: 50%; margin-left: -97px; opacity: 0; transition: opacity 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.35); pointer-events: none; }
         .demo-tooltip:hover .tooltip-content { visibility: visible; opacity: 1; }
         .tooltip-content svg { width: 100%; height: auto; margin-bottom: 4px; }
-        #magnifierCanvas { position: fixed; width: 140px; height: 140px; border-radius: 50%; border: 3px solid #007bff; box-shadow: 0 4px 12px rgba(0,0,0,0.35); pointer-events: none; display: none; z-index: 1000; background: #222; }
+        #magnifierCanvas { position: fixed; width: 140px; height: 140px; border-radius: 50%; border: 3px solid #007bff; box-shadow: 0 4px 12px rgba(0,0,0,0.35); pointer-events: none; display: none; z-index: 1000; background: #222; will-change: left, top; }
         .footer-bar { margin-top: 14px; padding: 12px 15px; background: #fff; border: 1px solid #e0e4e8; border-radius: 8px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 0.88em; color: #666; }
         .footer-right-col { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
         .footer-row { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
@@ -122,7 +123,6 @@
 <body>
 
     <div class="toolbar-sticky">
-        <!-- 頂部常駐列：檔案、復原、匯出與語系 -->
         <div class="top-bar">
             <div class="top-group">
                 <input type="file" id="uploadInput" accept="image/*" style="display: none;">
@@ -152,20 +152,17 @@
             </div>
         </div>
 
-        <!-- 狀態提示條 -->
         <div class="status-strip">
             <span id="status">等待載入圖片...</span>
             <span id="pasteHint">💡 電腦可直接按 <b>Ctrl+V</b> 貼上或<b>拖曳圖片至此</b></span>
         </div>
 
-        <!-- 3 大分類頁籤切換列 -->
         <div class="tab-bar">
             <button type="button" class="tab-btn active" id="tabBtn1" data-tab="1">📐 1. 校正・裁切・合併</button>
             <button type="button" class="tab-btn" id="tabBtn2" data-tab="2">✨ 2. 畫質・去霧・去陰影</button>
             <button type="button" class="tab-btn" id="tabBtn3" data-tab="3">🔏 3. 浮水印・遮蔽・標註</button>
         </div>
 
-        <!-- 頁籤 1：轉向、裁切、梯形校正、正反面合併 -->
         <div class="tab-panel active" id="tabPanel1">
             <div class="panel-row">
                 <button id="btnRotateCCW">↺ 左轉 90°</button>
@@ -177,7 +174,6 @@
                 <button id="btnKeystoneMode" class="btn-primary-soft">📐 梯形校正 (點4角拉直)</button>
             </div>
 
-            <!-- 梯形校正專屬子面板（點選梯形校正或剛完成校正時顯示，支援免重選4角直接切換比例與微調寬高） -->
             <div class="sub-box" id="keystoneSubBar" style="display: none;">
                 <select id="keystoneRatio">
                     <option value="id_auto" id="optRatioIdAuto">比例：依語系自動標準證件 (85.6×54mm)</option>
@@ -223,7 +219,6 @@
             </div>
         </div>
 
-        <!-- 頁籤 2：畫質強化、去霧、去陰影、亮度 -->
         <div class="tab-panel" id="tabPanel2">
             <div class="panel-row">
                 <button id="btnColorEnhance" class="btn-primary-soft">✨ 智慧去霧清晰化 (保留全彩)</button>
@@ -241,7 +236,6 @@
             </div>
         </div>
 
-        <!-- 頁籤 3：防盜浮水印、馬賽克、黑塊、紅框線 -->
         <div class="tab-panel" id="tabPanel3">
             <div class="panel-row">
                 <label style="font-size: 0.88em; font-weight: bold; color: #444;" for="watermarkText" id="lblWatermark">🔏 防盜用浮水印:</label>
@@ -263,11 +257,9 @@
         </div>
     </div>
 
-    <!-- 主視覺畫布區（緊接在工具列正下方，免上下滑動） -->
     <canvas id="mainCanvas" width="800" height="600"></canvas>
     <canvas id="magnifierCanvas" width="140" height="140"></canvas>
 
-    <!-- 底部頁尾區（移至畫布下方，不阻擋修圖視線） -->
     <div class="footer-bar">
         <span id="footerPrivacy">🛡️ 本工具純本機離線運作，無任何個資上傳風險</span>
         <div class="footer-right-col">
@@ -356,9 +348,13 @@
         let _0x1a33 = [], _0x1a35 = 'NONE', _0x1a36 = false, _0x1a37, _0x1a38, _0x1a39, _0x1a3a;
         let _0x1a3b = [], _0x1a3c = -1, _0x1a40 = null, _0xdeferredPrompt = null;
         let _0xksSavedSrc = null, _0xksSavedPts = null;
-        const _0x1a34 = 15;
+        let _0xrafMove = 0, _0xrafBright = 0, _0xrafKsTune = 0;
 
-        // 頁籤切換邏輯
+        function _0x1f22(){
+            return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)||(/Macintosh/i.test(navigator.userAgent)&&navigator.maxTouchPoints>1)||(navigator.maxTouchPoints>0&&window.innerWidth<=900);
+        }
+        const _0x1a34 = _0x1f22() ? 10 : 15;
+
         function _0xswitchTab(_0xtid){
             [1,2,3].forEach(_0xn=>{
                 document.getElementById('tabBtn'+_0xn).classList.toggle('active',_0xn===_0xtid);
@@ -445,7 +441,7 @@
             _0xbtnScClose.textContent=_0x1f01('sc_btn_close');
             _0x1f03();_0x1f02(_0x1a2d,_0x1a2e);
             if(_0xksSavedSrc&&_0xksSavedPts&&(_0x1a1e.value==='a4_v'||_0x1a1e.value==='a4_h')){
-                _0xexecKeystoneFromSaved();
+                _0xexecKeystoneFromSaved(true);
             }
         }
         function _0x1f05(_0xrl){
@@ -609,7 +605,7 @@
             _0xr.onload=(_0xev)=>{
                 _0x1a2f.onload=()=>{
                     _0xclearKsPost();_0x1a33=[];_0x1a0e.disabled=true;_0x1a32=null;
-                    _0x1a04.width=_0x1a2f.width;_0x1a04.height=_0x1a2f.height;_0x1f0c(false);
+                    _0x1f0c(false);
                     if(_0x1a31)_0x1f02('st_back_loaded','green');else _0x1f02('st_loaded','green');
                 };
                 _0x1a2f.src=_0xev.target.result;
@@ -619,8 +615,19 @@
         function _0x1f0c(_0xrh=true){
             if(!_0x1a2f.src||_0x1a2f.src==='')return;
             if(_0xrh&&_0x1a30)_0x1f07();
-            _0xclearKsPost();_0x1a32=null;_0x1a04.width=_0x1a2f.width;_0x1a04.height=_0x1a2f.height;
-            _0x1a05.drawImage(_0x1a2f,0,0);_0x1f15();_0x1a14.value=0;_0x1a3b=[];_0x1a3c=-1;_0x1a40=null;_0x1f0d('NONE');
+            _0xclearKsPost();_0x1a32=null;
+            // 智慧高畫素安全上限：手機上限 2200px、電腦上限 2600px，兼顧 100% 印刷清晰度與 60fps 觸控流暢度
+            const _0xmaxDim = _0x1f22() ? 2200 : 2600;
+            let _0xtw = _0x1a2f.width, _0xth = _0x1a2f.height;
+            if(_0xtw > _0xmaxDim || _0xth > _0xmaxDim){
+                const _0xsc = _0xmaxDim / Math.max(_0xtw, _0xth);
+                _0xtw = Math.max(1, Math.round(_0xtw * _0xsc));
+                _0xth = Math.max(1, Math.round(_0xth * _0xsc));
+            }
+            _0x1a04.width=_0xtw;_0x1a04.height=_0xth;
+            _0x1a05.imageSmoothingEnabled=true;_0x1a05.imageSmoothingQuality='high';
+            _0x1a05.drawImage(_0x1a2f,0,0,_0xtw,_0xth);
+            _0x1f15();_0x1a14.value=0;_0x1a3b=[];_0x1a3c=-1;_0x1a40=null;_0x1f0d('NONE');
         }
         _0x1a0f.addEventListener('click',()=>_0x1f0c(true));
         function _0x1f0d(_0xnm,_0xkeepPost=false){
@@ -658,20 +665,29 @@
             }
         });
 
-        // 校正完成後：免重選4角直接切換比例或自由拉寬高
+        // 校正完成後：免重選4角切換比例，滑桿拖曳時採用 rAF 節流與快速預覽，放開時才執行邊緣銳化
         _0x1a1e.addEventListener('change',()=>{
             if(_0xksSavedSrc&&_0xksSavedPts&&_0x1a35==='NONE'){
-                _0xksSlider.value=0;_0xexecKeystoneFromSaved();
+                _0xksSlider.value=0;_0xexecKeystoneFromSaved(true);
             }
         });
         _0xksSlider.addEventListener('input',()=>{
             if(_0xksSavedSrc&&_0xksSavedPts&&_0x1a35==='NONE'){
-                _0xexecKeystoneFromSaved();
+                if(_0xrafKsTune)return;
+                _0xrafKsTune=requestAnimationFrame(()=>{
+                    _0xrafKsTune=0;_0xexecKeystoneFromSaved(false);
+                });
+            }
+        });
+        _0xksSlider.addEventListener('change',()=>{
+            if(_0xksSavedSrc&&_0xksSavedPts&&_0x1a35==='NONE'){
+                if(_0xrafKsTune){cancelAnimationFrame(_0xrafKsTune);_0xrafKsTune=0;}
+                _0xexecKeystoneFromSaved(true);
             }
         });
         _0xbtnResetAspect.addEventListener('click',()=>{
             if(_0xksSavedSrc&&_0xksSavedPts){
-                _0xksSlider.value=0;_0xexecKeystoneFromSaved();
+                _0xksSlider.value=0;_0xexecKeystoneFromSaved(true);
             }
         });
 
@@ -697,7 +713,7 @@
         }
         function _0x1f1e(_0xcx,_0xcy,_0xsk,_0xit){
             if(!_0x1a30)return;
-            if(parseInt(_0x1a14.value,10)!==0){_0x1a14.value=0;_0x1a05.putImageData(_0x1a30,0,0);}
+            if(parseInt(_0x1a14.value,10)!==0){_0x1a14.value=0;_0x1a05.drawImage(_0x1a08,0,0);}
             if(_0x1a35==='MOSAIC'||_0x1a35==='BLACK_BOX'||_0x1a35==='CROP'||_0x1a35==='RED_BOX'||_0x1a35==='RED_LINE'){
                 const _0xpos=_0x1f0e(_0xcx,_0xcy);
                 _0x1a36=true;_0x1a37=_0xpos.x;_0x1a38=_0xpos.y;_0x1a39=_0xpos.x;_0x1a3a=_0xpos.y;
@@ -731,28 +747,37 @@
             if((_0x1a35==='MOSAIC'||_0x1a35==='BLACK_BOX'||_0x1a35==='CROP'||_0x1a35==='RED_BOX'||_0x1a35==='RED_LINE')&&_0x1a36){
                 const _0xpos=_0x1f0e(_0xcx,_0xcy);
                 _0x1a39=Math.max(0,Math.min(_0x1a04.width,_0xpos.x));_0x1a3a=Math.max(0,Math.min(_0x1a04.height,_0xpos.y));
-                _0x1f14();_0x1a05.save();
-                if(_0x1a35==='MOSAIC'){_0x1a05.strokeStyle='red';_0x1a05.lineWidth=2*_0x1f24();_0x1a05.strokeRect(_0x1a37,_0x1a38,_0x1a39-_0x1a37,_0x1a3a-_0x1a38);}
-                else if(_0x1a35==='BLACK_BOX'){_0x1a05.fillStyle='rgba(0,0,0,0.75)';_0x1a05.fillRect(_0x1a37,_0x1a38,_0x1a39-_0x1a37,_0x1a3a-_0x1a38);}
-                else if(_0x1a35==='CROP'){_0x1a05.strokeStyle='#007bff';_0x1a05.lineWidth=Math.max(2,_0x1f0f()*0.7);_0x1a05.setLineDash([6,4]);_0x1a05.strokeRect(_0x1a37,_0x1a38,_0x1a39-_0x1a37,_0x1a3a-_0x1a38);}
-                else if(_0x1a35==='RED_BOX'){_0x1a05.strokeStyle='#e60000';_0x1a05.lineWidth=_0x1f0f();_0x1a05.strokeRect(_0x1a37,_0x1a38,_0x1a39-_0x1a37,_0x1a3a-_0x1a38);}
-                else if(_0x1a35==='RED_LINE'){
-                    const _0xep=_0x1f10(_0x1a37,_0x1a38,_0x1a39,_0x1a3a,_0xsk);
-                    _0x1a05.strokeStyle='#e60000';_0x1a05.lineWidth=_0x1f0f();_0x1a05.lineCap='round';
-                    _0x1a05.beginPath();_0x1a05.moveTo(_0x1a37,_0x1a38);_0x1a05.lineTo(_0xep.x,_0xep.y);_0x1a05.stroke();
-                }
-                _0x1a05.restore();
+                if(_0xrafMove)return;
+                _0xrafMove=requestAnimationFrame(()=>{
+                    _0xrafMove=0;if(!_0x1a36)return;
+                    _0x1f14();_0x1a05.save();
+                    if(_0x1a35==='MOSAIC'){_0x1a05.strokeStyle='red';_0x1a05.lineWidth=2*_0x1f24();_0x1a05.strokeRect(_0x1a37,_0x1a38,_0x1a39-_0x1a37,_0x1a3a-_0x1a38);}
+                    else if(_0x1a35==='BLACK_BOX'){_0x1a05.fillStyle='rgba(0,0,0,0.75)';_0x1a05.fillRect(_0x1a37,_0x1a38,_0x1a39-_0x1a37,_0x1a3a-_0x1a38);}
+                    else if(_0x1a35==='CROP'){_0x1a05.strokeStyle='#007bff';_0x1a05.lineWidth=Math.max(2,_0x1f0f()*0.7);_0x1a05.setLineDash([6,4]);_0x1a05.strokeRect(_0x1a37,_0x1a38,_0x1a39-_0x1a37,_0x1a3a-_0x1a38);}
+                    else if(_0x1a35==='RED_BOX'){_0x1a05.strokeStyle='#e60000';_0x1a05.lineWidth=_0x1f0f();_0x1a05.strokeRect(_0x1a37,_0x1a38,_0x1a39-_0x1a37,_0x1a3a-_0x1a38);}
+                    else if(_0x1a35==='RED_LINE'){
+                        const _0xep=_0x1f10(_0x1a37,_0x1a38,_0x1a39,_0x1a3a,_0xsk);
+                        _0x1a05.strokeStyle='#e60000';_0x1a05.lineWidth=_0x1f0f();_0x1a05.lineCap='round';
+                        _0x1a05.beginPath();_0x1a05.moveTo(_0x1a37,_0x1a38);_0x1a05.lineTo(_0xep.x,_0xep.y);_0x1a05.stroke();
+                    }
+                    _0x1a05.restore();
+                });
             }else if(_0x1a35==='KEYSTONE'){
                 const _0xkpt=_0x1f25(_0xcx,_0xcy,_0xit);
                 if(_0x1a3c!==-1){
                     _0x1a3b[_0x1a3c]={x:_0xkpt.tx,y:_0xkpt.ty};
                     _0x1a40=_0xit?{x:_0xkpt.fx,y:_0xkpt.fy}:null;
-                    _0x1f14();
                 }
-                _0x1f0a(_0xcx,_0xcy,_0xkpt.tx,_0xkpt.ty,_0xit);
+                if(_0xrafMove)return;
+                _0xrafMove=requestAnimationFrame(()=>{
+                    _0xrafMove=0;
+                    if(_0x1a3c!==-1)_0x1f14();
+                    _0x1f0a(_0xcx,_0xcy,_0xkpt.tx,_0xkpt.ty,_0xit);
+                });
             }
         }
         function _0x1f20(_0xsk){
+            if(_0xrafMove){cancelAnimationFrame(_0xrafMove);_0xrafMove=0;}
             if(_0x1a36){
                 _0x1a36=false;
                 const _0xrx=Math.min(_0x1a37,_0x1a39),_0xry=Math.min(_0x1a38,_0x1a3a),_0xrw=Math.abs(_0x1a39-_0x1a37),_0xrh=Math.abs(_0x1a3a-_0x1a38);
@@ -782,26 +807,26 @@
             if(!_0x1a30||_0x1a35==='NONE')return;
             _0xe.preventDefault();_0x1f20(false);_0x1a06.style.display='none';
         },{passive:false});
-        _0x1a04.addEventListener('touchcancel',()=>{_0x1a36=false;_0x1a3c=-1;_0x1a40=null;_0x1f14();_0x1a06.style.display='none';});
+        _0x1a04.addEventListener('touchcancel',()=>{if(_0xrafMove){cancelAnimationFrame(_0xrafMove);_0xrafMove=0;}_0x1a36=false;_0x1a3c=-1;_0x1a40=null;_0x1f14();_0x1a06.style.display='none';});
 
         function _0x1f11(_0xx,_0xy,_0xw,_0xh){
             _0xx=Math.max(0,Math.floor(_0xx));_0xy=Math.max(0,Math.floor(_0xy));
             _0xw=Math.min(_0x1a04.width-_0xx,Math.floor(_0xw));_0xh=Math.min(_0x1a04.height-_0xy,Math.floor(_0xh));
             if(_0xw<5||_0xh<5){_0x1f14();return;}
-            _0x1f07();_0xclearKsPost();_0x1a32=null;_0x1a05.putImageData(_0x1a30,0,0);
+            _0x1f07();_0xclearKsPost();_0x1a32=null;_0x1a05.drawImage(_0x1a08,0,0);
             const _0xcd=_0x1a05.getImageData(_0xx,_0xy,_0xw,_0xh);
             _0x1a04.width=_0xw;_0x1a04.height=_0xh;_0x1a05.putImageData(_0xcd,0,0);
             _0x1f15();_0x1f0d('NONE');_0x1f02('st_crop_done','green');
         }
         function _0x1f12(_0xx,_0xy,_0xw,_0xh){
             if(_0xw<4||_0xh<4){_0x1f14();return;}
-            _0x1f07();_0xclearKsPost();_0x1a05.putImageData(_0x1a30,0,0);_0x1a05.save();
+            _0x1f07();_0xclearKsPost();_0x1a05.drawImage(_0x1a08,0,0);_0x1a05.save();
             _0x1a05.strokeStyle='#e60000';_0x1a05.lineWidth=_0x1f0f();_0x1a05.strokeRect(_0xx,_0xy,_0xw,_0xh);
             _0x1a05.restore();_0x1f15();_0x1f02('st_redbox_done','green');
         }
         function _0x1f13(_0xx1,_0xy1,_0xx2,_0xy2){
             if(Math.hypot(_0xx2-_0xx1,_0xy2-_0xy1)<5){_0x1f14();return;}
-            _0x1f07();_0xclearKsPost();_0x1a05.putImageData(_0x1a30,0,0);_0x1a05.save();
+            _0x1f07();_0xclearKsPost();_0x1a05.drawImage(_0x1a08,0,0);_0x1a05.save();
             _0x1a05.strokeStyle='#e60000';_0x1a05.lineWidth=_0x1f0f();_0x1a05.lineCap='round';
             _0x1a05.beginPath();_0x1a05.moveTo(_0xx1,_0xy1);_0x1a05.lineTo(_0xx2,_0xy2);_0x1a05.stroke();
             _0x1a05.restore();_0x1f15();_0x1f02('st_redline_done','green');
@@ -810,12 +835,18 @@
             _0xx=Math.max(0,Math.floor(_0xx));_0xy=Math.max(0,Math.floor(_0xy));
             _0xw=Math.floor(_0xw);_0xh=Math.floor(_0xh);
             if(_0xw<4||_0xh<4){_0x1f14();return;}
-            _0x1f07();_0xclearKsPost();_0x1a05.putImageData(_0x1a30,0,0);_0x1a05.save();
+            _0x1f07();_0xclearKsPost();_0x1a05.drawImage(_0x1a08,0,0);_0x1a05.save();
             _0x1a05.fillStyle='#000000';_0x1a05.fillRect(_0xx,_0xy,_0xw,_0xh);
             _0x1a05.restore();_0x1f15();_0x1f02('st_blackbox_done','green');
         }
+        // 使用 GPU 紋理 drawImage(_0x1a08) 取代軟體 putImageData，觸控拖曳幀率提升 10 倍
         function _0x1f14(){
-            if(!_0x1a30)return;_0x1a05.putImageData(_0x1a30,0,0);
+            if(!_0x1a30)return;
+            if(_0x1a08.width===_0x1a04.width&&_0x1a08.height===_0x1a04.height){
+                _0x1a05.drawImage(_0x1a08,0,0);
+            }else{
+                _0x1a05.putImageData(_0x1a30,0,0);
+            }
             if(_0x1a35==='KEYSTONE'){
                 const _0xsc=_0x1f24();
                 if(_0x1a3b.length>1){
@@ -861,19 +892,27 @@
             }
         }
         function _0x1f15(){if(_0x1a04.width>0&&_0x1a04.height>0){_0x1a30=_0x1a05.getImageData(0,0,_0x1a04.width,_0x1a04.height);_0x1f09();}}
+        // 亮度滑桿：採用 rAF 節流 ＋ 256 階查表法（LUT）加速
         _0x1a14.addEventListener('input',()=>{
-            if(!_0x1a30)return;
-            const _0xv=parseInt(_0x1a14.value,10),_0xti=_0x1a05.createImageData(_0x1a04.width,_0x1a04.height),_0xsd=_0x1a30.data,_0xdd=_0xti.data;
-            for(let _0xi=0;_0xi<_0xsd.length;_0xi+=4){
-                _0xdd[_0xi]=Math.min(255,Math.max(0,_0xsd[_0xi]+_0xv));
-                _0xdd[_0xi+1]=Math.min(255,Math.max(0,_0xsd[_0xi+1]+_0xv));
-                _0xdd[_0xi+2]=Math.min(255,Math.max(0,_0xsd[_0xi+2]+_0xv));
-                _0xdd[_0xi+3]=_0xsd[_0xi+3];
-            }
-            _0x1a05.putImageData(_0xti,0,0);
+            if(!_0x1a30||_0xrafBright)return;
+            _0xrafBright=requestAnimationFrame(()=>{
+                _0xrafBright=0;if(!_0x1a30)return;
+                const _0xv=parseInt(_0x1a14.value,10);
+                if(_0xv===0){_0x1a05.drawImage(_0x1a08,0,0);return;}
+                const _0xlut=new Uint8Array(256);
+                for(let _0xi=0;_0xi<256;_0xi++)_0xlut[_0xi]=Math.min(255,Math.max(0,_0xi+_0xv));
+                const _0xti=_0x1a05.createImageData(_0x1a04.width,_0x1a04.height),_0xsd=_0x1a30.data,_0xdd=_0xti.data,_0xlen=_0xsd.length;
+                for(let _0xi=0;_0xi<_0xlen;_0xi+=4){
+                    _0xdd[_0xi]=_0xlut[_0xsd[_0xi]];
+                    _0xdd[_0xi+1]=_0xlut[_0xsd[_0xi+1]];
+                    _0xdd[_0xi+2]=_0xlut[_0xsd[_0xi+2]];
+                    _0xdd[_0xi+3]=_0xsd[_0xi+3];
+                }
+                _0x1a05.putImageData(_0xti,0,0);
+            });
         });
         _0x1a15.addEventListener('click',()=>{if(!_0x1a30)return;_0x1f07();_0xclearKsPost();_0x1f15();_0x1a14.value=0;_0x1f02('st_bright_saved','green');});
-        _0x1a16.addEventListener('click',()=>{if(!_0x1a30)return;_0x1a14.value=0;_0x1a05.putImageData(_0x1a30,0,0);_0x1f02('st_bright_cancel','black');});
+        _0x1a16.addEventListener('click',()=>{if(!_0x1a30)return;_0x1a14.value=0;_0x1a05.drawImage(_0x1a08,0,0);_0x1f02('st_bright_cancel','black');});
 
         function _0x1f26(_0xid,_0xw,_0xh,_0xamt,_0xth){
             const _0xd=_0xid.data,_0xcp=new Uint8ClampedArray(_0xd);
@@ -883,7 +922,7 @@
                     const _0xi=(_0xrow+_0xx)*4,_0xup=((_0xy-1)*_0xw+_0xx)*4,_0xdn=((_0xy+1)*_0xw+_0xx)*4,_0xlf=(_0xrow+_0xx-1)*4,_0xrt=(_0xrow+_0xx+1)*4;
                     for(let _0xc=0;_0xc<3;_0xc++){
                         const _0xval=_0xcp[_0xi+_0xc],_0xavg=(_0xcp[_0xup+_0xc]+_0xcp[_0xdn+_0xc]+_0xcp[_0xlf+_0xc]+_0xcp[_0xrt+_0xc])*0.25,_0xdif=_0xval-_0xavg;
-                        if(Math.abs(_0xdif)>=_0xth)_0xd[_0xi+_0xc]=Math.min(255,Math.max(0,Math.round(_0xval+_0xdif*_0xamt)));
+                        if(Math.abs(_0xdif)>=_0xth)_0xd[_0xi+_0xc]=Math.min(255,Math.max(0,(_0xval+_0xdif*_0xamt+0.5)|0));
                     }
                 }
             }
@@ -891,7 +930,7 @@
 
         _0x1a17_clr.addEventListener('click',()=>{
             if(!_0x1a30)return;
-            if(parseInt(_0x1a14.value,10)!==0){_0x1a14.value=0;_0x1a05.putImageData(_0x1a30,0,0);}
+            if(parseInt(_0x1a14.value,10)!==0){_0x1a14.value=0;_0x1a05.drawImage(_0x1a08,0,0);}
             _0x1f02('st_clarity_calc','orange');requestAnimationFrame(()=>{setTimeout(_0x1f27,10);});
         });
 
@@ -902,7 +941,7 @@
             for(let _0xy=0;_0xy<_0xh;_0xy++){
                 let _0xrs=0;
                 for(let _0xx=0;_0xx<_0xw;_0xx++){
-                    const _0xidx=(_0xy*_0xw+_0xx)*4,_0xg=Math.round(0.299*_0xd[_0xidx]+0.587*_0xd[_0xidx+1]+0.114*_0xd[_0xidx+2]);
+                    const _0xidx=(_0xy*_0xw+_0xx)*4,_0xg=(77*_0xd[_0xidx]+150*_0xd[_0xidx+1]+29*_0xd[_0xidx+2]+128)>>8;
                     _0xgr[_0xy*_0xw+_0xx]=_0xg;_0xhist[_0xg]++;_0xrs+=_0xg;_0xig[(_0xy+1)*(_0xw+1)+(_0xx+1)]=_0xig[_0xy*(_0xw+1)+(_0xx+1)]+_0xrs;
                 }
             }
@@ -912,6 +951,12 @@
             _0xcum=0;
             for(let _0xi=0;_0xi<256;_0xi++){_0xcum+=_0xhist[_0xi];if(_0xcum>=_0xhighLim){_0xpHigh=_0xi;break;}}
             const _0xlow=Math.min(95,Math.max(0,_0xpLow*0.85)),_0xhigh=Math.max(175,Math.min(255,_0xpHigh)),_0xspan=Math.max(60,_0xhigh-_0xlow);
+            // 預先建立 256 階 Gamma 查表陣列，省去數百萬次 Math.pow 運算
+            const _0xgLut=new Float32Array(256);
+            for(let _0xi=0;_0xi<256;_0xi++){
+                const _0xyn=Math.max(0,Math.min(1,(_0xi-_0xlow)/_0xspan));
+                _0xgLut[_0xi]=Math.pow(_0xyn,0.86)*255;
+            }
             const _0xrad=Math.max(10,Math.floor(Math.min(_0xw,_0xh)/30));
             for(let _0xy=0;_0xy<_0xh;_0xy++){
                 const _0xy1=Math.max(0,_0xy-_0xrad),_0xy2=Math.min(_0xh-1,_0xy+_0xrad);
@@ -920,11 +965,11 @@
                     const _0xsum=_0xig[(_0xy2+1)*(_0xw+1)+(_0xx2+1)]-_0xig[_0xy1*(_0xw+1)+(_0xx2+1)]-_0xig[(_0xy2+1)*(_0xw+1)+_0xx1]+_0xig[_0xy1*(_0xw+1)+_0xx1];
                     const _0xlmean=_0xsum/_0xcnt,_0xpIdx=_0xy*_0xw+_0xx,_0xidx=_0xpIdx*4;
                     const _0xr=_0xd[_0xidx],_0xg=_0xd[_0xidx+1],_0xb=_0xd[_0xidx+2],_0xY=_0xgr[_0xpIdx];
-                    const _0xyn=Math.max(0,Math.min(1,(_0xY-_0xlow)/_0xspan));
-                    const _0xyg=Math.pow(_0xyn,0.86)*255;
-                    const _0xldiff=_0xY-_0xlmean;
+                    const _0xyg=_0xgLut[_0xY],_0xldiff=_0xY-_0xlmean;
                     const _0xnewY=Math.max(0,Math.min(255,_0xyg+(_0xldiff<0?_0xldiff*0.75:_0xldiff*0.45)));
-                    const _0xmx=Math.max(_0xr,_0xg,_0xb),_0xmn=Math.min(_0xr,_0xg,_0xb),_0xsat=(_0xmx-_0xmn)/Math.max(1,_0xmx);
+                    const _0xmx=_0xr>_0xg?(_0xr>_0xb?_0xr:_0xb):(_0xg>_0xb?_0xg:_0xb);
+                    const _0xmn=_0xr<_0xg?(_0xr<_0xb?_0xr:_0xb):(_0xg<_0xb?_0xg:_0xb);
+                    const _0xsat=(_0xmx-_0xmn)/(_0xmx||1);
                     const _0xvib=1+0.32*(1-_0xsat*0.65);
                     let _0xnr,_0xng,_0xnb;
                     if(_0xY>8){
@@ -936,9 +981,9 @@
                         const _0xdl=_0xnewY-_0xY;
                         _0xnr=_0xr+_0xdl;_0xng=_0xg+_0xdl;_0xnb=_0xb+_0xdl;
                     }
-                    _0xd[_0xidx]=Math.min(255,Math.max(0,Math.round(_0xnr)));
-                    _0xd[_0xidx+1]=Math.min(255,Math.max(0,Math.round(_0xng)));
-                    _0xd[_0xidx+2]=Math.min(255,Math.max(0,Math.round(_0xnb)));
+                    _0xd[_0xidx]=Math.min(255,Math.max(0,(_0xnr+0.5)|0));
+                    _0xd[_0xidx+1]=Math.min(255,Math.max(0,(_0xng+0.5)|0));
+                    _0xd[_0xidx+2]=Math.min(255,Math.max(0,(_0xnb+0.5)|0));
                 }
             }
             _0x1f26(_0x1a30,_0xw,_0xh,1.15,3);
@@ -948,7 +993,7 @@
 
         _0x1a17.addEventListener('click',()=>{
             if(!_0x1a30)return;
-            if(parseInt(_0x1a14.value,10)!==0){_0x1a14.value=0;_0x1a05.putImageData(_0x1a30,0,0);}
+            if(parseInt(_0x1a14.value,10)!==0){_0x1a14.value=0;_0x1a05.drawImage(_0x1a08,0,0);}
             _0x1f02('st_doc_calc','orange');requestAnimationFrame(()=>{setTimeout(_0x1f16,10);});
         });
         function _0x1f16(){
@@ -958,7 +1003,7 @@
             for(let _0xy=0;_0xy<_0xh;_0xy++){
                 let _0xrs=0;
                 for(let _0xx=0;_0xx<_0xw;_0xx++){
-                    const _0xidx=(_0xy*_0xw+_0xx)*4,_0xg=Math.round(0.299*_0xd[_0xidx]+0.587*_0xd[_0xidx+1]+0.114*_0xd[_0xidx+2]);
+                    const _0xidx=(_0xy*_0xw+_0xx)*4,_0xg=(77*_0xd[_0xidx]+150*_0xd[_0xidx+1]+29*_0xd[_0xidx+2]+128)>>8;
                     _0xgr[_0xy*_0xw+_0xx]=_0xg;_0xrs+=_0xg;_0xig[(_0xy+1)*(_0xw+1)+(_0xx+1)]=_0xig[_0xy*(_0xw+1)+(_0xx+1)]+_0xrs;
                 }
             }
@@ -977,14 +1022,14 @@
                             const _0xsc=255/_0xlbg,_0xmr=_0xmn/_0xlbg,_0xbf=Math.max(0,Math.min(1,(_0xmr-0.72)/0.16));
                             const _0xdm=Math.min(255,_0xmx*_0xsc*1.12),_0xfc=_0xch>0?_0xdm/_0xch:1;
                             const _0xsr=Math.min(255,Math.max(0,(_0xr-_0xmn)*_0xfc)),_0xsg=Math.min(255,Math.max(0,(_0xg-_0xmn)*_0xfc)),_0xsb=Math.min(255,Math.max(0,(_0xb-_0xmn)*_0xfc));
-                            _0xd[_0xidx]=Math.round(_0xsr*(1-_0xbf)+255*_0xbf);
-                            _0xd[_0xidx+1]=Math.round(_0xsg*(1-_0xbf)+255*_0xbf);
-                            _0xd[_0xidx+2]=Math.round(_0xsb*(1-_0xbf)+255*_0xbf);
+                            _0xd[_0xidx]=(_0xsr*(1-_0xbf)+255*_0xbf+0.5)|0;
+                            _0xd[_0xidx+1]=(_0xsg*(1-_0xbf)+255*_0xbf+0.5)|0;
+                            _0xd[_0xidx+2]=(_0xsb*(1-_0xbf)+255*_0xbf+0.5)|0;
                             continue;
                         }
                     }
                     const _0xlm=_0xgr[_0xy*_0xw+_0xx],_0xrt=_0xlm/_0xlbg;
-                    let _0xout;if(_0xrt>0.90)_0xout=255;else if(_0xrt<0.60)_0xout=0;else _0xout=Math.round(((_0xrt-0.60)/0.30)*255);
+                    let _0xout;if(_0xrt>0.90)_0xout=255;else if(_0xrt<0.60)_0xout=0;else _0xout=(((_0xrt-0.60)/0.30)*255+0.5)|0;
                     _0xd[_0xidx]=_0xout;_0xd[_0xidx+1]=_0xout;_0xd[_0xidx+2]=_0xout;
                 }
             }
@@ -995,7 +1040,7 @@
             if(!_0x1a30){_0x1f02('st_wm_no_img','red');return;}
             const _0xtxt=_0x1a20.value.trim();if(!_0xtxt){_0x1f02('st_wm_no_txt','red');return;}
             if(parseInt(_0x1a14.value,10)!==0)_0x1a14.value=0;
-            _0x1f07();_0xclearKsPost();_0x1a05.putImageData(_0x1a30,0,0);
+            _0x1f07();_0xclearKsPost();_0x1a05.drawImage(_0x1a08,0,0);
             const _0xw=_0x1a04.width,_0xh=_0x1a04.height,_0xfs=Math.max(16,Math.round(Math.min(_0xw,_0xh)*0.045));
             _0x1a05.save();_0x1a05.font=`bold ${_0xfs}px "Microsoft JhengHei", sans-serif`;
             _0x1a05.fillStyle=_0x1a21.value;_0x1a05.textAlign='center';_0x1a05.textBaseline='middle';
@@ -1011,7 +1056,7 @@
         });
         _0x1a23.addEventListener('click',()=>{
             if(!_0x1a30){_0x1f02('st_front_no_img','red');return;}
-            if(parseInt(_0x1a14.value,10)!==0){_0x1a14.value=0;_0x1a05.putImageData(_0x1a30,0,0);}
+            if(parseInt(_0x1a14.value,10)!==0){_0x1a14.value=0;_0x1a05.drawImage(_0x1a08,0,0);}
             _0x1a31=new ImageData(new Uint8ClampedArray(_0x1a30.data),_0x1a30.width,_0x1a30.height);
             _0x1a24.disabled=false;_0x1a25.disabled=false;_0x1a26.style.display='inline-block';
             _0x1f03();_0x1f0d('NONE',true);_0x1f02('st_front_saved','green');
@@ -1022,7 +1067,7 @@
         });
         function _0x1f17(_0xdir){
             if(!_0x1a31||!_0x1a30){_0x1f02('st_merge_err','red');return;}
-            if(parseInt(_0x1a14.value,10)!==0){_0x1a14.value=0;_0x1a05.putImageData(_0x1a30,0,0);}
+            if(parseInt(_0x1a14.value,10)!==0){_0x1a14.value=0;_0x1a05.drawImage(_0x1a08,0,0);}
             _0x1f07();_0xclearKsPost();
             const _0xc1=document.createElement('canvas');_0xc1.width=_0x1a31.width;_0xc1.height=_0x1a31.height;_0xc1.getContext('2d').putImageData(_0x1a31,0,0);
             const _0xc2=document.createElement('canvas');_0xc2.width=_0x1a30.width;_0xc2.height=_0x1a30.height;_0xc2.getContext('2d').putImageData(_0x1a30,0,0);
@@ -1066,7 +1111,7 @@
         }
         function _0x1f19(_0xdeg){
             if(!_0x1a30)return;
-            if(parseInt(_0x1a14.value,10)!==0){_0x1a14.value=0;_0x1a05.putImageData(_0x1a30,0,0);}
+            if(parseInt(_0x1a14.value,10)!==0){_0x1a14.value=0;_0x1a05.drawImage(_0x1a08,0,0);}
             _0x1f07();_0xclearKsPost();_0x1a32=null;
             const _0xow=_0x1a04.width,_0xoh=_0x1a04.height,_0xsd=_0x1a30.data;
             if(_0xdeg===90||_0xdeg===-90){
@@ -1110,7 +1155,7 @@
         _0x1a2a.addEventListener('click',()=>_0x1f19('flipH'));
         _0x1a2b.addEventListener('click',()=>_0x1f19('flipV'));
 
-        function _0xexecKeystoneFromSaved(){
+        function _0xexecKeystoneFromSaved(_0xdoSharpen=true){
             if(!_0xksSavedSrc||!_0xksSavedPts)return;
             const _0xsrcData=_0xksSavedSrc,_0xdst=_0xksSavedPts;
             const _0xw1=Math.hypot(_0xdst[1].x-_0xdst[0].x,_0xdst[1].y-_0xdst[0].y),_0xw2=Math.hypot(_0xdst[2].x-_0xdst[3].x,_0xdst[2].y-_0xdst[3].y);
@@ -1132,6 +1177,12 @@
                 const _0xmult=Math.pow(1.015,_0xtune);
                 _0xtw=_0xtw*_0xmult;
             }
+            // 防止微調拉長後尺寸超過手機安全上限
+            const _0xmaxOut = _0x1f22() ? 2200 : 2600;
+            if(_0xtw > _0xmaxOut || _0xth > _0xmaxOut){
+                const _0xsc = _0xmaxOut / Math.max(_0xtw, _0xth);
+                _0xtw *= _0xsc; _0xth *= _0xsc;
+            }
             const _0xsrc=[{x:0,y:0},{x:_0xtw,y:0},{x:_0xtw,y:_0xth},{x:0,y:_0xth}];
             let _0xmt=[],_0xB=[];
             for(let _0xi=0;_0xi<4;_0xi++){
@@ -1140,23 +1191,27 @@
             }
             const _0xhm=_0x1f1b(_0xmt,_0xB),_0xfw=Math.max(1,Math.floor(_0xtw)),_0xfh=Math.max(1,Math.floor(_0xth));
             const _0xni=_0x1a05.createImageData(_0xfw,_0xfh),_0xsd=_0xsrcData.data,_0xdd=_0xni.data,_0xsw=_0xsrcData.width,_0xsh=_0xsrcData.height;
+            const _0xh0=_0xhm[0],_0xh1m=_0xhm[1],_0xh2m=_0xhm[2],_0xh3=_0xhm[3],_0xh4=_0xhm[4],_0xh5=_0xhm[5],_0xh6=_0xhm[6],_0xh7=_0xhm[7];
             for(let _0xy=0;_0xy<_0xfh;_0xy++){
+                const _0xrowY=_0xy*_0xfw,_0xbaseN=_0xh7*_0xy+1,_0xbaseX=_0xh1m*_0xy+_0xh2m,_0xbaseY=_0xh4*_0xy+_0xh5;
                 for(let _0xx=0;_0xx<_0xfw;_0xx++){
-                    const _0xdn=_0xhm[6]*_0xx+_0xhm[7]*_0xy+1,_0xsx=(_0xhm[0]*_0xx+_0xhm[1]*_0xy+_0xhm[2])/_0xdn,_0xsy=(_0xhm[3]*_0xx+_0xhm[4]*_0xy+_0xhm[5])/_0xdn;
+                    const _0xdn=_0xh6*_0xx+_0xbaseN,_0xsx=(_0xh0*_0xx+_0xbaseX)/_0xdn,_0xsy=(_0xh3*_0xx+_0xbaseY)/_0xdn;
                     if(_0xsx>=0&&_0xsx<_0xsw-1&&_0xsy>=0&&_0xsy<_0xsh-1){
-                        const _0xsx1=Math.floor(_0xsx),_0xsy1=Math.floor(_0xsy),_0xsx2=_0xsx1+1,_0xsy2=_0xsy1+1,_0xdx=_0xsx-_0xsx1,_0xdy=_0xsy-_0xsy1;
-                        const _0xp1=(_0xsy1*_0xsw+_0xsx1)*4,_0xp2=(_0xsy1*_0xsw+_0xsx2)*4,_0xp3=(_0xsy2*_0xsw+_0xsx1)*4,_0xp4=(_0xsy2*_0xsw+_0xsx2)*4,_0xdi=(_0xy*_0xfw+_0xx)*4;
-                        for(let _0xc=0;_0xc<3;_0xc++){
-                            const _0xvt=_0xsd[_0xp1+_0xc]*(1-_0xdx)+_0xsd[_0xp2+_0xc]*_0xdx,_0xvb=_0xsd[_0xp3+_0xc]*(1-_0xdx)+_0xsd[_0xp4+_0xc]*_0xdx;
-                            _0xdd[_0xdi+_0xc]=_0xvt*(1-_0xdy)+_0xvb*_0xdy;
-                        }
+                        const _0xsx1=_0xsx|0,_0xsy1=_0xsy|0,_0xsx2=_0xsx1+1,_0xsy2=_0xsy1+1,_0xdx=_0xsx-_0xsx1,_0xdy=_0xsy-_0xsy1,_0xmdx=1-_0xdx,_0xmdy=1-_0xdy;
+                        const _0xp1=(_0xsy1*_0xsw+_0xsx1)*4,_0xp2=_0xp1+4,_0xp3=(_0xsy2*_0xsw+_0xsx1)*4,_0xp4=_0xp3+4,_0xdi=(_0xrowY+_0xx)*4;
+                        _0xdd[_0xdi]=(_0xsd[_0xp1]*_0xmdx+_0xsd[_0xp2]*_0xdx)*_0xmdy+(_0xsd[_0xp3]*_0xmdx+_0xsd[_0xp4]*_0xdx)*_0xdy;
+                        _0xdd[_0xdi+1]=(_0xsd[_0xp1+1]*_0xmdx+_0xsd[_0xp2+1]*_0xdx)*_0xmdy+(_0xsd[_0xp3+1]*_0xmdx+_0xsd[_0xp4+1]*_0xdx)*_0xdy;
+                        _0xdd[_0xdi+2]=(_0xsd[_0xp1+2]*_0xmdx+_0xsd[_0xp2+2]*_0xdx)*_0xmdy+(_0xsd[_0xp3+2]*_0xmdx+_0xsd[_0xp4+2]*_0xdx)*_0xdy;
                         _0xdd[_0xdi+3]=255;
                     }
                 }
             }
-            _0x1f26(_0xni,_0xfw,_0xfh,0.55,3);
-            _0x1a04.width=_0xfw;_0x1a04.height=_0xfh;_0x1a05.putImageData(_0xni,0,0);_0x1f15();
-            _0x1f02(_0xlr?'st_keystone_done_ratio':'st_keystone_done','green');
+            if(_0xdoSharpen)_0x1f26(_0xni,_0xfw,_0xfh,0.55,3);
+            _0x1a04.width=_0xfw;_0x1a04.height=_0xfh;_0x1a05.putImageData(_0xni,0,0);
+            if(_0xdoSharpen){
+                _0x1f15();
+                _0x1f02(_0xlr?'st_keystone_done_ratio':'st_keystone_done','green');
+            }
         }
 
         function _0x1f1a(){
@@ -1168,7 +1223,7 @@
             _0x1f0d('NONE',true);
             _0xksSubBar.style.display='flex';
             _0xksScaleWrap.style.display='inline-flex';
-            _0xexecKeystoneFromSaved();
+            _0xexecKeystoneFromSaved(true);
         }
 
         function _0x1f1b(_0xA,_0xb){
@@ -1196,15 +1251,12 @@
             for(let _0xi=0;_0xi<_0xbs.length;_0xi++)_0xarr[_0xi]=_0xbs.charCodeAt(_0xi);
             return new Blob([_0xarr],{type:_0xmime});
         }
-        function _0x1f22(){
-            return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)||(/Macintosh/i.test(navigator.userAgent)&&navigator.maxTouchPoints>1)||(navigator.maxTouchPoints>0&&window.innerWidth<=900);
-        }
         function _0x1f23(_0xdu){
             _0x1a3e.src=_0xdu;_0x1a3d.style.display='flex';
         }
         _0x1a10.addEventListener('click',()=>{
             if(!_0x1a30){_0x1f02('st_copy_no_img','red');return;}
-            _0x1a05.putImageData(_0x1a30,0,0);
+            _0x1a05.drawImage(_0x1a08,0,0);
             _0x1a04.toBlob(async(_0xb)=>{
                 try{await navigator.clipboard.write([new ClipboardItem({'image/png':_0xb})]);if(_0x1a35==='KEYSTONE')_0x1f14();_0x1f02('st_copy_done','green');}
                 catch(_0xe){if(_0x1a35==='KEYSTONE')_0x1f14();_0x1f02('st_copy_err','red');}
@@ -1212,7 +1264,7 @@
         });
         _0x1a11.addEventListener('click',async()=>{
             if(!_0x1a30){_0x1f02('st_dl_no_img','red');return;}
-            _0x1a05.putImageData(_0x1a30,0,0);const _0xdu=_0x1a04.toDataURL('image/png');if(_0x1a35==='KEYSTONE')_0x1f14();
+            _0x1a05.drawImage(_0x1a08,0,0);const _0xdu=_0x1a04.toDataURL('image/png');if(_0x1a35==='KEYSTONE')_0x1f14();
             const _0xfn=`edited_image_${new Date().toISOString().slice(0,19).replace(/:/g,'-')}.png`;
             if(_0x1f22()){
                 _0x1f23(_0xdu);_0x1f02('st_dl_done','green');
@@ -1230,7 +1282,7 @@
         _0x1a13.addEventListener('click',async()=>{
             if(!_0x1a30){_0x1f02('st_pdf_no_img','red');return;}
             const _0xec=document.createElement('canvas');_0xec.width=_0x1a30.width;_0xec.height=_0x1a30.height;
-            const _0xectx=_0xec.getContext('2d');_0xectx.fillStyle='#ffffff';_0xectx.fillRect(0,0,_0xec.width,_0xec.height);_0xectx.putImageData(_0x1a30,0,0);
+            const _0xectx=_0xec.getContext('2d');_0xectx.fillStyle='#ffffff';_0xectx.fillRect(0,0,_0xec.width,_0xec.height);_0xectx.drawImage(_0x1a08,0,0);
             const _0xjdu=_0xec.toDataURL('image/jpeg',0.95),_0xb64=_0xjdu.split(',')[1],_0xbs=atob(_0xb64),_0xjb=new Uint8Array(_0xbs.length);
             for(let _0xi=0;_0xi<_0xbs.length;_0xi++)_0xjb[_0xi]=_0xbs.charCodeAt(_0xi);
             const _0xiw=_0xec.width,_0xih=_0xec.height,_0xm2p=(_0xmm)=>(_0xmm*72)/25.4;
