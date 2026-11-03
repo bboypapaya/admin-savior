@@ -2,7 +2,7 @@
 
 [![100% Offline](https://img.shields.io/badge/100%25_Offline-純本機離線運算-28a745?style=for-the-badge)](#)
 [![Zero Upload](https://img.shields.io/badge/Zero_Server_Upload-零個資上傳風險-007bff?style=for-the-badge)](#)
-[![Release](https://img.shields.io/badge/Release-v1.0.1-6f42c1?style=for-the-badge)](https://github.com/bboypapaya/admin-savior/releases/latest)
+[![Release](https://img.shields.io/badge/Release-v2.0.0-6f42c1?style=for-the-badge)](https://github.com/bboypapaya/admin-savior/releases/latest)
 [![Visitors](https://visitor-badge.laobi.icu/badge?page_id=bboypapaya.admin-savior&style=for-the-badge)](#)
 
 **[繁體中文](#-專案簡介) | [English](#-project-overview)**
